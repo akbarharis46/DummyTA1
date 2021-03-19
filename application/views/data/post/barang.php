@@ -10,7 +10,7 @@
       <div class="container-fluid" >
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-tablet" ></i> Data Penduduk</h2>
+            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-tablet" ></i> Barang Masuk</h2>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -20,11 +20,11 @@
     <div class="content">
       <div class="container-fluid">
       <div class="alert alert-secondary" role="alert">
-      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Penduduk&nbsp; > <i class="nav-icon fas fa-plus"></i>tambah Penduduk
+      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Barang&nbsp; > <i class="nav-icon fas fa-plus"></i>tambah Penduduk
         </div>
                 <form action="<?php echo site_url('barangclient/post_process');?>" class="needs-validation" method="POST" enctype="multipart/form-data">
                          <div class="form-group">
-                            <label for="nama_kategori">nama kategori :</label>
+                            <label for="nama_kategori">Nama Kategori  :</label>
                             <select class="form-control" name="nama_kategori" >
                             <option value="" selected="">-- Pilih --</option>
                             <?php foreach ($kategori as $rows) : ?>
@@ -40,7 +40,7 @@
                             </div>
                        
                         <div class="form-group">
-                                <label for="total">total :</label>
+                                <label for="total">Total :</label>
                                 <input type="text" class="form-control" id="total" placeholder="total"  name="total"  >
                             </div>
                         

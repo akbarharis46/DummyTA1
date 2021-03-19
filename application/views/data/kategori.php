@@ -9,7 +9,7 @@
       <div class="container-fluid" >
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-microphone" ></i> Data Kategori</h2>
+            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-microphone" ></i> Data Kategori Barang</h2>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -84,17 +84,19 @@
               <table id="tabel" class="table table-bordered">
                 <thead>
                 <tr>
-                  <th>ID BARANG</th>
-                  <th>NAMA BARANG</th>
-                  <th>Aksi</th>
+                  <th>NOMOR</th>
+                  <th>NAMA KATEGORI</th>
+                  <th>AKSI</th>
                  
                 </tr>
                 </thead>
                 <tbody>
                 <?php 
+                  $i=1;
+
                 foreach ($kategori as $rows) : ?>
                     <tr>
-                        <td><?php echo  $rows->id_kategori; ?></td>
+                        <td><?php echo  $i++; ?></td>
                         <td><?php echo $rows->nama_kategori; ?>
                             </td>
                         <td>

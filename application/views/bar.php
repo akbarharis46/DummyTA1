@@ -53,7 +53,7 @@
 
                  
         <li >
-            <a href="<?php echo site_url(); ?>barangclient" class="nav-link">
+            <a href="<?php echo site_url(); ?>userclient" class="nav-link">
             <i class="fa fa-address-card"></i> <span>User Info</span>
 
           </a>
@@ -85,7 +85,7 @@
 
               <li class="nav-item">
                 <a href="<?php echo site_url(); ?>kategoriclient" class="nav-link">
-                <i class="fa fa-cube"></i>Data Barang</a></li>
+                <i class="fa fa-cube"></i>Data Kategori Barang</a></li>
                 </a>
               </li>
 
@@ -116,7 +116,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>kategoriclient" class="nav-link">
+                <a href="<?php echo site_url(); ?>pengirimanclient" class="nav-link">
                 <i class="fa fa-cog"></i> Olah Data Pengiriman</a></li>
                 </a>
               </li>

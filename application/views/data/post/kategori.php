@@ -24,7 +24,7 @@
         </div>
                 <form action="<?php echo site_url(); ?>kategoriclient/post_process" class="needs-validation" method="POST" >
                 <div class="form-group">
-                            <label for="nama_kategori">Nama Kategori  :</label>
+                            <label for="nama_kategori">Nama Barang  :</label>
                             <input type="text" class="form-control" id="nama_kategori" placeholder="kategori" name="nama_kategori" required>
                         </div>
                        
