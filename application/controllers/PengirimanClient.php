@@ -22,6 +22,40 @@ class PengirimanClient extends CI_Controller
         $this->load->view('data/pengiriman', $data);
         $this->load->view('footer');
     }
+
+
+    public function index1()
+    {
+        $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "pengiriman";
+        $this->load->view('header1');
+        $this->load->view('bar1');
+        $this->load->view('staffproduksi/pengiriman', $data);
+        $this->load->view('footer');
+    }
+
+    public function index2()
+    {
+        $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "pengiriman";
+        $this->load->view('header1');
+        $this->load->view('bar2');
+        $this->load->view('staffgudang/pengiriman', $data);
+        $this->load->view('footer');
+    }
+
+
+    public function index3()
+    {
+        $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "pengiriman";
+        $this->load->view('header1');
+        $this->load->view('bar3');
+        $this->load->view('staffpengiriman/pengiriman', $data);
+        $this->load->view('footer');
+    }
+
+
     
     public function post()
     {
@@ -35,12 +69,13 @@ class PengirimanClient extends CI_Controller
     public function post_process()
     {
         $data = array(
-            'nama_pengirim'                   => $this->input->post('nama_pengirim'),
+            'nama_pengirim'                  => $this->input->post('nama_pengirim'),
             'tujuan'                         => $this->input->post('tujuan'),
             'jumlah'                         => $this->input->post('jumlah'),
             'jenis_kendaraan'                => $this->input->post('jenis_kendaraan'),
             'nomor_kendaraan'                => $this->input->post('nomor_kendaraan'),
-            'tanggal'                        => $this->input->post('tanggal'),   
+            'tanggal'                        => $this->input->post('tanggal'),
+            'status_pengiriman'              => $this->input->post('status_pengiriman'),     
         );
         $insert =  $this->curl->simple_post($this->API,$data);
         if ($insert) {
@@ -76,6 +111,8 @@ class PengirimanClient extends CI_Controller
             'jenis_kendaraan'                => $this->input->post('jenis_kendaraan'),
             'nomor_kendaraan'                => $this->input->post('nomor_kendaraan'),
             'tanggal'                        => $this->input->post('tanggal'),
+            'status_pengiriman'              => $this->input->post('status_pengiriman'),
+            
             
         );
         

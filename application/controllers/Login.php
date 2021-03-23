@@ -33,10 +33,16 @@ class Login extends CI_Controller
 
         // redirect('userclient');
       }
+      // print_r($check);
+      // exit;
       if ($this->session->userdata('level') == "admin") {
         redirect('adminclient');
-      } elseif ($this->session->userdata('level') == "user") {
-        redirect('userlogin');
+      } elseif ($this->session->userdata('level') == "staff_produksi") {
+        redirect('staffproduksiclient');
+      } elseif ($this->session->userdata('level') == "staff_gudang") {
+        redirect('staffgudangclient');
+      } elseif ($this->session->userdata('level') == "staff_pengiriman") {
+        redirect('staffpengirimanclient');
       } else {
         return false;
       }
@@ -46,6 +52,11 @@ class Login extends CI_Controller
     }
   }
     
+
+
+
+
+
   public function reg()
   {
     $data['title'] = 'registrasi';

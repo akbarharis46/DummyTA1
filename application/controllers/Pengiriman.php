@@ -34,6 +34,7 @@ class Pengiriman extends REST_Controller
             'jenis_kendaraan'            => $this->post('jenis_kendaraan'),
             'nomor_kendaraan'            => $this->post('nomor_kendaraan'),
             'tanggal'                    => $this->post('tanggal'),
+            'status_pengiriman'          => $this->post('status_pengiriman'),
             
         );
         $insert = $this->db->insert('pengiriman',$data);
@@ -55,7 +56,7 @@ class Pengiriman extends REST_Controller
             'jumlah'                     => $this->put('jumlah'),
             'jenis_kendaraan'            => $this->put('jenis_kendaraan'),
             'nomor_kendaraan'            => $this->put('nomor_kendaraan'),
-            'tanggal'                    => $this->put('tanggal'),
+            'status_pengiriman'          => $this->put('status_pengiriman'),
             
         );
         $this->db->where('id_pengiriman', $id);

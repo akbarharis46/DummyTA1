@@ -30,6 +30,7 @@ class Barang extends REST_Controller
         $data = array(
             'nama_barang'            => $this->post('nama_barang'),
             'nama_kategori'           => $this->post('nama_kategori'),
+            'tanggal'                 => $this->post('tanggal'),
             'total'                  => $this->post('total'),
             
         );
@@ -47,6 +48,7 @@ class Barang extends REST_Controller
             
             'nama_barang'            => $this->put('nama_barang'),
             'nama_kategori'           => $this->put('nama_kategori'),
+            'total'                  => $this->put('total'),
             'total'                  => $this->put('total'),
             
         );

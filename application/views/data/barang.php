@@ -84,10 +84,11 @@
               <table id="tabel" class="table table-bordered">
                 <thead>
                 <tr>
-                  <th>ID Barang</th>
-                  <th>NAMA Kategori</th>
-                  <th>NAMA Barang</th>
-                  <th>Total</th>
+                  <th>No </th>
+                  <th>Tanggal</th>
+                  <th>Nama Kategori</th>
+                  <th>Nama Barang</th>
+                  <th>Jumlah Barang Masuk</th>
                   <th>Aksi</th>
                  
                 </tr>
@@ -98,6 +99,7 @@
                 foreach ($barang as $rows) : ?>
                     <tr>
                         <td><?php echo  $i++; ?></td>
+                        <td><?php echo $rows->tanggal; ?> </td>
                         <td><?php echo $rows->nama_kategori; ?> </td>
                         <td><?php echo $rows->nama_barang; ?></td>
                         <td><?php echo $rows->total; ?>

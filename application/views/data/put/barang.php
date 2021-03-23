@@ -10,7 +10,7 @@
       <div class="container-fluid" >
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-tablet" ></i> Data Penduduk</h2>
+            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-tablet" ></i> Data Barang</h2>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -20,7 +20,7 @@
     <div class="content">
       <div class="container-fluid">
       <div class="alert alert-secondary" role="alert">
-      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Penduduk&nbsp; > <i class="nav-icon fas fa-pen"></i>Update Penduduk
+      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Barang&nbsp; > <i class="nav-icon fas fa-pen"></i>Update Penduduk
         </div>
             <form action="<?php echo site_url(); ?>barangclient/put_process"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()" >
                  <?php foreach ($barang as $rows) : ?>
@@ -28,6 +28,9 @@
                                 <label for="id_barang">Id Barang :</label>
                                 <input type="text" class="form-control" id="id_barang" value="<?php echo $rows->id_barang;?>" placeholder="id_barang"  name="id_barang"  readonly>
                             </div>
+
+
+                            
                             <div class="form-group">
                             <label for="sel1" >Kategori :</label>
                                 <input type="text" class="form-control" name="nama_kategori" id="selected"value="<?php echo $rows->nama_kategori;?>" readonly>
@@ -41,6 +44,13 @@
                                 <label for="nama_barang">Nama Barang :</label>
                                 <input type="text" class="form-control" id="nama_barang" value="<?php echo $rows->nama_barang;?>"placeholder="nama_barang"  name="nama_barang"  >
                         </div>
+
+                        <div class="form-group">
+                                <label for="tanggal">Tanggal :</label>
+                                <input type="date" class="form-control" id="tanggal" value="<?php echo $rows->tanggal;?>"placeholder="tanggal"  name="nama_barang"  >
+                        </div>
+
+
                         <div class="form-group">
                                 <label for="total">Total :</label>
                                 <input type="text" class="form-control" id="total" value="<?php echo $rows->total;?>"placeholder="total"  name="total"  >

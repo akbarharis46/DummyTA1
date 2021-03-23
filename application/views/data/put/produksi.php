@@ -10,7 +10,7 @@
       <div class="container-fluid" >
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-tablet" ></i> Barang Masuk</h2>
+            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-tablet" ></i> Update Data Produksi</h2>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -20,40 +20,45 @@
     <div class="content">
       <div class="container-fluid">
       <div class="alert alert-secondary" role="alert">
-      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Barang&nbsp; > <i class="nav-icon fas fa-plus"></i>tambah Penduduk
+      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Produksi &nbsp; > <i class="nav-icon fas fa-pen"></i>Update kategori
         </div>
-                <form action="<?php echo site_url('barangclient/post_process');?>" class="needs-validation" method="POST" enctype="multipart/form-data">
-                         <div class="form-group">
-                            <label for="nama_kategori">Nama Kategori  :</label>
-                            <select class="form-control" name="nama_kategori" >
-                            <option value="" selected="">-- Pilih --</option>
-                            <?php foreach ($kategori as $rows) : ?>
-                                <option value="<?php echo $rows->nama_kategori; ?>"> <?php echo $rows->nama_kategori; ?> </option>
-                            <?php endforeach; ?>
-                            </select>
-                            <div class="valid-feedback"></div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
-                        </div>
-
-
-                        <div class="form-group">
-                                <label for="nama_barang">Nama Barang</label>
-                                <input type="text" class="form-control" id="nama_barang" placeholder="nama_barang"  name="nama_barang"  >
-                            </div>
-                       
+            <form action="<?php echo site_url(); ?>produksiclient/put_process"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()">
+                 <?php foreach ($produksi as $rows) : ?>
                             <div class="form-group">
-                                <label for="tanggal">Tanggal</label>
-                                <input type="date" class="form-control" id="tanggal" placeholder="tanggal"  name="tanggal"  >
+                                <label for="id_produksi">ID Produksi :</label>
+                                <input type="text" class="form-control" id="id_produksi" value="<?php echo $rows->id_produksi; ?>" name="id_produksi" required readonly>
                             </div>
 
 
-                        <div class="form-group">
-                                <label for="total">Total :</label>
-                                <input type="text" class="form-control" id="total" placeholder="total"  name="total"  >
+                            <div class="form-group">
+                                <label for="nama_staff">Nama Pengawas Produksi :</label>
+                                <input type="text" class="form-control" id="nama_staff" value="<?php echo $rows->nama_staff; ?>" name="nama_staff" required  >
                             </div>
+
+
+                            <div class="form-group">
+                                <label for="shift">Shift Produksi :</label>
+                                <input type="text" class="form-control" id="shift" value="<?php echo $rows->shift; ?>" name="shift" required  >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="jumlah_produksi">Jumlah Hasil Produksi :</label>
+                                <input type="text" class="form-control" id="jumlah_produksi" value="<?php echo $rows->jumlah_produksi; ?>" name="jumlah_produksi" required  >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="tanggal">Tanggal Produksi :</label>
+                                <input type="date" class="form-control" id="tanggal" value="<?php echo $rows->tanggal; ?>" name="tanggal" required  >
+                            </div>
+
+
                         
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                Tambah
+                            <div class="form-group">
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
+                            <a  style="color:white">Update </a>
+
                             </button>
                             <!-- The Modal -->
                             <div class="modal fade" id="myModal">
@@ -62,12 +67,12 @@
 
                                         <!-- Modal body -->
                                         <div class="modal-body">
-                                            <p>Apa anda yakin ingin menambah data ini ?</p>
+                                            <p>Apa anda yakin ingin mengubah data ini ?</p>
                                         </div>
 
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-primary">Tambah</button>
+                                            <button type="submit" class="btn btn-warning"><a  style="color:white">Update </a></button>
                                             <button type="button" class="btn btn-dark" data-dismiss="modal">Batal</button>
                                         </div>
 
@@ -75,7 +80,7 @@
                                 </div>
                             </div>
                         </div>
-                            <script>
+                        <script>
                                 function setSelectBoxByText(eid, etxt) {
                                     var eid = document.getElementById(eid);
                                     for (var i = 0; i < eid.options.length; ++i) {
@@ -83,13 +88,13 @@
                                             eid.options[i].selected = true;
                                     }
                                 }
-                                var eid = "penduduk";
+                                var eid = "kategori";
                                 var etxt = document.getElementById("selected").value;
                                 document.getElementById("selected").style.display = "none";
                                 setSelectBoxByText(eid, etxt)
                             </script>
-                </form>
+                        <?php endforeach; ?>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>

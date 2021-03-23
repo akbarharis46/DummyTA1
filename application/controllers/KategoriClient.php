@@ -22,6 +22,37 @@ class KategoriClient extends CI_Controller
         $this->load->view('data/kategori', $data);
         $this->load->view('footer');
     }
+
+    public function index1()
+    {
+        $data['kategori'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "kategori";
+        $this->load->view('header1');
+        $this->load->view('bar1');
+        $this->load->view('staffproduksi/kategori', $data);
+        $this->load->view('footer');
+    }
+
+    public function index2()
+    {
+        $data['kategori'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "kategori";
+        $this->load->view('header1');
+        $this->load->view('bar2');
+        $this->load->view('staffgudang/kategori', $data);
+        $this->load->view('footer');
+    }
+
+
+    public function index3()
+    {
+        $data['kategori'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "kategori";
+        $this->load->view('header1');
+        $this->load->view('bar3');
+        $this->load->view('staffpengiriman/kategori', $data);
+        $this->load->view('footer');
+    }
     
     public function post()
     {

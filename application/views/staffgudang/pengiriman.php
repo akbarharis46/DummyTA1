@@ -1,4 +1,4 @@
-<?php if($this->session->userdata('level')!='admin'){redirect('login');};?>
+<?php if($this->session->userdata('level')!='staff_gudang'){redirect('login');};?>
 
 <div class="cc">
 
@@ -92,7 +92,7 @@
                   <th>NOMOR KENDARAAn</th>
                   <th>TANGGAL</th>
                   <th>STATUS PENGIRIMAN</th>
-                  <th>AKSI</th>
+                
  
                 </tr>
                 </thead>
@@ -113,12 +113,7 @@
 
 
                             </td>
-                        <td>
-                            <a href="<?php echo site_url(); ?>pengirimanclient/put/<?php echo $rows->id_pengiriman; ?>" class="btn btn-warning">
-                            <i class="fa fa-pen" aria-hidden="true"></i></a>
-                            <a href="<?= base_url(); ?>pengirimanclient/delete/<?= $rows->id_pengiriman; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
-                            <i class="fa fa-trash" aria-hidden="true"></i></a>
-                        </td>
+                       
                     </tr>
                     <?php endforeach ; ?>
                 </tbody>

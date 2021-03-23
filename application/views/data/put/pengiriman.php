@@ -10,7 +10,7 @@
       <div class="container-fluid" >
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-tablet" ></i> Data Barang</h2>
+            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-tablet" ></i> Data Pengiriman</h2>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -20,18 +20,59 @@
     <div class="content">
       <div class="container-fluid">
       <div class="alert alert-secondary" role="alert">
-      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Barang&nbsp; > <i class="nav-icon fas fa-pen"></i>Update kategori
+      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Pengiriman &nbsp; > <i class="nav-icon fas fa-pen"></i>Update kategori
         </div>
-            <form action="<?php echo site_url(); ?>kategoriclient/put_process"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()">
-                 <?php foreach ($kategori as $rows) : ?>
+            <form action="<?php echo site_url(); ?>pengirimanclient/put_process"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()">
+                 <?php foreach ($pengiriman as $rows) : ?>
                             <div class="form-group">
-                                <label for="id_kategori">ID Kategori :</label>
-                                <input type="text" class="form-control" id="id_kategori" value="<?php echo $rows->id_kategori; ?>" name="id_kategori" required readonly>
+                                <label for="id_pengiriman">ID Pengirim :</label>
+                                <input type="text" class="form-control" id="id_pengiriman" value="<?php echo $rows->id_pengiriman; ?>" name="id_pengiriman" required readonly>
                             </div>
+
+
                             <div class="form-group">
-                                <label for="nama_kategori">Nama Kategori :</label>
-                                <input type="text" class="form-control" id="nama_kategori" value="<?php echo $rows->nama_kategori; ?>" name="nama_kategori" required  >
+                                <label for="nama_pengirim">Nama Pengirim :</label>
+                                <input type="text" class="form-control" id="nama_pengirim" value="<?php echo $rows->nama_pengirim; ?>" name="nama_pengirim" required  >
                             </div>
+
+
+                            <div class="form-group">
+                                <label for="tujuan">Tujuan Pengiriman:</label>
+                                <input type="text" class="form-control" id="tujuan" value="<?php echo $rows->tujuan; ?>" name="tujuan" required  >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="jumlah">Jumlah Pengiriman :</label>
+                                <input type="text" class="form-control" id="jumlah" value="<?php echo $rows->jumlah; ?>" name="jumlah" required  >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="jenis_kendaraan">Jenis Kendaraan :</label>
+                                <input type="text" class="form-control" id="jenis_kendaraan" value="<?php echo $rows->jenis_kendaraan; ?>" name="jenis_kendaraan" required  >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="nomor_kendaraan">Nomor Kendaraan :</label>
+                                <input type="text" class="form-control" id="nomor_kendaraan" value="<?php echo $rows->nomor_kendaraan; ?>" name="nomor_kendaraan" required  >
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="tanggal">Tanggal Pengiriman :</label>
+                                <input type="date" class="form-control" id="tanggal" value="<?php echo $rows->tanggal; ?>" name="tanggal" required  >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="status_pengiriman">Status Pengiriman :</label>
+                                <input type="text" class="form-control" id="status_pengiriman" value="<?php echo $rows->status_pengiriman; ?>" name="status_pengiriman" required  >
+                            </div>
+
+
                         
                             <div class="form-group">
                             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">

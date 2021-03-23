@@ -2,71 +2,44 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class BarangClient extends CI_Controller
+class StaffProduksiClient extends CI_Controller
 {
 
     public function __construct()
     {
         parent::__construct();
         $this->load->library('curl');
-        
-        $this->API = "http://localhost:8080/dummyTA/barang";
-        $this->API2 = "http://localhost:8080/dummyTA/bategori";
+     
+
     }
 
     public function index()
     {
-        $data['barang'] = json_decode($this->curl->simple_get($this->API));
-        $data['title'] = "barang";
-        $this->load->view('header0');
-        $this->load->view('bar');
-        $this->load->view('data/barang', $data);
+        $data['title'] = "Dashboard";
+        $this->load->view('header1');
+        $this->load->view('bar1');
+        $this->load->view('staffproduksi/index', $data, FALSE);
         $this->load->view('footer');
     }
     
-
-    public function index1()
-    {
-        $data['barang'] = json_decode($this->curl->simple_get($this->API));
-        $data['title'] = "barang";
-        $this->load->view('header1');
-        $this->load->view('bar1');
-        $this->load->view('staffproduksi/barang', $data);
-        $this->load->view('footer');
-    }
-
-    public function index2()
-    {
-        $data['barang'] = json_decode($this->curl->simple_get($this->API));
-        $data['title'] = "barang";
-        $this->load->view('header1');
-        $this->load->view('bar2');
-        $this->load->view('staffgudang/barang', $data);
-        $this->load->view('footer');
-    }
-
-
-    public function index3()
-    {
-        $data['barang'] = json_decode($this->curl->simple_get($this->API));
-        $data['title'] = "barang";
-        $this->load->view('header1');
-        $this->load->view('bar3');
-        $this->load->view('staffpengiriman/barang', $data);
-        $this->load->view('footer');
-    }
-
-
-
-
+    // public function index1()
+    // {
+    //     $data['barang'] = json_decode($this->curl->simple_get($this->API));
+    //     $data['title'] = "barang";
+    //     $this->load->view('header1');
+    //     $this->load->view('bar1');
+    //     $this->load->view('staffproduksi/barang', $data);
+    //     $this->load->view('footer');
+    // }
+    
     public function post()
     {
      $this->API2 = "http://localhost:8080/dummyTA/kategori";
      $data['kategori'] = json_decode($this->curl->simple_get($this->API2));
 
       $data['title'] = "Tambah Data barang";
-      $this->load->view('header0');
-      $this->load->view('bar');
+      $this->load->view('header1');
+      $this->load->view('bar1');
       $this->load->view('data/post/barang', $data);
       $this->load->view('footer');
     }
@@ -98,8 +71,8 @@ class BarangClient extends CI_Controller
         $params = array('id_barang' =>  $this->uri->segment(3));
         $data['barang'] = json_decode($this->curl->simple_get($this->API, $params));
         $data['title'] = "Edit Data Barang";
-        $this->load->view('header0');
-        $this->load->view('bar');
+        $this->load->view('header1');
+        $this->load->view('bar1');
         $this->load->view('data/put/barang', $data);
         $this->load->view('footer');
 

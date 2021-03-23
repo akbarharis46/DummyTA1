@@ -10,7 +10,7 @@
       <div class="container-fluid" >
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2 class="m-0 text-primary " ><i class="nav-icon fas fa-tablet" ></i> Data Pengiriman</h2>
+            <h2 class="m-0 text-primary " ><i class="nav-icon fas fa-tablet" ></i> Data Produksi</h2>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -20,52 +20,29 @@
     <div class="content">
       <div class="container-fluid">
       <div class="alert alert-secondary" role="alert">
-      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Pengiriman&nbsp; > <i class="nav-icon fas fa-plus"></i>Tambah Pengiriman
+      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Produksi&nbsp; > <i class="nav-icon fas fa-plus"></i>Tambah Pengiriman
         </div>
-                <form action="<?php echo site_url(); ?>pengirimanclient/post_process" class="needs-validation" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo site_url(); ?>produksiclient/post_process" class="needs-validation" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                            <label for="nama_pengirim">Nama Pengirim  :</label>
-                            <input type="text" class="form-control" id="nama_pengirim" placeholder=" Masukkan Nama Pengirim" name="nama_pengirim" required>
+                            <label for="nama_staff">Nama Pengawas Produksi :</label>
+                            <input type="text" class="form-control" id="nama_staff" placeholder=" Masukkan Nama Pengawas Produksi" name="nama_staff" required>
                             </div>
                 <div class="form-group">
 
-                            <label for="tujuan">Tujuan Pengiriman Barang  :</label>
-                            <input type="text" class="form-control" id="tujuan" placeholder="Masukkan Nama Barang" name="tujuan" >
+                            <label for="shift">Shift  :</label>
+                            <input type="text" class="form-control" id="shift" placeholder="Masukkan Shift" name="shift" >
                </div>
+
                 <div class="form-group">
 
-                            <label for="jumlah">Jumlah Pengiriman Barang  :</label>
-                            <input type="text" class="form-control" id="jumlah" placeholder="Masukkan Jumlah Pengiriman" name="jumlah" >
-                </div>
-                <div class="form-group">
-
-                            <label for="jenis_kendaraan">Jenis Kendaraan  :</label>
-                            <input type="text" class="form-control" id="jenis_kendaraan" placeholder="Masukkan Jenis Kendaraan" name="jenis_kendaraan" >
-                </div>
-                <div class="form-group">
-
-                            <label for="nomor_kendaraan">Nomor Polisi Kendaraan  :</label>
-                            <input type="text" class="form-control" id="nomor_kendaraan" placeholder="Masukkan Nomor Kendaraan" name="nomor_kendaraan" >
+                            <label for="jumlah_produksi">Jumlah Hasil Produksi  :</label>
+                            <input type="text" class="form-control" id="jumlah_produksi" placeholder="Masukkan Jumlah Produksi" name="jumlah_produksi" >
                 </div>
 
 
                 <div class="form-group">
 
-                            <label for="status_pengiriman">Status Pengiriman :</label>
-                            <!-- <input type="option" class="form-control" id="status_pengiriman" placeholder="Pilih Status  Pengiriman" name="status_pengiriman" > -->
-                            <select name="status_pengiriman" id="status_pengiriman" class="form-control">
-                             <option value="proses">Proses Pengiriman</option>
-                             <option value="terkirim">Barang Sudah Sampai</option>
-                                      </select>
-                            
-                            </div>
-
-
-
-
-                <div class="form-group">
-
-                            <label for="tanggal">Tanggal Pengiriman :</label>
+                            <label for="tanggal">Tanggal Produksi :</label>
                             <input type="date" class="form-control" id="tanggal" placeholder="Masukkan Tanggal Pengiriman" name="tanggal" >
                             </div>
 

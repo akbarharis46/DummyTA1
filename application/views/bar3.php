@@ -1,4 +1,4 @@
-<?php if($this->session->userdata('level')!='admin'){redirect('login');};?>
+<?php if($this->session->userdata('level')!='staff_pengiriman'){redirect('login');};?>
 <style>
     nav-treeview:hover{
         color : #006eff;
@@ -51,15 +51,6 @@
           </li>
          
 
-                 
-        <li >
-            <a href="<?php echo site_url(); ?>userclient" class="nav-link">
-            <i class="fa fa-address-card"></i> <span>User Info</span>
-
-          </a>
-          
-        </li>
-
           <li class="nav-item has-treeview" >
             <a href="" class="nav-link" id="navData" style="background:rgba(52,58,64,255); color:white;">
                         <i class="fa fa-industry"></i> <span>Kepala Produksi</span>
@@ -67,7 +58,7 @@
 
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>produksiclient" class="nav-link">
+                <a href="<?php echo site_url(); ?>produksiclient/index3" class="nav-link">
                 <i class="fa fa-cog"></i> Olah Data Produksi</a></li>
                 </a>
               </li>
@@ -94,13 +85,13 @@
             <ul class="nav nav-treeview">
 
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>kategoriclient" class="nav-link">
+                <a href="<?php echo site_url(); ?>kategoriclient/index3" class="nav-link">
                 <i class="fa fa-cube"></i>Data Kategori Barang</a></li>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>barangclient" class="nav-link">
+                <a href="<?php echo site_url(); ?>barangclient/index3" class="nav-link">
                 <i class="fa fa-shopping-cart"></i> Barang Masuk</a></li>
                 </a>
               </li>
@@ -126,7 +117,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>pengirimanclient" class="nav-link">
+                <a href="<?php echo site_url(); ?>pengirimanclient/index3" class="nav-link">
                 <i class="fa fa-cog"></i> Olah Data Pengiriman</a></li>
                 </a>
               </li>
