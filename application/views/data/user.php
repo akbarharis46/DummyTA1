@@ -84,7 +84,7 @@
               <table id="tabel" class="table table-bordered">
                 <thead>
                 <tr>
-                  <th>Id</th>
+                  <th>No</th>
                   <th>Nama</th>
                   <th>Username</th>
                   <th>Password</th>
@@ -93,9 +93,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <?php $no=1; foreach ($user as $rows) : ?>
+                    <?php $i=1; foreach ($user as $rows) : ?>
                     <tr>
-                    <td><?php echo $rows->id; ?></td>
+                    <td><?php echo $i++; ?></td>
                         <td><?php echo $rows->nama; ?></td>
                         <td><?php echo $rows->username; ?></td>
                         <td><?php echo $rows->password; ?></td>

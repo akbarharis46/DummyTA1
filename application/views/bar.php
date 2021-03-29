@@ -149,7 +149,7 @@
 
 
             <li >
-            <a href="<?php echo site_url(); ?>xxxx" class="nav-link">
+            <a href="<?php echo site_url().'BackupDatabase_controller/backup'; ?>" class="nav-link">
           <i class="fa fa-database"></i> <span>Backup Database</span>
 
           </a>

@@ -37,11 +37,11 @@ class Login extends CI_Controller
       // exit;
       if ($this->session->userdata('level') == "admin") {
         redirect('adminclient');
-      } elseif ($this->session->userdata('level') == "staff_produksi") {
+      } elseif ($this->session->userdata('level') == "Staff Produksi") {
         redirect('staffproduksiclient');
-      } elseif ($this->session->userdata('level') == "staff_gudang") {
+      } elseif ($this->session->userdata('level') == "Staff Gudang") {
         redirect('staffgudangclient');
-      } elseif ($this->session->userdata('level') == "staff_pengiriman") {
+      } elseif ($this->session->userdata('level') == "Staff Pengiriman") {
         redirect('staffpengirimanclient');
       } else {
         return false;

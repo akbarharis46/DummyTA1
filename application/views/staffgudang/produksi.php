@@ -1,4 +1,4 @@
-<?php if($this->session->userdata('level')!='staff_gudang'){redirect('staffproduksiclient');};?>
+<?php if($this->session->userdata('level')!='Staff Gudang'){redirect('staffproduksiclient');};?>
 
 <div class="cc">
 

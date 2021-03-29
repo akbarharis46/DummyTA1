@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php if($this->session->userdata('level')!='staff_produksi'&'staff_gudang'&'staff_pengiriman'){redirect('login');};?>
+<?php if($this->session->userdata('level')!='Staff Produksi'&'Staff Gudang'&'Staff Pengiriman'){redirect('login');};?>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

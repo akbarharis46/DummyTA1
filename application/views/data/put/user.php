@@ -50,8 +50,11 @@
                             </div>
                             <div class="form-group">
                             <label for="sel1">Level :</label>
-                            <input type="text" class="form-control" id="level" placeholder="Level" value="<?php echo $rows->level; ?>" name="level" required readonly>
-
+                            <select class="form-control" id="level" name="level" required>
+                                <option value="">Ubah Level</option>
+                                <option value="staff produksi">Staff Produksi</option>
+                                <option value="staff gudang">Staff Gudang</option>
+                                <option value="staff pengiriman">Staff Pengiriman</option>
                             </select>
                         </div>
                             <div class="form-group">

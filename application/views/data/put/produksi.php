@@ -36,10 +36,14 @@
                             </div>
 
 
-                            <div class="form-group">
-                                <label for="shift">Shift Produksi :</label>
-                                <input type="text" class="form-control" id="shift" value="<?php echo $rows->shift; ?>" name="shift" required  >
-                            </div>
+                            <label for="shift">Shift Produksi  :</label>
+        <!-- <input type="option" class="form-control" id="status_pengiriman" placeholder="Pilih Status  Pengiriman" name="status_pengiriman" > -->
+                                <select name="shift" id="shift" class="form-control">
+                                <option value="shift1">1</option>
+                                <option value="shift2">2</option>
+                                <option value="shift3">3</option>
+                             </select>
+
 
 
                             <div class="form-group">

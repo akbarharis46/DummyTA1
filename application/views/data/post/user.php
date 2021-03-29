@@ -38,8 +38,10 @@
                         <div class="form-group">
                             <label for="sel1">Level :</label>
                             <select class="form-control" id="level" name="level" required>
-                                <option value="Admin">Admin</option>
-                                <option value="User">User</option>
+                                <option value="">Pilih</option>
+                                <option value="staff produksi">Staff Produksi</option>
+                                <option value="staff gudang">Staff Gudang</option>
+                                <option value="staff pengiriman">Staff Pengiriman</option>
                             </select>
                         </div>
                         <div class="form-group">

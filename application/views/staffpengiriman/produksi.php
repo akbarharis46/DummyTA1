@@ -1,4 +1,4 @@
-<?php if($this->session->userdata('level')!='staff_pengiriman'){redirect('staffproduksiclient');};?>
+<?php if($this->session->userdata('level')!='Staff Pengiriman'){redirect('staffproduksiclient');};?>
 
 <div class="cc">
 
@@ -28,12 +28,7 @@
             <!-- /.card-header -->
             <div class="card-body" >
                     <div class='card-header' style="margin-left:-20px;">
-                <a class='btn btn-primary'href="<?php echo site_url(); ?>produksiclient/post/">
-                    <i class="fa fa-plus"></i>
-                    <span >
-                        Tambah
-                    </span>
-                    </a>
+                
 
                     </div>   
                   <span>

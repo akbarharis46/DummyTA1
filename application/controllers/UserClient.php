@@ -10,7 +10,7 @@ class UserClient extends CI_Controller
         parent::__construct();
         $this->load->library('curl');
         
-        $this->API = "http://localhost:8080/keluarga/user";
+        $this->API = "http://localhost:8080/dummyTA/user";
     }
 
     public function index()

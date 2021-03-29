@@ -27,11 +27,30 @@
                             <label for="nama_staff">Nama Pengawas Produksi :</label>
                             <input type="text" class="form-control" id="nama_staff" placeholder=" Masukkan Nama Pengawas Produksi" name="nama_staff" required>
                             </div>
+
+
+<!--                             
                 <div class="form-group">
 
                             <label for="shift">Shift  :</label>
                             <input type="text" class="form-control" id="shift" placeholder="Masukkan Shift" name="shift" >
-               </div>
+               </div> -->
+
+
+
+               <div class="form-group">
+
+        <label for="shift">Shift Produksi  :</label>
+        <!-- <input type="option" class="form-control" id="status_pengiriman" placeholder="Pilih Status  Pengiriman" name="status_pengiriman" > -->
+        <select name="shift" id="shift" class="form-control">
+        <option value="shift1">1</option>
+        <option value="shift2">2</option>
+        <option value="shift3">3</option>
+          </select>
+
+</div>
+
+
 
                 <div class="form-group">
 

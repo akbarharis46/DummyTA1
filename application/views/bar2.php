@@ -1,4 +1,4 @@
-<?php if($this->session->userdata('level')!='staff_gudang'){redirect('login');};?>
+<?php if($this->session->userdata('level')!='Staff Gudang'){redirect('login');};?>
 <style>
     nav-treeview:hover{
         color : #006eff;

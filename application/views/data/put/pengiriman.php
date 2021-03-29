@@ -67,10 +67,17 @@
                             </div>
 
 
+                           
                             <div class="form-group">
-                                <label for="status_pengiriman">Status Pengiriman :</label>
-                                <input type="text" class="form-control" id="status_pengiriman" value="<?php echo $rows->status_pengiriman; ?>" name="status_pengiriman" required  >
-                            </div>
+
+                            <label for="status_pengiriman">Status Pengiriman :</label>
+                            <!-- <input type="option" class="form-control" id="status_pengiriman" placeholder="Pilih Status  Pengiriman" name="status_pengiriman" > -->
+                            <select name="status_pengiriman" id="status_pengiriman" class="form-control">
+                            <option value="Proses Pengiriman">Proses Pengiriman</option>
+                            <option value="Barang Sudah Sampai">Barang Sudah Sampai</option>
+          </select>
+
+</div>  
 
 
                         

@@ -1,4 +1,4 @@
-<?php if($this->session->userdata('level')!='staff_produksi'){redirect('login');};?>
+<?php if($this->session->userdata('level')!='Staff Produksi'){redirect('login');};?>
 
 <div class="cc">
 
@@ -28,13 +28,7 @@
             <!-- /.card-header -->
             <div class="card-body" >
                 <div class='card-header' style="margin-left:-20px;">
-                <a class='btn btn-primary'href="<?php echo site_url(); ?>kategoriclient/post/">
-                    <i class="fa fa-plus"></i>
-                    <span >
-                        Tambah
-                    </span>
-                    </a>
-
+               
                     </div>   
                   <span>
                   <br>
