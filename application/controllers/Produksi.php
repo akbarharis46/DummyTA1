@@ -51,7 +51,7 @@ class Produksi extends REST_Controller
             
             'nama_staff'              => $this->put('nama_staff'),
             'shift'                     => $this->put('shift'),
-            'jumlah_produksi'                     => $this->put('jumlah_produksi'),
+            'jumlah_produksi'          => $this->put('jumlah_produksi'),
             'tanggal'            => $this->put('tanggal'),
           
             

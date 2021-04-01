@@ -66,6 +66,22 @@ class PengirimanClient extends CI_Controller
       $this->load->view('footer');
     }
   
+    public function post1()
+    {
+      $data['title'] = "Tambah Data pengiriman";
+      $this->load->view('header1');
+      $this->load->view('bar3');
+      $this->load->view('staffpengiriman/post', $data);
+      $this->load->view('footer');
+    }
+  
+
+
+
+
+
+
+
     public function post_process()
     {
         $data = array(
@@ -89,6 +105,32 @@ class PengirimanClient extends CI_Controller
         //  exit;
         redirect('pengirimanclient');
       }
+
+
+
+      public function post_process1()
+      {
+          $data = array(
+              'nama_pengirim'                  => $this->input->post('nama_pengirim'),
+              'tujuan'                         => $this->input->post('tujuan'),
+              'jumlah'                         => $this->input->post('jumlah'),
+              'jenis_kendaraan'                => $this->input->post('jenis_kendaraan'),
+              'nomor_kendaraan'                => $this->input->post('nomor_kendaraan'),
+              'tanggal'                        => $this->input->post('tanggal'),
+              'status_pengiriman'              => $this->input->post('status_pengiriman'),     
+          );
+          $insert =  $this->curl->simple_post($this->API,$data);
+          if ($insert) {
+              echo"berhasil";
+              //$this->session->set_flashdata('result', 'Data pengiriman Berhasil Ditambahkan');
+          } else {
+              echo"gagal ";
+              //$this->session->set_flashdata('result', 'Data pengiriman Gagal Ditambahkan');
+          }
+          // print_r($insert);
+          //  exit;
+          redirect('pengirimanclient/index3');
+        }
     
     public function put()
     {
@@ -101,6 +143,21 @@ class PengirimanClient extends CI_Controller
         $this->load->view('footer');
 
     }
+
+        public function put1()
+        {
+            $params = array('id_pengiriman' =>  $this->uri->segment(3));
+            $data['pengiriman'] = json_decode($this->curl->simple_get($this->API, $params));
+            $data['title'] = "Edit Data pengiriman";
+            $this->load->view('header1');
+            $this->load->view('bar3');
+            $this->load->view('staffpengiriman/put', $data);
+            $this->load->view('footer');
+       
+        }
+
+
+
     public function put_process()
     {
         $data = array(
@@ -128,6 +185,38 @@ class PengirimanClient extends CI_Controller
         // die;
         redirect('pengirimanclient');
     }
+
+
+
+
+    
+    public function put_process1()
+    {
+        $data = array(
+            'id_pengiriman'                  => $this->input->post('id_pengiriman'),
+            'nama_pengirim'                  => $this->input->post('nama_pengirim'),
+            'tujuan'                         => $this->input->post('tujuan'),
+            'jumlah'                         => $this->input->post('jumlah'),
+            'jenis_kendaraan'                => $this->input->post('jenis_kendaraan'),
+            'nomor_kendaraan'                => $this->input->post('nomor_kendaraan'),
+            'tanggal'                        => $this->input->post('tanggal'),
+            'status_pengiriman'              => $this->input->post('status_pengiriman'),
+            
+            
+        );
+        
+        $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
+        if ($update) {
+            echo"berhasil";
+            // $this->session->set_flashdata('result', 'Update Data pengiriman Berhasil');
+        } else {
+            echo"gagal";
+            // $this->session->set_flashdata('result', 'Update Data pengiriman Gagal');
+        }
+        // print_r($update);
+        // die;
+        redirect('pengirimanclient/index3');
+    }
     public function delete()
     {
         $params = array('id_pengiriman' =>  $this->uri->segment(3));
@@ -141,5 +230,24 @@ class PengirimanClient extends CI_Controller
         // die;
         redirect('pengirimanclient');
     }
+    public function delete1()
+    {
+        $params = array('id_pengiriman' =>  $this->uri->segment(3));
+        $delete =  $this->curl->simple_delete($this->API, $params);
+        if ($delete) {
+            $this->session->set_flashdata('result', 'Hapus Data Pengiriman Berhasil');
+        } else {
+            $this->session->set_flashdata('result', 'Hapus Data Pengiriman Gagal');
+        }
+        // print_r($delete);
+        // die;
+        redirect('pengirimanclient/index3');
+    }
+
+
+
 }
+
+
+
 ?>

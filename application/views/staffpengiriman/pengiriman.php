@@ -28,7 +28,7 @@
             <!-- /.card-header -->
             <div class="card-body" >
                     <div class='card-header' style="margin-left:-20px;">
-                <a class='btn btn-primary'href="<?php echo site_url(); ?>pengirimanclient/post/">
+                <a class='btn btn-primary'href="<?php echo site_url(); ?>pengirimanclient/post1/">
                     <i class="fa fa-plus"></i>
                     <span >
                         Tambah
@@ -114,9 +114,9 @@
 
                             </td>
                         <td>
-                            <a href="<?php echo site_url(); ?>pengirimanclient/put/<?php echo $rows->id_pengiriman; ?>" class="btn btn-warning">
+                            <a href="<?php echo site_url(); ?>pengirimanclient/put1/<?php echo $rows->id_pengiriman; ?>" class="btn btn-warning">
                             <i class="fa fa-pen" aria-hidden="true"></i></a>
-                            <a href="<?= base_url(); ?>pengirimanclient/delete/<?= $rows->id_pengiriman; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
+                            <a href="<?= base_url(); ?>pengirimanclient/delete1/<?= $rows->id_pengiriman; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
                             <i class="fa fa-trash" aria-hidden="true"></i></a>
                         </td>
                     </tr>

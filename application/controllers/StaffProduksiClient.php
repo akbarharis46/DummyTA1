@@ -113,5 +113,6 @@ class StaffProduksiClient extends CI_Controller
         // die;
         redirect('barangclient');
     }
+    
 }
 ?>
