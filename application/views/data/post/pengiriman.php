@@ -27,11 +27,19 @@
                             <label for="nama_pengirim">Nama Pengirim  :</label>
                             <input type="text" class="form-control" id="nama_pengirim" placeholder=" Masukkan Nama Pengirim" name="nama_pengirim" required>
                             </div>
+
+                <div class="form-group">
+
+                            <label for="tujuan">Nomor Hp Petugas Pengirim  : </label>
+                            <input type="text" class="form-control" id="nomorhp" placeholder="Masukkan Nomor Handpone" name="nomorhp" >
+                            </div>
+              
                 <div class="form-group">
 
                             <label for="tujuan">Tujuan Pengiriman Barang  :</label>
                             <input type="text" class="form-control" id="tujuan" placeholder="Masukkan Nama Barang" name="tujuan" >
                </div>
+
                 <div class="form-group">
 
                             <label for="jumlah">Jumlah Pengiriman Barang  :</label>

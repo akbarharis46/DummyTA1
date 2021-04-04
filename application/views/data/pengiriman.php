@@ -86,6 +86,7 @@
                 <tr>
                   <th>NOMOR</th>
                   <th>NAMA PENGIRIM</th>
+                  <th>NOMOR HP PETUGAS PENGIRIMAN</th>
                   <th>TUJUAN PENGIRIMAN</th>
                   <th>JUMLAH PENGIRIMAN</th>
                   <th>JENIS KENDARAAN</th>
@@ -104,6 +105,7 @@
                     <tr>
                         <td><?php echo  $i++; ?></td>
                         <td><?php echo $rows->nama_pengirim; ?>
+                        <td><?php echo $rows->nomorhp; ?>
                         <td><?php echo $rows->tujuan; ?>
                         <td><?php echo $rows->jumlah; ?>
                         <td><?php echo $rows->jenis_kendaraan; ?>

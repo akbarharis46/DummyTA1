@@ -29,6 +29,7 @@ class Pengiriman extends REST_Controller
     {
         $data = array(
             'nama_pengirim'              => $this->post('nama_pengirim'),
+            'nomorhp'                    => $this->post('nomorhp'),
             'tujuan'                     => $this->post('tujuan'),
             'jumlah'                     => $this->post('jumlah'),
             'jenis_kendaraan'            => $this->post('jenis_kendaraan'),
@@ -52,6 +53,7 @@ class Pengiriman extends REST_Controller
         $data = array(
             
             'nama_pengirim'              => $this->put('nama_pengirim'),
+            'nomorhp'                    => $this->put('nomorhp'),
             'tujuan'                     => $this->put('tujuan'),
             'jumlah'                     => $this->put('jumlah'),
             'jenis_kendaraan'            => $this->put('jenis_kendaraan'),

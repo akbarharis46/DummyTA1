@@ -22,7 +22,7 @@
       <div class="alert alert-secondary" role="alert">
       <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Produksi&nbsp; > <i class="nav-icon fas fa-plus"></i>Tambah Pengiriman
         </div>
-                <form action="<?php echo site_url(); ?>produksiclient/post_process1" class="needs-validation" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo site_url(); ?>produksiclient/post_processproduksi" class="needs-validation" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                             <label for="nama_staff">Nama Pengawas Produksi :</label>
                             <input type="text" class="form-control" id="nama_staff" placeholder=" Masukkan Nama Pengawas Produksi" name="nama_staff" required>

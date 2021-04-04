@@ -37,6 +37,12 @@
 
 
                             <div class="form-group">
+                                <label for="nama_pengirim">Nomor HP Petugas Pengiriman :</label>
+                                <input type="text" class="form-control" id="nomorhp" value="<?php echo $rows->nama_pengirim; ?>" name="nomorhp" required  >
+                            </div>
+
+
+                            <div class="form-group">
                                 <label for="tujuan">Tujuan Pengiriman:</label>
                                 <input type="text" class="form-control" id="tujuan" value="<?php echo $rows->tujuan; ?>" name="tujuan" required  >
                             </div>

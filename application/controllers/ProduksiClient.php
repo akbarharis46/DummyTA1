@@ -67,11 +67,11 @@ class ProduksiClient extends CI_Controller
     }
 
 
-    public function post1()
+    public function postproduksi()
     {
       $data['title'] = "Tambah Data produksi";
       $this->load->view('header1');
-      $this->load->view('bar3');
+      $this->load->view('bar1');
       $this->load->view('staffproduksi/post', $data);
       $this->load->view('footer');
     }
@@ -95,7 +95,7 @@ class ProduksiClient extends CI_Controller
 
 
       
-    public function post_process1()
+    public function post_processproduksi()
     {
         $data = array(
             'nama_staff'              => $this->input->post('nama_staff'),
@@ -130,7 +130,7 @@ class ProduksiClient extends CI_Controller
 
     }
 
-    public function put1()
+    public function putproduksi()
     {
         $params = array('id_produksi' =>  $this->uri->segment(3));
         $data['produksi'] = json_decode($this->curl->simple_get($this->API, $params));
@@ -172,7 +172,7 @@ class ProduksiClient extends CI_Controller
 
 
 
-    public function put_process1()
+    public function put_processproduksi()
     {
         $data = array(
             'id_produksi'                  => $this->input->post('id_produksi'),
@@ -213,7 +213,7 @@ class ProduksiClient extends CI_Controller
     }
 
 
-public function delete1()
+public function deleteproduksi()
 {
     $params = array('id_produksi' =>  $this->uri->segment(3));
     $delete =  $this->curl->simple_delete($this->API, $params);

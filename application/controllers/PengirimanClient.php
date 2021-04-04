@@ -86,6 +86,7 @@ class PengirimanClient extends CI_Controller
     {
         $data = array(
             'nama_pengirim'                  => $this->input->post('nama_pengirim'),
+            'nomorhp'                  => $this->input->post('nomorhp'),
             'tujuan'                         => $this->input->post('tujuan'),
             'jumlah'                         => $this->input->post('jumlah'),
             'jenis_kendaraan'                => $this->input->post('jenis_kendaraan'),
@@ -112,6 +113,7 @@ class PengirimanClient extends CI_Controller
       {
           $data = array(
               'nama_pengirim'                  => $this->input->post('nama_pengirim'),
+              'nomorhp'                         => $this->input->post('nomorhp'),
               'tujuan'                         => $this->input->post('tujuan'),
               'jumlah'                         => $this->input->post('jumlah'),
               'jenis_kendaraan'                => $this->input->post('jenis_kendaraan'),
@@ -163,6 +165,7 @@ class PengirimanClient extends CI_Controller
         $data = array(
             'id_pengiriman'                  => $this->input->post('id_pengiriman'),
             'nama_pengirim'                  => $this->input->post('nama_pengirim'),
+            'nomorhp'                        => $this->input->post('nomorhp'),
             'tujuan'                         => $this->input->post('tujuan'),
             'jumlah'                         => $this->input->post('jumlah'),
             'jenis_kendaraan'                => $this->input->post('jenis_kendaraan'),
@@ -195,6 +198,7 @@ class PengirimanClient extends CI_Controller
         $data = array(
             'id_pengiriman'                  => $this->input->post('id_pengiriman'),
             'nama_pengirim'                  => $this->input->post('nama_pengirim'),
+            'nomorhp'                        => $this->input->post('nomorhp'),
             'tujuan'                         => $this->input->post('tujuan'),
             'jumlah'                         => $this->input->post('jumlah'),
             'jenis_kendaraan'                => $this->input->post('jenis_kendaraan'),

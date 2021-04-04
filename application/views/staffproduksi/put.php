@@ -22,7 +22,7 @@
       <div class="alert alert-secondary" role="alert">
       <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Produksi &nbsp; > <i class="nav-icon fas fa-pen"></i>Update kategori
         </div>
-            <form action="<?php echo site_url(); ?>produksiclient/put_process1"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()">
+            <form action="<?php echo site_url(); ?>produksiclient/put_processproduksi"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()">
                  <?php foreach ($produksi as $rows) : ?>
                             <div class="form-group">
                                 <label for="id_produksi">ID Produksi :</label>

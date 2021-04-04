@@ -28,7 +28,7 @@
             <!-- /.card-header -->
             <div class="card-body" >
                     <div class='card-header' style="margin-left:-20px;">
-                <a class='btn btn-primary'href="<?php echo site_url(); ?>produksiclient/post1">
+                <a class='btn btn-primary'href="<?php echo site_url(); ?>produksiclient/postproduksi">
                     <i class="fa fa-plus"></i>
                     <span >
                         Tambah
@@ -108,9 +108,9 @@
 
                             </td>
                         <td>
-                            <a href="<?php echo site_url(); ?>produksiclient/put1/<?php echo $rows->id_produksi; ?>" class="btn btn-warning">
+                            <a href="<?php echo site_url(); ?>produksiclient/putproduksi/<?php echo $rows->id_produksi; ?>" class="btn btn-warning">
                             <i class="fa fa-pen" aria-hidden="true"></i></a>
-                            <a href="<?= base_url(); ?>produksiclient/delete1/<?= $rows->id_produksi; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
+                            <a href="<?= base_url(); ?>produksiclient/deleteproduksi/<?= $rows->id_produksi; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
                             <i class="fa fa-trash" aria-hidden="true"></i></a>
                         </td>
                     </tr>
