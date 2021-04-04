@@ -63,7 +63,7 @@ class KategoriClient extends CI_Controller
       $this->load->view('footer');
     }
 
-    public function post1()
+    public function postkategori()
     {
       $data['title'] = "Tambah Data Kategori";
       $this->load->view('header1');
@@ -96,7 +96,7 @@ class KategoriClient extends CI_Controller
 
 
 
-      public function post_process1()
+      public function post_processkategori()
     {
         $data = array(
             'nama_kategori'                   => $this->input->post('nama_kategori'),
@@ -133,7 +133,7 @@ class KategoriClient extends CI_Controller
 
 
 
-    public function put1()
+    public function putkategori()
     {
         $params = array('id_kategori' =>  $this->uri->segment(3));
         $data['kategori'] = json_decode($this->curl->simple_get($this->API, $params));
@@ -167,7 +167,7 @@ class KategoriClient extends CI_Controller
         redirect('kategoriclient');
     }
 
-    public function put_process1()
+    public function put_processkategori()
     {
         $data = array(
             'id_kategori'                   => $this->input->post('id_kategori'),
@@ -203,7 +203,7 @@ class KategoriClient extends CI_Controller
     }
 
 
-    public function delete1()
+    public function deletekategori()
     {
         $params = array('id_kategori' =>  $this->uri->segment(3));
         $delete =  $this->curl->simple_delete($this->API, $params);

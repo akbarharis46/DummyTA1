@@ -1,4 +1,4 @@
-<?php if($this->session->userdata('level')!='admin'){redirect('login');};?>
+<?php if($this->session->userdata('level')!='Staff Gudang'){redirect('login');};?>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -10,7 +10,7 @@
       <div class="container-fluid" >
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-tablet" ></i> Data Barang</h2>
+            <h2 class="m-0 text-primary " ><i class="nav-icon fas fa-tablet" ></i> Data kategori Barang</h2>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -20,23 +20,17 @@
     <div class="content">
       <div class="container-fluid">
       <div class="alert alert-secondary" role="alert">
-      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Barang&nbsp; > <i class="nav-icon fas fa-pen"></i>Update kategori
+      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Kategori&nbsp; > <i class="nav-icon fas fa-plus"></i>tambah kategori
         </div>
-            <form action="<?php echo site_url(); ?>kategoriclient/put_process1"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()">
-                 <?php foreach ($kategori as $rows) : ?>
-                            <div class="form-group">
-                                <label for="id_kategori">ID Kategori :</label>
-                                <input type="text" class="form-control" id="id_kategori" value="<?php echo $rows->id_kategori; ?>" name="id_kategori" required readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="nama_kategori">Nama Kategori :</label>
-                                <input type="text" class="form-control" id="nama_kategori" value="<?php echo $rows->nama_kategori; ?>" name="nama_kategori" required  >
-                            </div>
-                        
-                            <div class="form-group">
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
-                            <a  style="color:white">Update </a>
-
+                <form action="<?php echo site_url(); ?>kategoriclient/post_processkategori" class="needs-validation" method="POST" >
+                <div class="form-group">
+                            <label for="nama_kategori">Nama Barang  :</label>
+                            <input type="text" class="form-control" id="nama_kategori" placeholder="kategori" name="nama_kategori" required>
+                        </div>
+                       
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                Tambah
                             </button>
                             <!-- The Modal -->
                             <div class="modal fade" id="myModal">
@@ -45,12 +39,12 @@
 
                                         <!-- Modal body -->
                                         <div class="modal-body">
-                                            <p>Apa anda yakin ingin mengubah data ini ?</p>
+                                            <p>Apa anda yakin ingin menambah data ini ?</p>
                                         </div>
 
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-                                            <button type="submit" class="btn btn-warning"><a  style="color:white">Update </a></button>
+                                            <button type="submit" class="btn btn-primary">Tambah</button>
                                             <button type="button" class="btn btn-dark" data-dismiss="modal">Batal</button>
                                         </div>
 
@@ -66,13 +60,13 @@
                                             eid.options[i].selected = true;
                                     }
                                 }
-                                var eid = "kategori";
+                                var eid = "penduduk";
                                 var etxt = document.getElementById("selected").value;
                                 document.getElementById("selected").style.display = "none";
                                 setSelectBoxByText(eid, etxt)
                             </script>
-                        <?php endforeach; ?>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
+    </div>
+</div>

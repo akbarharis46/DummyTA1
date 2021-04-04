@@ -72,7 +72,7 @@ class BarangClient extends CI_Controller
     }
 
 
-    public function post1()
+    public function postbarang()
     {
      $this->API2 = "http://localhost:8080/dummyTA/kategori";
      $data['kategori'] = json_decode($this->curl->simple_get($this->API2));
@@ -109,7 +109,7 @@ class BarangClient extends CI_Controller
 
 
 
-      public function post_process1()
+      public function post_processbarang()
       {
           $data = array(
               'nama_barang'            => $this->input->post('nama_barang'),
@@ -147,7 +147,7 @@ class BarangClient extends CI_Controller
     }
 
 
-    public function put1()
+    public function putbarang()
     {
         $params = array('id_barang' =>  $this->uri->segment(3));
         $data['barang'] = json_decode($this->curl->simple_get($this->API, $params));
@@ -186,6 +186,32 @@ class BarangClient extends CI_Controller
 
 
 
+    public function put_processbarang()
+    {
+        $data = array(
+            
+            'id_barang'            => $this->input->post('id_barang'),
+            'nama_barang'            => $this->input->post('nama_barang'),
+            'nama_kategori'           => $this->input->post('nama_kategori'),
+            'total'                  => $this->input->post('total'),
+            'tanggal'                  => $this->input->post('tanggal'),
+        );
+        
+        $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
+        if ($update) {
+            echo"berhasil";
+            // $this->session->set_flashdata('result', 'Update Data kategori Berhasil');
+        } else {
+            echo"gagal";
+            // $this->session->set_flashdata('result', 'Update Data kategori Gagal');
+        }
+        // print_r($update);
+        // die;
+        redirect('barangclient/index2');
+    }
+
+
+
 
 
 
@@ -205,7 +231,7 @@ class BarangClient extends CI_Controller
 
 
 
-    public function delete1()
+    public function deletebarang()
     {
         $params = array('id_barang' =>  $this->uri->segment(3));
         $delete =  $this->curl->simple_delete($this->API, $params);

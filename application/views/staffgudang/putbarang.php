@@ -1,7 +1,8 @@
 <?php if($this->session->userdata('level')!='Staff Gudang'){redirect('login');};?>
 
-<div class="cc">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
+<div class="cc" style="width:1300px">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -9,7 +10,7 @@
       <div class="container-fluid" >
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-microphone" ></i> Data barang</h2>
+            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-tablet" ></i> Data Barang</h2>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -19,111 +20,68 @@
     <div class="content">
       <div class="container-fluid">
       <div class="alert alert-secondary" role="alert">
-      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-microphone"></i> barang
+      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Barang&nbsp; > <i class="nav-icon fas fa-pen"></i>Update Penduduk
         </div>
-        <div class="row">
-          <div class="col"> 
-              <!-- Tabel -->
-              <div class="card">
-            <!-- /.card-header -->
-            <div class="card-body" >
-                <div class='card-header' style="margin-left:-20px;">
-                <a class='btn btn-primary'href="<?php echo site_url(); ?>barangclient/post1/">
-                    <i class="fa fa-plus"></i>
-                    <span >
-                        Tambah
-                    </span>
-                    </a>
+            <form action="<?php echo site_url(); ?>barangclient/put_processbarang"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()" >
+                 <?php foreach ($barang as $rows) : ?>
+                        <div class="form-group">
+                                <label for="id_barang">Id Barang :</label>
+                                <input type="text" class="form-control" id="id_barang" value="<?php echo $rows->id_barang;?>" placeholder="id_barang"  name="id_barang"  readonly>
+                            </div>
 
-                    </div>   
-                  <span>
-                  <br>
-                    <?php
-                   if (!empty($this->session->flashdata('pesan')))
-                   {
-                     ?>
-                  <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <?= $this->session->flashdata('pesan');?>
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  </div>
-                  <?php   
-                  }
-                  ?>
 
-                  <?php
-                   if (!empty($this->session->flashdata('pesan2')))
-                   {
-                     ?>
-                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <?= $this->session->flashdata('pesan2');?>
-                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+                            
+                            <div class="form-group">
+                            <label for="sel1" >Kategori :</label>
+                                <input type="text" class="form-control" name="nama_kategori" id="selected"value="<?php echo $rows->nama_kategori;?>" readonly>
+                                <!-- <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" >
+                                        <option value="L">Laki-laki</option>
+                                        <option value="P">Perempuan</option>
+                                </select> -->
+                        </div>
+                       
+                        <div class="form-group">
+                                <label for="nama_barang">Nama Barang :</label>
+                                <input type="text" class="form-control" id="nama_barang" value="<?php echo $rows->nama_barang;?>"placeholder="nama_barang"  name="nama_barang"  >
+                        </div>
+
+                        <div class="form-group">
+                                <label for="tanggal">Tanggal :</label>
+                                <input type="date" class="form-control" id="tanggal" value="<?php echo $rows->tanggal;?>"placeholder="tanggal"  name="nama_barang"  >
+                        </div>
+
+
+                        <div class="form-group">
+                                <label for="total">Total :</label>
+                                <input type="text" class="form-control" id="total" value="<?php echo $rows->total;?>"placeholder="total"  name="total"  >
+                        </div>
+                        
+                            <div class="form-group">
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
+                                    Update
+                                </button>
+                                <!-- The Modal -->
+                                <div class="modal fade" id="myModal">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                <p>Apa anda yakin ingin mengupdate data ini ?</p>
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-warning">Update</button>
+                                                <button type="button" class="btn btn-dark" data-dismiss="modal">Batal</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </form>
                 </div>
-                 <?php   
-                 }
-                 ?>
-
-                  <?php
-                   if (!empty($this->session->flashdata('pesan3')))
-                   {
-                     ?>
-                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  <?= $this->session->flashdata('pesan3');?>
-                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                 <?php   
-                 }
-                 ?>
-                 </span> 
-                 
-              <table id="tabel" class="table table-bordered">
-                <thead>
-                <tr>
-                  <th>No </th>
-                  <th>Tanggal</th>
-                  <th>Nama Kategori</th>
-                  <th>Nama Barang</th>
-                  <th>Jumlah Barang Masuk</th>
-                  <th>Aksi</th>
-                 
-                </tr>
-                </thead>
-                <tbody>
-                <?php 
-                $i=1;
-                foreach ($barang as $rows) : ?>
-                    <tr>
-                        <td><?php echo  $i++; ?></td>
-                        <td><?php echo $rows->tanggal; ?> </td>
-                        <td><?php echo $rows->nama_kategori; ?> </td>
-                        <td><?php echo $rows->nama_barang; ?></td>
-                        <td><?php echo $rows->total; ?>
-                            </td>
-                    
-                        <td>
-                            <a href="<?php echo site_url(); ?>barangclient/put1/<?php echo $rows->id_barang; ?>" class="btn btn-warning">
-                            <i class="fa fa-pen" aria-hidden="true"></i></a>
-                            <a href="<?= base_url(); ?>barangclient/delete1/<?= $rows->id_barang; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
-                            <i class="fa fa-trash" aria-hidden="true"></i></a>
-                        </td>
-                    </tr>
-                    <?php endforeach ; ?>
-                </tbody>
-              </table>             
-            <!-- /.card-body -->
-          </div>
             </div>
-          </div>
         </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->

@@ -22,7 +22,7 @@
       <div class="alert alert-secondary" role="alert">
       <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Barang&nbsp; > <i class="nav-icon fas fa-plus"></i>tambah Penduduk
         </div>
-                <form action="<?php echo site_url('barangclient/post_process1');?>" class="needs-validation" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo site_url('barangclient/post_processbarang');?>" class="needs-validation" method="POST" enctype="multipart/form-data">
                          <div class="form-group">
                             <label for="nama_kategori">Nama Kategori  :</label>
                             <select class="form-control" name="nama_kategori" >
