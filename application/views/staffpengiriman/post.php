@@ -22,16 +22,24 @@
       <div class="alert alert-secondary" role="alert">
       <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Pengiriman&nbsp; > <i class="nav-icon fas fa-plus"></i>Tambah Pengiriman
         </div>
-                <form action="<?php echo site_url(); ?>pengirimanclient/post_process1" class="needs-validation" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo site_url(); ?>pengirimanclient/post_processpengiriman" class="needs-validation" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                             <label for="nama_pengirim">Nama Pengirim  :</label>
                             <input type="text" class="form-control" id="nama_pengirim" placeholder=" Masukkan Nama Pengirim" name="nama_pengirim" required>
                             </div>
+
+                <div class="form-group">
+
+                            <label for="tujuan">Nomor Hp Petugas Pengirim  : </label>
+                            <input type="text" class="form-control" id="nomorhp" placeholder="Masukkan Nomor Handpone" name="nomorhp" >
+                            </div>
+              
                 <div class="form-group">
 
                             <label for="tujuan">Tujuan Pengiriman Barang  :</label>
                             <input type="text" class="form-control" id="tujuan" placeholder="Masukkan Nama Barang" name="tujuan" >
                </div>
+
                 <div class="form-group">
 
                             <label for="jumlah">Jumlah Pengiriman Barang  :</label>

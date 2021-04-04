@@ -66,7 +66,7 @@ class PengirimanClient extends CI_Controller
       $this->load->view('footer');
     }
   
-    public function post1()
+    public function postpengiriman()
     {
       $data['title'] = "Tambah Data pengiriman";
       $this->load->view('header1');
@@ -109,7 +109,7 @@ class PengirimanClient extends CI_Controller
 
 
 
-      public function post_process1()
+      public function post_processpengiriman()
       {
           $data = array(
               'nama_pengirim'                  => $this->input->post('nama_pengirim'),
@@ -146,7 +146,7 @@ class PengirimanClient extends CI_Controller
 
     }
 
-        public function put1()
+        public function putpengiriman()
         {
             $params = array('id_pengiriman' =>  $this->uri->segment(3));
             $data['pengiriman'] = json_decode($this->curl->simple_get($this->API, $params));
@@ -193,7 +193,7 @@ class PengirimanClient extends CI_Controller
 
 
     
-    public function put_process1()
+    public function put_processpengiriman()
     {
         $data = array(
             'id_pengiriman'                  => $this->input->post('id_pengiriman'),
@@ -234,7 +234,7 @@ class PengirimanClient extends CI_Controller
         // die;
         redirect('pengirimanclient');
     }
-    public function delete1()
+    public function deletepengiriman()
     {
         $params = array('id_pengiriman' =>  $this->uri->segment(3));
         $delete =  $this->curl->simple_delete($this->API, $params);

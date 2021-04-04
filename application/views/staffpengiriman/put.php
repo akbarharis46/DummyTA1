@@ -22,7 +22,7 @@
       <div class="alert alert-secondary" role="alert">
       <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Pengiriman &nbsp; > <i class="nav-icon fas fa-pen"></i>Update kategori
         </div>
-            <form action="<?php echo site_url(); ?>pengirimanclient/put_process1"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()">
+            <form action="<?php echo site_url(); ?>pengirimanclient/put_processpengiriman"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()">
                  <?php foreach ($pengiriman as $rows) : ?>
                             <div class="form-group">
                                 <label for="id_pengiriman">ID Pengirim :</label>
@@ -33,6 +33,12 @@
                             <div class="form-group">
                                 <label for="nama_pengirim">Nama Pengirim :</label>
                                 <input type="text" class="form-control" id="nama_pengirim" value="<?php echo $rows->nama_pengirim; ?>" name="nama_pengirim" required  >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="nama_pengirim">Nomor HP Petugas Pengiriman :</label>
+                                <input type="text" class="form-control" id="nomorhp" value="<?php echo $rows->nama_pengirim; ?>" name="nomorhp" required  >
                             </div>
 
 

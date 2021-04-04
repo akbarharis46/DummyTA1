@@ -28,7 +28,7 @@
             <!-- /.card-header -->
             <div class="card-body" >
                     <div class='card-header' style="margin-left:-20px;">
-                <a class='btn btn-primary'href="<?php echo site_url(); ?>pengirimanclient/post1/">
+                <a class='btn btn-primary'href="<?php echo site_url(); ?>pengirimanclient/postpengiriman/">
                     <i class="fa fa-plus"></i>
                     <span >
                         Tambah
@@ -86,6 +86,7 @@
                 <tr>
                   <th>NOMOR</th>
                   <th>NAMA PENGIRIM</th>
+                  <th>NOMOR HP PETUGAS PENGIRIMAN</th>
                   <th>TUJUAN PENGIRIMAN</th>
                   <th>JUMLAH PENGIRIMAN</th>
                   <th>JENIS KENDARAAN</th>
@@ -104,6 +105,7 @@
                     <tr>
                         <td><?php echo  $i++; ?></td>
                         <td><?php echo $rows->nama_pengirim; ?>
+                        <td><?php echo $rows->nomorhp; ?>
                         <td><?php echo $rows->tujuan; ?>
                         <td><?php echo $rows->jumlah; ?>
                         <td><?php echo $rows->jenis_kendaraan; ?>
@@ -114,9 +116,9 @@
 
                             </td>
                         <td>
-                            <a href="<?php echo site_url(); ?>pengirimanclient/put1/<?php echo $rows->id_pengiriman; ?>" class="btn btn-warning">
+                            <a href="<?php echo site_url(); ?>pengirimanclient/putpengiriman/<?php echo $rows->id_pengiriman; ?>" class="btn btn-warning">
                             <i class="fa fa-pen" aria-hidden="true"></i></a>
-                            <a href="<?= base_url(); ?>pengirimanclient/delete1/<?= $rows->id_pengiriman; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
+                            <a href="<?= base_url(); ?>pengirimanclient/deletepengiriman/<?= $rows->id_pengiriman; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
                             <i class="fa fa-trash" aria-hidden="true"></i></a>
                         </td>
                     </tr>
