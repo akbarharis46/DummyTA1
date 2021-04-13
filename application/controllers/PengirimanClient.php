@@ -11,6 +11,7 @@ class PengirimanClient extends CI_Controller
         $this->load->library('curl');
         
         $this->API = "http://localhost:8080/dummyTA/pengiriman";
+        $this->API1 = "http://localhost:8080/dummyTA/detail";
     }
 
     public function index()
@@ -92,7 +93,7 @@ class PengirimanClient extends CI_Controller
             'jenis_kendaraan'                => $this->input->post('jenis_kendaraan'),
             'nomor_kendaraan'                => $this->input->post('nomor_kendaraan'),
             'tanggal'                        => $this->input->post('tanggal'),
-            'status_pengiriman'              => $this->input->post('status_pengiriman'),     
+            'tanggal_keluar'              => $this->input->post('status_pengiriman'),     
         );
         $insert =  $this->curl->simple_post($this->API,$data);
         if ($insert) {
@@ -134,6 +135,8 @@ class PengirimanClient extends CI_Controller
           redirect('pengirimanclient/index3');
         }
     
+
+
     public function put()
     {
         $params = array('id_pengiriman' =>  $this->uri->segment(3));
@@ -249,7 +252,69 @@ class PengirimanClient extends CI_Controller
     }
 
 
+    public function barang_keluar()
+  {
+    $uri = array('id_pengiriman' =>  $this->uri->segment(3));
+    $data['pengiriman'] = json_decode($this->curl->simple_get($this->API,$uri));
+    $data['detail'] = json_decode($this->curl->simple_get($this->API1));
+    $data['title'] = "Edit Data pengiriman";
+    $this->load->view('header0');
+    $this->load->view('bar');
+    $this->load->view('data/perpindahan_barang',$data);
+    $this->load->view('footer');
+  }
 
+
+
+
+  public function proses_data_keluar()
+  {
+    $this->load->model('admin_model');
+    // $this->db->set("jumlah_pengiriman","jumlah_pengiriman - jumlah_pengiriman");
+    // $this->db->where('id_pengiriman', 'id_pengiriman');
+    $this->form_validation->set_rules('tanggal_diterima','Tanggal Diterima','trim|required');
+    $this->form_validation->set_rules('status_pengiriman','Status','trim|required');
+    // $this->form_validation->set_rules('jumlah_pengiriman-jumlah_pengiriman','Jumlah Pengiriman','trim|required');
+    if($this->form_validation->run() === true)
+    {
+
+
+      $id_pengiriman          = $this->input->post('id_pengiriman');
+        $nama_pengirim              = $this->input->post('nama_pengirim');
+        $nomorhp                    = $this->input->post('nomorhp');
+        $tujuan                     = $this->input->post('tujuan');
+        $jumlah                   = $this->input->post('jumlah');
+        $jenis_kendaraan            = $this->input->post('jenis_kendaraan');
+        $nomor_kendaraan            = $this->input->post('nomor_kendaraan');
+        $tanggal                    = $this->input->post('tanggal');
+        $tanggal_diterima          = $this->input->post('tanggal_diterima');
+        $status_pengiriman          = $this->input->post('status_pengiriman');
+
+
+      
+      $data = array(
+        'id_pengiriman'           => $this->post('id_pengiriman'),
+        'nama_pengirim'              => $this->post('nama_pengirim'),
+        'nomorhp'                    => $this->post('nomorhp'),
+        'tujuan'                     => $this->post('tujuan'),
+        'jumlah'                     => $this->post('jumlah'),
+        'jenis_kendaraan'            => $this->post('jenis_kendaraan'),
+        'nomor_kendaraan'            => $this->post('nomor_kendaraan'),
+        'tanggal'                    => $this->post('tanggal'),
+        'tanggal_diterima'           => $this->post('tanggal_diterima'),
+        'status_pengiriman'           => $this->post('status_pengiriman'),
+      );
+      $insert =  $this->curl->simple_post($this->API1,$data);
+      if ($insert) {
+          echo"berhasil";     
+        } else {
+            echo"gagal";
+        }
+    }else{
+
+        }
+    redirect('detailclient');
+  }
 }
 
 

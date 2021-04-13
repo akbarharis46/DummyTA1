@@ -85,14 +85,16 @@
                 <thead>
                 <tr>
                   <th>NOMOR</th>
+                  <th>ID </th>
                   <th>NAMA PENGIRIM</th>
-                  <th>NOMOR HP PETUGAS PENGIRIMAN</th>
-                  <th>TUJUAN PENGIRIMAN</th>
-                  <th>JUMLAH PENGIRIMAN</th>
+                  <th>NOMOR HP</th>
+                  <th>TUJUAN</th>
                   <th>JENIS KENDARAAN</th>
-                  <th>NOMOR KENDARAAn</th>
-                  <th>TANGGAL</th>
-                  <th>STATUS PENGIRIMAN</th>
+                  <th>NOMOR KENDARAAN </th>
+                  <th>JUMLAH PENGIRIMAN</th>
+                  <th>TANGGAL PENGIRIMAN</th>
+                  <th>TANGGAL BARANG SAMPAI</th>
+                  <th>STATUS</th>
                   <th>AKSI</th>
  
                 </tr>
@@ -101,9 +103,10 @@
                 <?php 
                   $i=1;
 
-                foreach ($pengiriman as $rows) : ?>
+                foreach ($detail as $rows) : ?>
                     <tr>
                         <td><?php echo  $i++; ?></td>
+                        <td><?php echo $rows->id_pengiriman; ?> 
                         <td><?php echo $rows->nama_pengirim; ?>
                         <td><?php echo $rows->nomorhp; ?>
                         <td><?php echo $rows->tujuan; ?>
@@ -111,18 +114,15 @@
                         <td><?php echo $rows->jenis_kendaraan; ?>
                         <td><?php echo $rows->nomor_kendaraan; ?>
                         <td><?php echo $rows->tanggal; ?>
+                        <td><?php echo $rows->tanggal_diterima; ?>
                         <td><?php echo $rows->status_pengiriman; ?>
 
 
                             </td>
                         <td>
-                            <a href="<?php echo site_url(); ?>pengirimanclient/put/<?php echo $rows->id_pengiriman; ?>" class="btn btn-warning">
-                            <i class="fa fa-pen" aria-hidden="true"></i></a>
-                            <a href="<?= base_url(); ?>pengirimanclient/delete/<?= $rows->id_pengiriman; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
-                            <i class="fa fa-trash" aria-hidden="true"></i></a>
-
-                            <a class="btn btn-success "  href="<?=base_url();?>pengirimanclient/barang_keluar/<?= $rows->id_pengiriman;?>">
-                            <i class="ion-android-exit" aria-hidden="true"></i></a>
+                            <a href="<?php echo site_url(); ?>#/put/<?php echo $rows->id_detailpengiriman; ?>" class="btn btn-danger">
+                            <i class="fa fa-book" aria-hidden="true"></i></a>
+                           
                         </td>
                     </tr>
                     <?php endforeach ; ?>
@@ -139,4 +139,5 @@
     </div>
     <!-- /.content -->
   </div>
+  
   <!-- /.content-wrapper -->

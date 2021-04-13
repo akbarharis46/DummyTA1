@@ -6,7 +6,7 @@ require APPPATH . '/libraries/REST_Controller.php';
 
 use Restserver\Libraries\REST_Controller;
 
-class Pengiriman extends REST_Controller
+class Detail extends REST_Controller
 {
 
     function __construct($config = 'rest')
@@ -16,26 +16,19 @@ class Pengiriman extends REST_Controller
 
     function index_get()
     {
-        $id = $this->get('id_pengiriman');
-        $id2 = $this->get('id_detailpengiriman');
-
+        $id = $this->get('id_detailpengiriman');
         if ($id == '') {
-            $pengiriman = $this->db->get('pengiriman')->result();
+            $detail = $this->db->get('detail_pengiriman')->result();
         } else {
-            $this->db->where('id_pengiriman', $id);
-            $pengiriman = $this->db->get('pengiriman')->result();
-        } 
-        if ($id2 != '') {
-            
-            $this->db->where('id_detailpengiriman', $id2);
-            $pengiriman = $this->db->get('pengiriman')->result();
+            $this->db->where('id_detailpengiriman', $id);
+            $detail = $this->db->get('detail_pengiriman')->result();
         }
-
-        $this->response($pengiriman, 200);
+        $this->response($detail, 200);
     }
     function index_post()
     {
         $data = array(
+            'id_pengiriman'           => $this->post('id_pengiriman'),
             'nama_pengirim'              => $this->post('nama_pengirim'),
             'nomorhp'                    => $this->post('nomorhp'),
             'tujuan'                     => $this->post('tujuan'),
@@ -43,23 +36,24 @@ class Pengiriman extends REST_Controller
             'jenis_kendaraan'            => $this->post('jenis_kendaraan'),
             'nomor_kendaraan'            => $this->post('nomor_kendaraan'),
             'tanggal'                    => $this->post('tanggal'),
-            'status_pengiriman'          => $this->post('status_pengiriman'),
+            'tanggal_diterima'           => $this->post('tanggal_diterima'),
+            'status_pengiriman'           => $this->post('status_pengiriman'),
             
         );
-        $insert = $this->db->insert('pengiriman',$data);
+        $insert = $this->db->insert('detail_pengiriman',$data);
         if ($insert) {
             $this->response($data, 200);
         } else {
             $this->response(array('status' => 'fail', 502));
         }
-        // print_r($insert);
-        //  exit;
     }
     function index_put()
     {
-        $id = $this->put('id_pengiriman');
+        $id = $this->put('id_detailpengiriman');
         $data = array(
             
+
+
             'nama_pengirim'              => $this->put('nama_pengirim'),
             'nomorhp'                    => $this->put('nomorhp'),
             'tujuan'                     => $this->put('tujuan'),
@@ -67,11 +61,11 @@ class Pengiriman extends REST_Controller
             'jenis_kendaraan'            => $this->put('jenis_kendaraan'),
             'nomor_kendaraan'            => $this->put('nomor_kendaraan'),
             'tanggal'                    => $this->put('tanggal'),
-            'status_pengiriman'          => $this->put('status_pengiriman'),
-            
+            'tanggal_diterima'       => $this->put('tanggal_diterima'),
+            'status_pengiriman'           => $this->put('status_pengiriman'),
         );
-        $this->db->where('id_pengiriman', $id);
-        $update = $this->db->update('pengiriman', $data);
+        $this->db->where('id_detailpengiriman', $id);
+        $update = $this->db->update('detail_pengiriman', $data);
         if ($update) {
             $this->response($data, 200);
         } else {
@@ -80,15 +74,13 @@ class Pengiriman extends REST_Controller
     }
     function index_delete()
     {
-        $id = $this->delete('id_pengiriman');
-        $this->db->where('id_pengiriman', $id);
-        $delete = $this->db->delete('pengiriman');
+        $id = $this->delete('id_detailpengiriman');
+        $this->db->where('id_detailpengiriman', $id);
+        $delete = $this->db->delete('detail_pengiriman');
         if ($delete) {
             $this->response(array('status' => 'success'), 201);
         } else {
             $this->response(array('status' => 'fail', 502));
         }
     }
-
 }
-?>

@@ -60,5 +60,10 @@ public function get_user()
         $antrian = $this->db->get('antrian')->result();
         return $antrian;
     }
+    public function insert($tabel,$data)
+    {
+      $this->db->insert($tabel,$data);
+    }
+  
 }
 ?>

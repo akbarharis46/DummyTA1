@@ -133,7 +133,7 @@
               
             
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>xxxx" class="nav-link">
+                <a href="<?php echo site_url(); ?>detailclient" class="nav-link">
                 <i class="fa fa-cog"></i> Olah Status Pengiriman</a></li>
                 </a>
               </li>
