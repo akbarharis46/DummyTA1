@@ -81,6 +81,8 @@ class PengirimanClient extends CI_Controller
 
 
 
+   
+
 
 
 
@@ -94,6 +96,7 @@ class PengirimanClient extends CI_Controller
             'jenis_kendaraan'                => $this->input->post('jenis_kendaraan'),
             'nomor_kendaraan'                => $this->input->post('nomor_kendaraan'),
             'tanggal'                        => $this->input->post('tanggal'),
+            
             'status_pengiriman'              => $this->input->post('status_pengiriman'),     
         );
         $insert =  $this->curl->simple_post($this->API,$data);
