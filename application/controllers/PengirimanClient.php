@@ -76,6 +76,14 @@ class PengirimanClient extends CI_Controller
       $this->load->view('staffpengiriman/post', $data);
       $this->load->view('footer');
     }
+  
+
+
+
+
+   
+
+
 
 
     public function post_process()
@@ -88,9 +96,8 @@ class PengirimanClient extends CI_Controller
             'jenis_kendaraan'                => $this->input->post('jenis_kendaraan'),
             'nomor_kendaraan'                => $this->input->post('nomor_kendaraan'),
             'tanggal'                        => $this->input->post('tanggal'),
-            'status_pengiriman'              => $this->input->post('status_pengiriman'),
             
-            
+            'status_pengiriman'              => $this->input->post('status_pengiriman'),     
         );
         $insert =  $this->curl->simple_post($this->API,$data);
         if ($insert) {
