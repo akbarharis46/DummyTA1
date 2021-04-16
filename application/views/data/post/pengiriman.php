@@ -22,7 +22,7 @@
       <div class="alert alert-secondary" role="alert">
       <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Pengiriman&nbsp; > <i class="nav-icon fas fa-plus"></i>Tambah Pengiriman
         </div>
-                <form action="<?php echo site_url(); ?>pengirimanclient/post_process" class="needs-validation" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo site_url('pengirimanclient/post_process');?>" class="needs-validation" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                             <label for="nama_pengirim">Nama Pengirim  :</label>
                             <input type="text" class="form-control" id="nama_pengirim" placeholder=" Masukkan Nama Pengirim" name="nama_pengirim" required>
@@ -30,7 +30,7 @@
 
                 <div class="form-group">
 
-                            <label for="tujuan">Nomor Hp Petugas Pengirim  : </label>
+                            <label for="nomorhp">Nomor Hp Petugas Pengirim  : </label>
                             <input type="text" class="form-control" id="nomorhp" placeholder="Masukkan Nomor Handpone" name="nomorhp" >
                             </div>
               
@@ -62,8 +62,8 @@
                             <label for="status_pengiriman">Status Pengiriman :</label>
                             <!-- <input type="option" class="form-control" id="status_pengiriman" placeholder="Pilih Status  Pengiriman" name="status_pengiriman" > -->
                             <select name="status_pengiriman" id="status_pengiriman" class="form-control">
-                             <option value="proses">Proses Pengiriman</option>
-                             <option value="terkirim">Barang Sudah Sampai</option>
+                             <option value="Proses Pengiriman">Proses Pengiriman</option>
+                             <option value="Sudah Terkirim">Barang Sudah Sampai</option>
                                       </select>
                             
                             </div>

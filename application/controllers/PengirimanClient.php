@@ -9,8 +9,10 @@ class PengirimanClient extends CI_Controller
     {
         parent::__construct();
         $this->load->library('curl');
+        $this->load->model('admin_model');
         
         $this->API = "http://localhost:8080/dummyTA/pengiriman";
+        $this->API1 = "http://localhost:8080/dummyTA/detail";
     }
 
     public function index()
@@ -134,6 +136,8 @@ class PengirimanClient extends CI_Controller
           redirect('pengirimanclient/index3');
         }
     
+
+
     public function put()
     {
         $params = array('id_pengiriman' =>  $this->uri->segment(3));
@@ -249,7 +253,66 @@ class PengirimanClient extends CI_Controller
     }
 
 
+    public function barang_keluar()
+  {
+    $uri = array('id_pengiriman' =>  $this->uri->segment(3));
+    $data['pengiriman'] = json_decode($this->curl->simple_get($this->API,$uri));
+    $data['detail'] = json_decode($this->curl->simple_get($this->API1));
+    $data['title'] = "Edit Data pengiriman";
+    $this->load->view('header0');
+    $this->load->view('bar');
+    $this->load->view('data/perpindahan_barang',$data);
+    $this->load->view('footer');
+  }
 
+
+
+
+  public function proses_data_keluar()
+  {
+    $this->load->model('admin_model');
+    // $this->db->set("jumlah_pengiriman","jumlah_pengiriman - jumlah_pengiriman");
+    // $this->db->where('id_pengiriman', 'id_pengiriman');
+    $this->form_validation->set_rules('tanggal_diterima','Tanggal Diterima','trim|required');
+    // $this->form_validation->set_rules('jumlah_pengiriman-jumlah_pengiriman','Jumlah Pengiriman','trim|required');
+    if($this->form_validation->run() === true)
+    {
+      $id_pengiriman   = $this->input->post('id_pengiriman');
+      $namapengirim   = $this->input->post('nama_pengirim');
+      $no_hp    = $this->input->post('nomorhp');
+      $jeniskendaraan         = $this->input->post('jenis_kendaraan');
+      $tujuan_pengiriman         = $this->input->post('tujuan');
+      $no_kendaraan         = $this->input->post('nomor_kendaraan');
+      $status         = $this->input->post('status_pengiriman');
+      $jumlah_pengiriman    = $this->input->post('jumlah');
+      $tanggal_masuk         = $this->input->post('tanggal');
+      $tanggal_diterima         = $this->input->post('tanggal_diterima');
+      $data1 = array(
+              'id_pengiriman' => $id_pengiriman,
+              'namapengirim' =>$namapengirim,
+              'no_hp' =>$no_hp,
+              'jeniskendaraan' =>$jeniskendaraan,         
+              'tujuan_pengiriman' =>$tujuan_pengiriman,        
+              'no_kendaraan' =>$no_kendaraan,         
+              'status' =>$status,         
+              'jumlah_pengiriman' => $jumlah_pengiriman,
+              'tanggal_masuk' => $tanggal_masuk,
+              'tanggal_diterima' => $tanggal_diterima
+      );
+      $insert =  $this->curl->simple_post($this->API1,$data1);
+    //   var_dump($insert);
+    //   exit;
+         if($insert){
+             echo"berhasil";   
+            redirect('detailclient');
+
+            } else {
+                echo"gagal";
+            }
+        }else{
+            redirect('detailclient');
+        }
+    }
 }
 
 

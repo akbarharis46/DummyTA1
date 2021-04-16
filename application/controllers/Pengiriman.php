@@ -17,12 +17,20 @@ class Pengiriman extends REST_Controller
     function index_get()
     {
         $id = $this->get('id_pengiriman');
+        $id2 = $this->get('id_detailpengiriman');
+
         if ($id == '') {
             $pengiriman = $this->db->get('pengiriman')->result();
         } else {
             $this->db->where('id_pengiriman', $id);
             $pengiriman = $this->db->get('pengiriman')->result();
+        } 
+        if ($id2 != '') {
+            
+            $this->db->where('id_detailpengiriman', $id2);
+            $pengiriman = $this->db->get('pengiriman')->result();
         }
+
         $this->response($pengiriman, 200);
     }
     function index_post()

@@ -80,7 +80,7 @@
                             <!-- <input type="option" class="form-control" id="status_pengiriman" placeholder="Pilih Status  Pengiriman" name="status_pengiriman" > -->
                             <select name="status_pengiriman" id="status_pengiriman" class="form-control">
                             <option value="Proses Pengiriman">Proses Pengiriman</option>
-                            <option value="Barang Sudah Sampai">Barang Sudah Sampai</option>
+                            <option value="Sudah Terkirim">Barang Sudah Sampai</option>
           </select>
 
 </div>  

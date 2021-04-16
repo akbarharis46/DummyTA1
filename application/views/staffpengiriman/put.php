@@ -72,10 +72,8 @@
                                 <input type="date" class="form-control" id="tanggal" value="<?php echo $rows->tanggal; ?>" name="tanggal" required  >
                             </div>
 
-
-                           
+      
                             <div class="form-group">
-
                             <label for="status_pengiriman">Status Pengiriman :</label>
                             <!-- <input type="option" class="form-control" id="status_pengiriman" placeholder="Pilih Status  Pengiriman" name="status_pengiriman" > -->
                             <select name="status_pengiriman" id="status_pengiriman" class="form-control">
@@ -84,9 +82,7 @@
           </select>
 
 </div>  
-
-
-                        
+                    
                             <div class="form-group">
                             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
                             <a  style="color:white">Update </a>
