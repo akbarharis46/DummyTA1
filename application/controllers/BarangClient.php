@@ -61,8 +61,10 @@ class BarangClient extends CI_Controller
 
     public function post()
     {
-     $this->API2 = "http://localhost:8080/dummyTA/kategori";
+
+        $this->API2 = "http://localhost:8080/dummyTA/kategori";
      $data['kategori'] = json_decode($this->curl->simple_get($this->API2));
+     $data['count'] = $this->input->post('count');
 
       $data['title'] = "Tambah Data barang";
       $this->load->view('header0');
@@ -87,14 +89,23 @@ class BarangClient extends CI_Controller
   
     public function post_process()
     {
-        $data = array(
-            'nama_barang'            => $this->input->post('nama_barang'),
-            'nama_kategori'           => $this->input->post('nama_kategori'),
-            'total'                  => $this->input->post('total'),
-            'tanggal'                  => $this->input->post('tanggal'),
-     
-        );
-        $insert =  $this->curl->simple_post($this->API,$data);
+        $count = $this->input->post('count');
+
+        $data = [];
+        for ($i=0; $i < $count; $i++) { 
+            $data[] = array(
+                'nama_barang'            => $this->input->post('nama_barang')[$i],
+                'nama_kategori'           => $this->input->post('nama_kategori')[$i],
+                'total'                  => $this->input->post('total')[$i],
+                'tanggal'                  => date('Y-m-d'),
+         
+            );
+        }
+
+        for ($i=0; $i < $count; $i++) { 
+            $insert =  $this->curl->simple_post($this->API,$data[$i]);
+        }
+        
         if ($insert) {
             // echo"berhasil";
             $this->session->set_flashdata('result', 'Data Kategori Berhasil Ditambahkan');
@@ -168,9 +179,9 @@ class BarangClient extends CI_Controller
             'nama_barang'            => $this->input->post('nama_barang'),
             'nama_kategori'           => $this->input->post('nama_kategori'),
             'total'                  => $this->input->post('total'),
-            'tanggal'                  => $this->input->post('tanggal'),
+            'tanggal'                  => date('Y-m-d'),
         );
-        
+
         $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
         if ($update) {
             echo"berhasil";

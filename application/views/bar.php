@@ -73,7 +73,7 @@
               </li>
 
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>xxxx" class="nav-link">
+                <a href="<?php echo site_url(); ?>detailproduksiclient" class="nav-link">
                 <i class="fa fa-cog"></i> Olah Detail Data Produksi</a></li>
                 </a>
               </li>

@@ -23,58 +23,65 @@
       <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Barang&nbsp; > <i class="nav-icon fas fa-plus"></i>tambah Penduduk
         </div>
                 <form action="<?php echo site_url('barangclient/post_process');?>" class="needs-validation" method="POST" enctype="multipart/form-data">
-                         <div class="form-group">
-                            <label for="nama_kategori">Nama Kategori  :</label>
-                            <select class="form-control" name="nama_kategori" >
+                    <input type="hidden" name="count" value="<?= $count ?>">
+                    <?php for ($i = 0; $i < $count; $i++) : ?>
+                    <!-- Form Start -->
+                    <div class="form-group">
+                        <label for="nama_kategori">Nama Kategori  :</label>
+                        <select class="form-control" name="nama_kategori[]" >
                             <option value="" selected="">-- Pilih --</option>
                             <?php foreach ($kategori as $rows) : ?>
                                 <option value="<?php echo $rows->nama_kategori; ?>"> <?php echo $rows->nama_kategori; ?> </option>
                             <?php endforeach; ?>
-                            </select>
-                            <div class="valid-feedback"></div>
-                            <div class="invalid-feedback">Please fill out this field.</div>
-                        </div>
+                        </select>
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">Please fill out this field.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nama_barang">Nama Barang</label>
+                        <input type="text" class="form-control" id="nama_barang" name="nama_barang[]" placeholder="nama_barang"  name="nama_barang"  >
+                    </div>
+<!--                     
+                    <div class="form-group">
+                        <label for="tanggal">Tanggal</label>
+                        <input type="date" class="form-control" id="tanggal" placeholder="tanggal"  name="tanggal"  >
+                    </div> -->
 
 
-                        <div class="form-group">
-                                <label for="nama_barang">Nama Barang</label>
-                                <input type="text" class="form-control" id="nama_barang" placeholder="nama_barang"  name="nama_barang"  >
-                            </div>
-                       
-                            <div class="form-group">
-                                <label for="tanggal">Tanggal</label>
-                                <input type="date" class="form-control" id="tanggal" placeholder="tanggal"  name="tanggal"  >
-                            </div>
+                    <div class="form-group">
+                        <label for="total">Total :</label>
+                        <input type="number" class="form-control" id="total" name="total[]" placeholder="total"  name="total"  >
+                    </div>
+                    
+                    <hr>
+                    <!-- Form End -->
 
+                    <?php endfor; ?>
 
-                        <div class="form-group">
-                                <label for="total">Total :</label>
-                                <input type="text" class="form-control" id="total" placeholder="total"  name="total"  >
-                            </div>
-                        
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                Tambah
-                            </button>
-                            <!-- The Modal -->
-                            <div class="modal fade" id="myModal">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
+                    <button type="submit" class="btn btn-primary" >
+                            Tambah
+                    </button>
+                        <!-- The Modal -->
+                        <div class="modal fade" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
 
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                            <p>Apa anda yakin ingin menambah data ini ?</p>
-                                        </div>
-
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-primary">Tambah</button>
-                                            <button type="button" class="btn btn-dark" data-dismiss="modal">Batal</button>
-                                        </div>
-
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <p>Apa anda yakin ingin menambah data ini ?</p>
                                     </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Tambah</button>
+                                        <button type="button" class="btn btn-dark" data-dismiss="modal">Batal</button>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
+
                             <script>
                                 function setSelectBoxByText(eid, etxt) {
                                     var eid = document.getElementById(eid);
