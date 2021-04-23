@@ -27,13 +27,13 @@
            
 
                             <div class="form-group">
-                 <?php foreach ($pengiriman as $rows) : ?>
-                                <label for="id_pengiriman">ID Pengirim :</label>
-                                <input type="text" class="form-control" id="id_pengiriman" value="<?php echo $rows->id_pengiriman; ?>" name="id_pengiriman" required readonly>
+                            <?php foreach ($pengiriman as $rows) : ?>
+                                <!-- <label for="id_pengiriman">ID Pengirim :</label> -->
+                                <input type="hidden" class="form-control" id="id_pengiriman" value="<?php echo $rows->id_pengiriman; ?>" name="id_pengiriman" required readonly>
                             </div>
 
                             <div class="form-group">
-                                <label for="nama_pengirim">Nama Pengiriman:</label>
+                                <label for="nama_pengirim">Nama Pengirim:</label>
                                 <input type="text" class="form-control" id="nama_pengirim" value="<?php echo $rows->nama_pengirim; ?>" name="nama_pengirim" required readonly >
                             </div>
                             <div class="form-group">
@@ -41,17 +41,27 @@
                                 <input type="text" class="form-control" id="nomorhp" value="<?php echo $rows->nomorhp; ?>" name="nomorhp" required readonly >
                             </div>
                             <div class="form-group">
-                                <label for="jenis_kendaraan">Jenis Kendaraan :</label>
-                                <input type="text" class="form-control" id="jenis_kendaraan" value="<?php echo $rows->jenis_kendaraan; ?>" name="jenis_kendaraan" required  readonly>
+                                <!-- <label for="jenis_kendaraan">Jenis Kendaraan :</label> -->
+                                <input type="hidden" class="form-control" id="jenis_kendaraan" value="<?php echo $rows->jenis_kendaraan; ?>" name="jenis_kendaraan" required  readonly>
                             </div>
                             <div class="form-group">
-                                <label for="tujuan">Tujuan Pengiriman:</label>
-                                <input type="text" class="form-control" id="tujuan" value="<?php echo $rows->tujuan; ?>" name="tujuan" required readonly >
+                                <!-- <label for="tujuan">Tujuan Pengiriman:</label> -->
+                                <input type="hidden" class="form-control" id="tujuan" value="<?php echo $rows->tujuan; ?>" name="tujuan" required readonly >
                             </div>
 
                             <div class="form-group">
-                                <label for="nomor_kendaraan">Nomor Kendaraan :</label>
-                                <input type="text" class="form-control" id="nomor_kendaraan" value="<?php echo $rows->nomor_kendaraan; ?>" name="nomor_kendaraan" required  readonly>
+                                <!-- <label for="nomor_kendaraan">Nomor Kendaraan :</label> -->
+                                <input type="hidden" class="form-control" id="nomor_kendaraan" value="<?php echo $rows->nomor_kendaraan; ?>" name="nomor_kendaraan" required  readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="jumlah">Jumlah Pengiriman :</label>
+                                <input type="text" class="form-control" id="jumlah" value="<?php echo $rows->jumlah; ?>" name="jumlah" required  readonly>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="tanggal">Tanggal Pengiriman Barang :</label>
+                                <input type="date" class="form-control" id="tanggal" value="<?php echo $rows->tanggal; ?>" name="tanggal" required  readonly>
                             </div>
 
                             <div class="form-group">
@@ -63,18 +73,9 @@
                             <option value="Sudah Terkirim">Barang Sudah Sampai</option>
                             </select>
                             </div>  
-
-                            <div class="form-group">
-                                <label for="jumlah">Jumlah Pengiriman :</label>
-                                <input type="text" class="form-control" id="jumlah" value="<?php echo $rows->jumlah; ?>" name="jumlah" required  readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="tanggal">Tanggal Pengiriman Barang :</label>
-                                <input type="date" class="form-control" id="tanggal" value="<?php echo $rows->tanggal; ?>" name="tanggal" required  readonly>
-                            </div>
                         
                             <div class="form-group">
-                                <label for="tanggal_diterima">Tanggal Barang Samapai :</label>
+                                <label for="tanggal_diterima">Tanggal Barang Sampai :</label>
                                 <input type="date" style="margin-left:66px;width:20%;display:inline;" class="form-control form_datetime" id="tanggal_diterima" name="tanggal_diterima" required  >
                             </div>
 

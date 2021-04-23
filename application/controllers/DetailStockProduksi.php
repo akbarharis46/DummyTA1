@@ -6,7 +6,7 @@ require APPPATH . '/libraries/REST_Controller.php';
 
 use Restserver\Libraries\REST_Controller;
 
-class Barang extends REST_Controller
+class DetailStockProduksi extends REST_Controller
 {
 
     function __construct($config = 'rest')
@@ -16,24 +16,24 @@ class Barang extends REST_Controller
 
     function index_get()
     {
-        $id = $this->get('id_barang');
+        $id = $this->get('id_detailstockproduksi');
         if ($id == '') {
-            $barang = $this->db->get('barang')->result();
+            $detailproduksi = $this->db->get('detail_stockproduksi')->result();
         } else {
-            $this->db->where('id_barang', $id);
-            $barang = $this->db->get('barang')->result();
+            $this->db->where('id_detailstockproduksi', $id);
+            $detailproduksi = $this->db->get('detail_stockproduksi')->result();
         }
-        $this->response($barang, 200);
+        $this->response($detailproduksi, 200);
     }
+
     function index_post()
     {
         $data = array(
-            'nama_kategori'           => $this->post('nama_kategori'),
-            'tanggal'                 => $this->post('tanggal'),
-            'total'                  => $this->post('total'),
+      'stock_produksi'   => $this->post('stock_produksi'),
+      
             
         );
-        $insert = $this->db->insert('barang',$data);
+        $insert = $this->db->insert('detail_stockproduksi',$data);
         if ($insert) {
             $this->response($data, 200);
         } else {
@@ -41,34 +41,35 @@ class Barang extends REST_Controller
         }
     }
     function index_put()
+
+
     {
-        $id = $this->put('id_barang');
+        $id = $this->put('id_detailstockproduksi');
         $data = array(
             
-            'nama_kategori'           => $this->put('nama_kategori'),
-            'total'                  => $this->put('total'),
-            'total'                  => $this->put('total'),
-            
+            'stock_produksi'           => $this->put('stock_produksi'),
+      
         );
-        $this->db->where('id_barang', $id);
-        $update = $this->db->update('barang', $data);
+        $this->db->where('id_detailstockproduksi', $id);
+        $update = $this->db->update('detail_stockproduksi', $data);
         if ($update) {
             $this->response($data, 200);
         } else {
             $this->response(array('status' => 'fail', 502));
         }
     }
+
+
+
     function index_delete()
     {
-        $id = $this->delete('id_barang');
-        $this->db->where('id_barang', $id);
-        $delete = $this->db->delete('barang');
+        $id = $this->delete('id_detailstockproduksi');
+        $this->db->where('id_detailstockproduksi', $id);
+        $delete = $this->db->delete('detail_stockproduksi');
         if ($delete) {
             $this->response(array('status' => 'success'), 201);
         } else {
             $this->response(array('status' => 'fail', 502));
         }
     }
-
 }
-?>

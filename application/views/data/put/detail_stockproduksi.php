@@ -22,28 +22,19 @@
       <div class="alert alert-secondary" role="alert">
       <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Barang&nbsp; > <i class="nav-icon fas fa-pen"></i>Update Penduduk
         </div>
-            <form action="<?php echo site_url(); ?>detailproduksiclient/put_process"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()" >
-                 <?php foreach ($barang as $rows) : ?>
-                        <div class="form-group">
-                                <label for="id_barang">Id Barang :</label>
+            <form action="<?php echo site_url(); ?>detailstockproduksiclient/put_process"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()" >
+                 <?php foreach ($detailstockproduksi as $rows) : ?>
+                  <div class="form-group">
+                                <label for="id_detailstockproduksi">ID Detail :</label>
+                                <input type="text" class="form-control" id="id_detailstockproduksi" value="<?php echo $rows->id_detailstockproduksi; ?>" name="id_detailstockproduksi" required readonly>
                             </div>
+
+
                             
                             <div class="form-group">
-                            <label for="nama_kategori" >Kategori :</label>
-                                <input type="text" class="form-control" name="nama_kategori" id="selected"value="<?php echo $rows->nama_kategori;?>" readonly>
-                        </div>
-                       
-                        <div class="form-group">
-                                <label for="nama_barang">Nama Barang :</label>
-                                <input type="text" class="form-control" id="nama_barang" name="nama_barang" value="<?php echo $rows->nama_barang;?>"placeholder="nama_barang"  name="nama_barang"  >
-                        </div>
-
-
-                        <div class="form-group">
-                                <label for="total">Total :</label>
-                                <input type="text" class="form-control" id="total" value="<?php echo $rows->total;?>"placeholder="total"  name="total"  >
-                        </div>
-                        
+                            <label for="stock_produksi" >STOCK BARANG PRODUKSI :</label>
+                                <input type="text" class="form-control" name="stock_produksi" id="selected"value="<?php echo $rows->stock_produksi;?>">
+                                </div>
                             <div class="form-group">
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
                                     Update

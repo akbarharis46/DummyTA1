@@ -20,14 +20,14 @@
     <div class="content">
       <div class="container-fluid">
       <div class="alert alert-secondary" role="alert">
-      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Barang&nbsp; > <i class="nav-icon fas fa-plus"></i>tambah Penduduk
+      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Barang&nbsp; > <i class="nav-icon fas fa-plus"></i>Barang Masuk
         </div>
                 <form action="<?php echo site_url('barangclient/post_process');?>" class="needs-validation" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="count" value="<?= $count ?>">
                     <?php for ($i = 0; $i < $count; $i++) : ?>
                     <!-- Form Start -->
                     <div class="form-group">
-                        <label for="nama_kategori">Nama Kategori  :</label>
+                        <label for="nama_kategori">Nama Barang  :</label>
                         <select class="form-control" name="nama_kategori[]" >
                             <option value="" selected="">-- Pilih --</option>
                             <?php foreach ($kategori as $rows) : ?>
@@ -38,10 +38,12 @@
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
 
-                    <div class="form-group">
+                 
+
+                    <!-- <div class="form-group">
                         <label for="nama_barang">Nama Barang</label>
-                        <input type="text" class="form-control" id="nama_barang" name="nama_barang[]" placeholder="nama_barang"  name="nama_barang"  >
-                    </div>
+                        <input type="Hiden" class="form-control" id="nama_barang" name="nama_barang[]" placeholder="nama_barang"  name="nama_barang"  >
+                    </div> -->
 <!--                     
                     <div class="form-group">
                         <label for="tanggal">Tanggal</label>
@@ -50,11 +52,13 @@
 
 
                     <div class="form-group">
-                        <label for="total">Total :</label>
+                        <label for="total">Jumlah :</label>
                         <input type="number" class="form-control" id="total" name="total[]" placeholder="total"  name="total"  >
                     </div>
-                    
-                    <hr>
+       
+                    <!-- <hr style="height:2px;border-width:0;color:gray;background-color:gray"> -->
+                    <br>
+  
                     <!-- Form End -->
 
                     <?php endfor; ?>

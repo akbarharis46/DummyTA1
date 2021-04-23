@@ -28,7 +28,7 @@
             <!-- /.card-header -->
             <div class="card-body" >
                 <div class='card-header' style="margin-left:-20px;">
-                <a class='btn btn-primary'href="<?php echo site_url(); ?>kategoriclient/post/">
+                <a class='btn btn-primary'href="<?php echo site_url(); ?>detailproduksiclient/post/">
                     <i class="fa fa-plus"></i>
                     <span >
                         Tambah
@@ -85,8 +85,9 @@
                 <thead>
                 <tr>
                   <th>NOMOR</th>
-                  <th>NAMA BARANG</th>
-                  <th>AKSI</th>
+                  <th>TANGGAL</th>
+                  <th>NAMA STAFF</th>
+                  <th>SHIFT PRODUKSI</th>
                  
                 </tr>
                 </thead>
@@ -94,15 +95,17 @@
                 <?php 
                   $i=1;
 
-                foreach ($kategori as $rows) : ?>
+                foreach ($detailproduksi as $rows) : ?>
                     <tr>
                         <td><?php echo  $i++; ?></td>
-                        <td><?php echo $rows->nama_kategori; ?>
+                        <td><?php echo $rows->tanggal; ?>
+                        <td><?php echo $rows->nama_staff; ?>
+                        <td><?php echo $shift->shift; ?>
                             </td>
                         <td>
-                            <a href="<?php echo site_url(); ?>kategoriclient/put/<?php echo $rows->id_kategori; ?>" class="btn btn-warning">
+                            <a href="<?php echo site_url(); ?>detailproduksiclient/put/<?php echo $rows->id_detailproduksi; ?>" class="btn btn-warning">
                             <i class="fa fa-pen" aria-hidden="true"></i></a>
-                            <a href="<?= base_url(); ?>kategoriclient/delete/<?= $rows->id_kategori; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
+                            <a href="<?= base_url(); ?>detailproduksiclient/delete/<?= $rows->id_detailproduksi; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
                             <i class="fa fa-trash" aria-hidden="true"></i></a>
                         </td>
                     </tr>

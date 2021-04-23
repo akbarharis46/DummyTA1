@@ -113,7 +113,6 @@
                 <tr>
                   <th>No </th>
                   <th>Tanggal</th>
-                  <th>Nama Kategori</th>
                   <th>Nama Barang</th>
                   <th>Jumlah Barang Masuk</th>
                   <th>Aksi</th>
@@ -128,7 +127,6 @@
                         <td><?php echo  $i++; ?></td>
                         <td><?php echo $rows->tanggal; ?> </td>
                         <td><?php echo $rows->nama_kategori; ?> </td>
-                        <td><?php echo $rows->nama_barang; ?></td>
                         <td><?php echo $rows->total; ?>
                             </td>
                     

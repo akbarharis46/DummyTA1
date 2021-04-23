@@ -13,6 +13,7 @@ class PengirimanClient extends CI_Controller
         
         $this->API = "http://localhost:8080/dummyTA/pengiriman";
         $this->API1 = "http://localhost:8080/dummyTA/detail";
+        $this->API2 = "http://localhost:8080/dummyTA/detailproduksi";
     }
 
     public function index()
@@ -274,8 +275,8 @@ class PengirimanClient extends CI_Controller
   public function proses_data_keluar()
   {
     $this->load->model('admin_model');
-    // $this->db->set("jumlah_pengiriman","jumlah_pengiriman - jumlah_pengiriman");
-    // $this->db->where('id_pengiriman', 'id_pengiriman');
+    $this->db->set("jumlah_pengiriman","jumlah_pengiriman - jumlah_pengiriman");
+    $this->db->where('id_pengiriman', 'id_pengiriman');
     $this->form_validation->set_rules('tanggal_diterima','Tanggal Diterima','trim|required');
     // $this->form_validation->set_rules('jumlah_pengiriman-jumlah_pengiriman','Jumlah Pengiriman','trim|required');
     if($this->form_validation->run() === true)
@@ -303,6 +304,19 @@ class PengirimanClient extends CI_Controller
               'tanggal_diterima' => $tanggal_diterima
       );
       $insert =  $this->curl->simple_post($this->API1,$data1);
+
+      // Kurangi stok
+      $detail_produksi = json_decode($this->curl->simple_get($this->API2), true);
+
+      $data2 = array(
+        'id_detailproduksi' => $detail_produksi[0]['id_detailproduksi'],
+        'stock_produksi' => $detail_produksi[0]['stock_produksi'] - $jumlah_pengiriman
+        
+      );
+      
+      $update = $this->curl->simple_put($this->API2, $data2, array(CURLOPT_BUFFERSIZE => 10));
+
+
     //   var_dump($insert);
     //   exit;
          if($insert){
@@ -312,7 +326,7 @@ class PengirimanClient extends CI_Controller
             } else {
                 echo"gagal";
             }
-        }else{
+        } else{
             redirect('detailclient');
         }
     }

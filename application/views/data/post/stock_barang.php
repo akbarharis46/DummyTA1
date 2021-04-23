@@ -27,47 +27,16 @@
 
                     <!-- Form Start -->
                     <div class="form-group">
-                        <label for="nama_staff">Nama Staff  :</label>
-                        <select class="form-control" name="nama_staff" >
+                        <label for="nama_barang">Nama Barang  :</label>
+                        <select class="form-control" name="nama_barang" >
                             <option value="" selected="">-- Pilih --</option>
-                            <?php foreach ($produksi as $rows) : ?>
-                                <option value="<?php echo $rows->nama_staff; ?>"> <?php echo $rows->nama_staff; ?> </option>
+                            <?php foreach ($barang as $rows) : ?>
+                                <option value="<?php echo $rows->nama_kategori; ?>"> <?php echo $rows->nama_kategori; ?> </option>
                             <?php endforeach; ?>
                         </select>
                         <div class="valid-feedback"></div>
                         <div class="invalid-feedback">Please fill out this field.</div>
                     </div>
-
-
-                    <div class="form-group">
-                        <label for="tanggal">Tanggal Produksi  :</label>
-                        <select class="form-control" name="tanggal" >
-                            <option value="" selected="">-- Pilih --</option>
-                            <?php foreach ($produksi as $rows) : ?>
-                                <option value="<?php echo $rows->tanggal; ?>"> <?php echo $rows->tanggal; ?> </option>
-                            <?php endforeach; ?>
-                        </select>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label for="shift">Shift Produksi  :</label>
-                        <select class="form-control" name="shift" >
-                            <option value="" selected="">-- Pilih --</option>
-                            <?php foreach ($produksi as $rows) : ?>
-                                <option value="<?php echo $rows->shift; ?>"> <?php echo $rows->shift; ?> </option>
-                            <?php endforeach; ?>
-                        </select>
-                        <div class="valid-feedback"></div>
-                        <div class="invalid-feedback">Please fill out this field.</div>
-                    </div>
-
-
-
-
 
                  
 
@@ -81,6 +50,12 @@
                         <input type="date" class="form-control" id="tanggal" placeholder="tanggal"  name="tanggal"  >
                     </div> -->
 
+
+                    <div class="form-group">
+                        <label for="stock_pabrik">Stock Barang :</label>
+                        <input type="number" class="form-control" id="stock_pabrik" name="stock_pabrik" placeholder="stock_pabrik"  name="stock_pabrik"  >
+                    </div>
+       
                     <!-- <hr style="height:2px;border-width:0;color:gray;background-color:gray"> -->
                     <br>
   

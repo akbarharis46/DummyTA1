@@ -94,15 +94,15 @@
                 <?php 
                   $i=1;
 
-                foreach ($detailproduksi as $rows) : ?>
+                foreach ($detailstockproduksi as $rows) : ?>
                     <tr>
                         <td><?php echo  $i++; ?></td>
                         <td><?php echo $rows->stock_produksi; ?>
                             </td>
                         <td>
-                            <a href="<?php echo site_url(); ?>detailproduksiclient/put/<?php echo $rows->id_detailproduksi; ?>" class="btn btn-warning">
+                            <a href="<?php echo site_url(); ?>detailstockproduksiclient/put/<?php echo $rows->id_detailstockproduksi; ?>" class="btn btn-warning">
                             <i class="fa fa-pen" aria-hidden="true"></i></a>
-                            <a href="<?= base_url(); ?>detailproduksiclient/delete/<?= $rows->id_detailproduksi; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
+                            <a href="<?= base_url(); ?>detailstockproduksiclient/delete/<?= $rows->id_detailstockproduksi; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
                             <i class="fa fa-trash" aria-hidden="true"></i></a>
                         </td>
                     </tr>

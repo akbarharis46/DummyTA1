@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class DetailProduksiClient extends CI_Controller
+class DetailStockProduksiClient extends CI_Controller
 {
 
     public function __construct()
@@ -10,17 +10,17 @@ class DetailProduksiClient extends CI_Controller
         parent::__construct();
         $this->load->library('curl');
         
-        $this->API = "http://localhost:8080/dummyTA/detailproduksi";
-        $this->API2 = "http://localhost:8080/dummyTA/produksi";
+        $this->API = "http://localhost:8080/dummyTA/detailstockproduksi";
+        // $this->API2 = "http://localhost:8080/dummyTA/bategori";
     }
 
     public function index()
     {
-        $data['detailproduksi'] = json_decode($this->curl->simple_get($this->API));
-        $data['title'] = "DetailProudksiClient";
+        $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "DetailStockProudksiClient";
         $this->load->view('header0');
         $this->load->view('bar');
-        $this->load->view('data/detail_produksi1', $data);
+        $this->load->view('data/detail_produksi', $data);
         $this->load->view('footer');
     }
     
@@ -61,13 +61,12 @@ class DetailProduksiClient extends CI_Controller
 
     public function post()
     {
-        $data['detailproduksi'] = json_decode($this->curl->simple_get($this->API));
-        $data['produksi'] = json_decode($this->curl->simple_get($this->API2));
+        $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API));
 
       $data['title'] = "Tambah Data Detai Produksi";
       $this->load->view('header0');
       $this->load->view('bar');
-      $this->load->view('data/post/detail_produksi', $data);
+      $this->load->view('data/post/detail_stockproduksi', $data);
       $this->load->view('footer');
     }
 
@@ -88,9 +87,8 @@ class DetailProduksiClient extends CI_Controller
     public function post_process()
     {
         $data = array(
-            'nama_staff'            => $this->input->post('nama_staff'),
-            'tanggal'            => $this->input->post('tanggal'),
-            'shift'            => $this->input->post('shift'),
+            'stock_produksi'            => $this->input->post('stock_produksi'),
+         
         );
         $insert =  $this->curl->simple_post($this->API,$data);
         if ($insert) {
@@ -102,7 +100,7 @@ class DetailProduksiClient extends CI_Controller
         }
         // var_dump($insert);
         // die;
-        redirect('detailproduksiclient');
+        redirect('detailstockproduksiclient');
       }
 
 
@@ -134,9 +132,9 @@ class DetailProduksiClient extends CI_Controller
     
     public function put()
     {
-        $params = array('id_detailproduksi' =>  $this->uri->segment(3));
-        $data['detailproduksi'] = json_decode($this->curl->simple_get($this->API, $params));
-        $data['title'] = "Edit Data Detail Produksi";
+        $params = array('id_detailstockproduksi' =>  $this->uri->segment(3));
+        $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API, $params));
+        $data['title'] = "Edit Data Barang";
         $this->load->view('header0');
         $this->load->view('bar');
         $this->load->view('data/put/detail_stockproduksi', $data);
@@ -162,10 +160,8 @@ class DetailProduksiClient extends CI_Controller
     {
         $data = array(
             
-            'id_detailproduksi'            => $this->input->post('id_detailproduksi'),
-            'tanggal'                        => $this->input->post('tanggal'),
-            'nama_staff'            => $this->input->post('nama_staff'),
-            'shift'            => $this->input->post('shift'),
+            'id_detailstockproduksi'            => $this->input->post('id_detailstockproduksi'),
+            'stock_produksi'            => $this->input->post('stock_produksi'),
             
         );
         
@@ -179,7 +175,7 @@ class DetailProduksiClient extends CI_Controller
         }
         // print_r($update);
         // die;
-        redirect('detailproduksiclient');
+        redirect('detailstockproduksiclient');
     }
 
 

@@ -88,7 +88,7 @@
                   <th>Tanggal</th>
                   <th>Nama Staff Pengawas</th>
                   <th>Shift Produksi</th>
-                  <th>Jumlah Hasil Produksi</th>
+                  <th>Hasil Produksi Hari Ini</th>
                   <th>AKSI</th>
  
                 </tr>

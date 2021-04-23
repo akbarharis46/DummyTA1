@@ -94,7 +94,6 @@ class BarangClient extends CI_Controller
         $data = [];
         for ($i=0; $i < $count; $i++) { 
             $data[] = array(
-                'nama_barang'            => $this->input->post('nama_barang')[$i],
                 'nama_kategori'           => $this->input->post('nama_kategori')[$i],
                 'total'                  => $this->input->post('total')[$i],
                 'tanggal'                  => date('Y-m-d'),

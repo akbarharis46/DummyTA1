@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class DetailProduksiClient extends CI_Controller
+class StockBarangClient extends CI_Controller
 {
 
     public function __construct()
@@ -10,17 +10,17 @@ class DetailProduksiClient extends CI_Controller
         parent::__construct();
         $this->load->library('curl');
         
-        $this->API = "http://localhost:8080/dummyTA/detailproduksi";
-        $this->API2 = "http://localhost:8080/dummyTA/produksi";
+        $this->API = "http://localhost:8080/dummyTA/stockbarang";
+        $this->API2 = "http://localhost:8080/dummyTA/barang";
     }
 
     public function index()
     {
-        $data['detailproduksi'] = json_decode($this->curl->simple_get($this->API));
-        $data['title'] = "DetailProudksiClient";
+        $data['stockbarang'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "Stock Barang";
         $this->load->view('header0');
         $this->load->view('bar');
-        $this->load->view('data/detail_produksi1', $data);
+        $this->load->view('data/stock_barang', $data);
         $this->load->view('footer');
     }
     
@@ -61,13 +61,13 @@ class DetailProduksiClient extends CI_Controller
 
     public function post()
     {
-        $data['detailproduksi'] = json_decode($this->curl->simple_get($this->API));
-        $data['produksi'] = json_decode($this->curl->simple_get($this->API2));
+     $data['stockbarang'] = json_decode($this->curl->simple_get($this->API));
+     $data['barang'] = json_decode($this->curl->simple_get($this->API2));
 
       $data['title'] = "Tambah Data Detai Produksi";
       $this->load->view('header0');
       $this->load->view('bar');
-      $this->load->view('data/post/detail_produksi', $data);
+      $this->load->view('data/post/stock_barang', $data);
       $this->load->view('footer');
     }
 
@@ -88,21 +88,26 @@ class DetailProduksiClient extends CI_Controller
     public function post_process()
     {
         $data = array(
-            'nama_staff'            => $this->input->post('nama_staff'),
-            'tanggal'            => $this->input->post('tanggal'),
-            'shift'            => $this->input->post('shift'),
+
+        
+            'nama_barang'            => $this->input->post('nama_barang'),
+            'stock_pabrik'            => $this->input->post('stock_pabrik'),
+         
         );
         $insert =  $this->curl->simple_post($this->API,$data);
+        // print_r($data);
+        // exit;
+
         if ($insert) {
-            // echo"berhasil";
+            echo"berhasil";
             $this->session->set_flashdata('result', 'Data Kategori Berhasil Ditambahkan');
         } else {
-            // echo"gagal berhasil";
+            echo"gagal";
             $this->session->set_flashdata('result', 'Data Kategori Gagal Ditambahkan');
         }
-        // var_dump($insert);
+        // print_r($data);
         // die;
-        redirect('detailproduksiclient');
+        redirect('stockbarangclient');
       }
 
 
@@ -134,12 +139,12 @@ class DetailProduksiClient extends CI_Controller
     
     public function put()
     {
-        $params = array('id_detailproduksi' =>  $this->uri->segment(3));
-        $data['detailproduksi'] = json_decode($this->curl->simple_get($this->API, $params));
-        $data['title'] = "Edit Data Detail Produksi";
+        $params = array('id_detailsemuabarang' =>  $this->uri->segment(3));
+        $data['stockbarang'] = json_decode($this->curl->simple_get($this->API, $params));
+        $data['title'] = "Edit Data Barang";
         $this->load->view('header0');
         $this->load->view('bar');
-        $this->load->view('data/put/detail_stockproduksi', $data);
+        $this->load->view('data/put/stock_barang', $data);
         $this->load->view('footer');
 
     }
@@ -162,10 +167,10 @@ class DetailProduksiClient extends CI_Controller
     {
         $data = array(
             
-            'id_detailproduksi'            => $this->input->post('id_detailproduksi'),
-            'tanggal'                        => $this->input->post('tanggal'),
-            'nama_staff'            => $this->input->post('nama_staff'),
-            'shift'            => $this->input->post('shift'),
+            'id_detailsemuabarang'            => $this->input->post('id_detailsemuabarang'),
+            'id_barang'            => $this->input->post('id_barang'),
+            'nama_barang'            => $this->input->post('nama_barang'),
+            'stock_pabrik'            => $this->input->post('stock_pabrik'),
             
         );
         
@@ -179,7 +184,7 @@ class DetailProduksiClient extends CI_Controller
         }
         // print_r($update);
         // die;
-        redirect('detailproduksiclient');
+        redirect('stockbarangclient');
     }
 
 
@@ -215,7 +220,7 @@ class DetailProduksiClient extends CI_Controller
 
     public function delete()
     {
-        $params = array('id_detailstockproduksi' =>  $this->uri->segment(3));
+        $params = array('id_detailsemuabarang' =>  $this->uri->segment(3));
         $delete =  $this->curl->simple_delete($this->API, $params);
         if ($delete) {
             $this->session->set_flashdata('result', 'Hapus Data kategori Berhasil');
@@ -224,7 +229,7 @@ class DetailProduksiClient extends CI_Controller
         }
         // print_r($delete);
         // die;
-        redirect('detailstockproduksiclient');
+        redirect('stockbarangclient');
     }
 
 
@@ -244,4 +249,5 @@ class DetailProduksiClient extends CI_Controller
 //     }
 
 }
+
 ?>

@@ -25,12 +25,12 @@ class DetailProduksi extends REST_Controller
         }
         $this->response($detailproduksi, 200);
     }
-
     function index_post()
     {
         $data = array(
-      'stock_produksi'   => $this->post('stock_produksi'),
-      
+            'nama_staff'           => $this->post('nama_staff'),
+            'tanggal'                 => $this->post('tanggal'),
+            'shift'                  => $this->post('shift'),
             
         );
         $insert = $this->db->insert('detail_produksi',$data);
@@ -41,26 +41,23 @@ class DetailProduksi extends REST_Controller
         }
     }
     function index_put()
-
-
     {
         $id = $this->put('id_detailproduksi');
         $data = array(
             
-            'stock_produksi'           => $this->put('stock_produksi'),
-      
+            'nama_staff'           => $this->put('nama_staff'),
+            'tanggal'                  => $this->put('tanggal'),
+            'shift'                  => $this->put('shift'),
+            
         );
         $this->db->where('id_detailproduksi', $id);
-        $update = $this->db->update('detail_produksi', $data);
+        $update = $this->db->update('barang', $data);
         if ($update) {
             $this->response($data, 200);
         } else {
             $this->response(array('status' => 'fail', 502));
         }
     }
-
-
-
     function index_delete()
     {
         $id = $this->delete('id_detailproduksi');
@@ -72,4 +69,6 @@ class DetailProduksi extends REST_Controller
             $this->response(array('status' => 'fail', 502));
         }
     }
+
 }
+?>

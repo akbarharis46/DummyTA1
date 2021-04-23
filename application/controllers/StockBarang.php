@@ -6,7 +6,7 @@ require APPPATH . '/libraries/REST_Controller.php';
 
 use Restserver\Libraries\REST_Controller;
 
-class Barang extends REST_Controller
+class StockBarang extends REST_Controller
 {
 
     function __construct($config = 'rest')
@@ -16,42 +16,41 @@ class Barang extends REST_Controller
 
     function index_get()
     {
-        $id = $this->get('id_barang');
+        $id = $this->get('id_detailsemuabarang');
         if ($id == '') {
-            $barang = $this->db->get('barang')->result();
+            $stockbarang = $this->db->get('detail_semuabarang')->result();
         } else {
-            $this->db->where('id_barang', $id);
-            $barang = $this->db->get('barang')->result();
+            $this->db->where('id_detailsemuabarang', $id);
+            $stockbarang = $this->db->get('detail_semuabarang')->result();
         }
-        $this->response($barang, 200);
+        $this->response($stockbarang, 200);
     }
     function index_post()
     {
         $data = array(
-            'nama_kategori'           => $this->post('nama_kategori'),
-            'tanggal'                 => $this->post('tanggal'),
-            'total'                  => $this->post('total'),
+            'nama_barang'           => $this->post('nama_barang'),
+            'stock_pabrik'                 => $this->post('stock_pabrik'),
             
         );
-        $insert = $this->db->insert('barang',$data);
+        $insert = $this->db->insert('detail_semuabarang',$data);
         if ($insert) {
             $this->response($data, 200);
         } else {
             $this->response(array('status' => 'fail', 502));
         }
+        
     }
     function index_put()
     {
-        $id = $this->put('id_barang');
+        $id = $this->put('id_detailsemuabarang');
         $data = array(
             
-            'nama_kategori'           => $this->put('nama_kategori'),
-            'total'                  => $this->put('total'),
-            'total'                  => $this->put('total'),
+            'nama_barang'           => $this->put('nama_barang'),
+            'stock_pabrik'          => $this->put('stock_pabrik'),
             
         );
-        $this->db->where('id_barang', $id);
-        $update = $this->db->update('barang', $data);
+        $this->db->where('id_detailsemuabarang', $id);
+        $update = $this->db->update('detail_semuabarang', $data);
         if ($update) {
             $this->response($data, 200);
         } else {
@@ -60,9 +59,9 @@ class Barang extends REST_Controller
     }
     function index_delete()
     {
-        $id = $this->delete('id_barang');
-        $this->db->where('id_barang', $id);
-        $delete = $this->db->delete('barang');
+        $id = $this->delete('id_detailsemuabarang');
+        $this->db->where('id_detailsemuabarang', $id);
+        $delete = $this->db->delete('detail_semuabarang');
         if ($delete) {
             $this->response(array('status' => 'success'), 201);
         } else {

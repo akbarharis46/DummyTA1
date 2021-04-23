@@ -26,7 +26,6 @@
                  <?php foreach ($barang as $rows) : ?>
                         <div class="form-group">
                                 <label for="id_barang">Id Barang :</label>
-                                <input type="text" class="form-control" id="id_barang" value="<?php echo $rows->id_barang;?>" placeholder="id_barang"  name="id_barang"  readonly>
                             </div>
 
 
@@ -34,10 +33,6 @@
                             <div class="form-group">
                             <label for="sel1" >Kategori :</label>
                                 <input type="text" class="form-control" name="nama_kategori" id="selected"value="<?php echo $rows->nama_kategori;?>" readonly>
-                                <!-- <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" >
-                                        <option value="L">Laki-laki</option>
-                                        <option value="P">Perempuan</option>
-                                </select> -->
                         </div>
                        
                         <div class="form-group">
