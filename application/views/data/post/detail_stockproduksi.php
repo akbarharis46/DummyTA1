@@ -23,17 +23,18 @@
       <div class="alert alert-secondary" role="alert">
       <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Pengiriman &nbsp; > <i class="nav-icon fas fa-pen"></i>Update kategori
         </div>
-            <form action="<?php echo site_url(); ?>detail_stockproduksiclient/post_process"  class="needs-validation" method="POST" role="form" enctype="multipart/form-data" onload="setSelectBoxByText()">
+            <form action="<?php echo site_url(); ?>detailstockproduksiclient/post_process"  class="needs-validation" method="POST" role="form" enctype="multipart/form-data" onload="setSelectBoxByText()">
            
 
-                          
+            <div class="form-group">
+                                <label for="tanggal_stockproduksi">Tanggal :</label>
+                                <input type="date" class="form-control" id="tanggal_stockproduksi"  name="tanggal_stockproduksi" required  >
+                            </div>
 
                             <div class="form-group">
                                 <label for="stock_produksi">Stock Produksi :</label>
                                 <input type="text" class="form-control" id="stock_produksi"  name="stock_produksi" required  >
                             </div>
-
-                           
 
           </select>
 

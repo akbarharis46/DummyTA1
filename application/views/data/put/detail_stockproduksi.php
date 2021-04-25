@@ -30,6 +30,12 @@
                             </div>
 
 
+
+                            <div class="form-group">
+                            <label for="tanggal_stockproduksi" >Tanggal:</label>
+                                <input type="date" class="form-control" name="tanggal_stockproduksi" id="selected"value="<?php echo $rows->tanggal_stockproduksi;?>">
+                                </div>
+
                             
                             <div class="form-group">
                             <label for="stock_produksi" >STOCK BARANG PRODUKSI :</label>

@@ -29,8 +29,8 @@
                     <div class="form-group">
                         <label for="nama_barang">Nama Barang  :</label>
                         <select class="form-control" name="nama_barang" >
-                            <option value="" selected="">-- Pilih --</option>
-                            <?php foreach ($barang as $rows) : ?>
+                            <option value="" selected="">Pilih Barang</option>
+                            <?php foreach ($kategori as $rows) : ?>
                                 <option value="<?php echo $rows->nama_kategori; ?>"> <?php echo $rows->nama_kategori; ?> </option>
                             <?php endforeach; ?>
                         </select>
@@ -44,16 +44,16 @@
                         <label for="nama_barang">Nama Barang</label>
                         <input type="Hiden" class="form-control" id="nama_barang" name="nama_barang[]" placeholder="nama_barang"  name="nama_barang"  >
                     </div> -->
-<!--                     
+                    
                     <div class="form-group">
-                        <label for="tanggal">Tanggal</label>
-                        <input type="date" class="form-control" id="tanggal" placeholder="tanggal"  name="tanggal"  >
-                    </div> -->
+                        <label for="tanggal_stockgudang">Tanggal</label>
+                        <input type="date" class="form-control" id="tanggal_stockgudang" placeholder="tanggal"  name="tanggal_stockgudang"  >
+                    </div>
 
 
                     <div class="form-group">
                         <label for="stock_pabrik">Stock Barang :</label>
-                        <input type="number" class="form-control" id="stock_pabrik" name="stock_pabrik" placeholder="stock_pabrik"  name="stock_pabrik"  >
+                        <input type="number" class="form-control" id="stock_pabrik" name="stock_pabrik" placeholder="Jumlah Stock Barang Pabrik"  name="stock_pabrik"  >
                     </div>
        
                     <!-- <hr style="height:2px;border-width:0;color:gray;background-color:gray"> -->

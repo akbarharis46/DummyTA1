@@ -28,6 +28,7 @@ class StockBarang extends REST_Controller
     function index_post()
     {
         $data = array(
+            'tanggal_stockgudang'                 => $this->post('tanggal_stockgudang'),
             'nama_barang'           => $this->post('nama_barang'),
             'stock_pabrik'                 => $this->post('stock_pabrik'),
             
@@ -45,6 +46,7 @@ class StockBarang extends REST_Controller
         $id = $this->put('id_detailsemuabarang');
         $data = array(
             
+            'tanggal_stockgudang'           => $this->put('tanggal_stockgudang'),
             'nama_barang'           => $this->put('nama_barang'),
             'stock_pabrik'          => $this->put('stock_pabrik'),
             

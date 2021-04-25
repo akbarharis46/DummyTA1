@@ -9,7 +9,7 @@
       <div class="container-fluid" >
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-microphone" ></i> Data Kategori Barang</h2>
+            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-microphone" ></i> Data Stock Barang Produksi</h2>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -28,7 +28,7 @@
             <!-- /.card-header -->
             <div class="card-body" >
                 <div class='card-header' style="margin-left:-20px;">
-                <a class='btn btn-primary'href="<?php echo site_url(); ?>detailproduksiclient/post/">
+                <a class='btn btn-primary'href="<?php echo site_url(); ?>detailstockproduksiclient/post/">
                     <i class="fa fa-plus"></i>
                     <span >
                         Tambah
@@ -85,6 +85,7 @@
                 <thead>
                 <tr>
                   <th>NOMOR</th>
+                  <th>TANGGAL</th>
                   <th>STOCK BARANG PRODUKSI</th>
                   <th>AKSI</th>
                  
@@ -97,6 +98,7 @@
                 foreach ($detailstockproduksi as $rows) : ?>
                     <tr>
                         <td><?php echo  $i++; ?></td>
+                        <td><?php echo $rows->tanggal_stockproduksi; ?>
                         <td><?php echo $rows->stock_produksi; ?>
                             </td>
                         <td>

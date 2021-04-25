@@ -11,7 +11,7 @@ class StockBarangClient extends CI_Controller
         $this->load->library('curl');
         
         $this->API = "http://localhost:8080/dummyTA/stockbarang";
-        $this->API2 = "http://localhost:8080/dummyTA/barang";
+        $this->API2 = "http://localhost:8080/dummyTA/kategori";
     }
 
     public function index()
@@ -62,7 +62,7 @@ class StockBarangClient extends CI_Controller
     public function post()
     {
      $data['stockbarang'] = json_decode($this->curl->simple_get($this->API));
-     $data['barang'] = json_decode($this->curl->simple_get($this->API2));
+     $data['kategori'] = json_decode($this->curl->simple_get($this->API2));
 
       $data['title'] = "Tambah Data Detai Produksi";
       $this->load->view('header0');
@@ -91,6 +91,7 @@ class StockBarangClient extends CI_Controller
 
         
             'nama_barang'            => $this->input->post('nama_barang'),
+            'tanggal_stockgudang'            => $this->input->post('tanggal_stockgudang'),
             'stock_pabrik'            => $this->input->post('stock_pabrik'),
          
         );
@@ -169,6 +170,7 @@ class StockBarangClient extends CI_Controller
             
             'id_detailsemuabarang'            => $this->input->post('id_detailsemuabarang'),
             'id_barang'            => $this->input->post('id_barang'),
+            'tanggal_stockgudang'            => $this->input->post('tanggal_stockgudang'),
             'nama_barang'            => $this->input->post('nama_barang'),
             'stock_pabrik'            => $this->input->post('stock_pabrik'),
             

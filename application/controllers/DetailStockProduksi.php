@@ -30,6 +30,7 @@ class DetailStockProduksi extends REST_Controller
     {
         $data = array(
       'stock_produksi'   => $this->post('stock_produksi'),
+      'tanggal_stockproduksi'   => $this->post('tanggal_stockproduksi'),
       
             
         );
@@ -48,6 +49,7 @@ class DetailStockProduksi extends REST_Controller
         $data = array(
             
             'stock_produksi'           => $this->put('stock_produksi'),
+            'tanggal_stockproduksi'           => $this->put('tanggal_stockproduksi'),
       
         );
         $this->db->where('id_detailstockproduksi', $id);

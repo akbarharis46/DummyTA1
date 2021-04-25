@@ -85,6 +85,7 @@
                 <thead>
                 <tr>
                   <th>NOMOR</th>
+                  <th>TANGGL</th>
                   <th>NAMA BARANG</th>
                   <th>STOCK BARANG</th>
                   <th>AKSI</th>
@@ -98,6 +99,7 @@
                 foreach ($stockbarang as $rows) : ?>
                     <tr>
                         <td><?php echo  $i++; ?></td>
+                        <td><?php echo $rows->tanggal_stockgudang; ?>
                         <td><?php echo $rows->nama_barang; ?>
                         <td><?php echo $rows->stock_pabrik; ?>
 

@@ -88,6 +88,7 @@ class DetailStockProduksiClient extends CI_Controller
     {
         $data = array(
             'stock_produksi'            => $this->input->post('stock_produksi'),
+            'tanggal_stockproduksi'            => $this->input->post('tanggal_stockproduksi'),
          
         );
         $insert =  $this->curl->simple_post($this->API,$data);
@@ -162,6 +163,7 @@ class DetailStockProduksiClient extends CI_Controller
             
             'id_detailstockproduksi'            => $this->input->post('id_detailstockproduksi'),
             'stock_produksi'            => $this->input->post('stock_produksi'),
+            'tanggal_stockproduksi'            => $this->input->post('tanggal_stockproduksi'),
             
         );
         
