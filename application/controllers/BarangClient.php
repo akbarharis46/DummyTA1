@@ -90,19 +90,29 @@ class BarangClient extends CI_Controller
     public function post_process()
     {
         $count = $this->input->post('count');
-
-        $data = [];
+        
         for ($i=0; $i < $count; $i++) { 
-            $data[] = array(
+            $data = array(
                 'nama_kategori'           => $this->input->post('nama_kategori')[$i],
                 'total'                  => $this->input->post('total')[$i],
                 'tanggal'                  => date('Y-m-d'),
          
             );
-        }
 
-        for ($i=0; $i < $count; $i++) { 
-            $insert =  $this->curl->simple_post($this->API,$data[$i]);
+            $insert =  $this->curl->simple_post($this->API, $data);
+
+            $detail_semuabarang = $this->db->get_where('detail_semuabarang', ['nama_barang' => $data['nama_kategori']])->row_array();
+
+            //update stok
+            $id = $detail_semuabarang['id_detailsemuabarang'];
+            $data = array(
+                'tanggal_stockgudang'            => date('Y-m-d'),  
+                'stock_pabrik'            => $detail_semuabarang['stock_pabrik'] + $data['total'],
+                
+            );
+            
+            $this->db->where('id_detailsemuabarang', $id);
+            $update = $this->db->update('detail_semuabarang', $data);
         }
         
         if ($insert) {
@@ -175,13 +185,26 @@ class BarangClient extends CI_Controller
         $data = array(
             
             'id_barang'            => $this->input->post('id_barang'),
-            'nama_barang'            => $this->input->post('nama_barang'),
             'nama_kategori'           => $this->input->post('nama_kategori'),
             'total'                  => $this->input->post('total'),
             'tanggal'                  => date('Y-m-d'),
         );
 
         $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
+
+        $detail_semuabarang = $this->db->get_where('detail_semuabarang', ['nama_barang' => $data['nama_kategori']])->row_array();
+
+            //update stok
+            $id = $detail_semuabarang['id_detailsemuabarang'];
+            $data = array(
+                'tanggal_stockgudang'            => date('Y-m-d'),  
+                'stock_pabrik'            => $detail_semuabarang['stock_pabrik'] + ($data['total'] - $this->input->post('total_lama')),
+                
+            );
+            
+            $this->db->where('id_detailsemuabarang', $id);
+            $update = $this->db->update('detail_semuabarang', $data);
+
         if ($update) {
             echo"berhasil";
             // $this->session->set_flashdata('result', 'Update Data kategori Berhasil');

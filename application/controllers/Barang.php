@@ -47,7 +47,6 @@ class Barang extends REST_Controller
             
             'nama_kategori'           => $this->put('nama_kategori'),
             'total'                  => $this->put('total'),
-            'total'                  => $this->put('total'),
             
         );
         $this->db->where('id_barang', $id);

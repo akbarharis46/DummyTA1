@@ -24,9 +24,7 @@
         </div>
             <form action="<?php echo site_url(); ?>barangclient/put_process"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()" >
                  <?php foreach ($barang as $rows) : ?>
-                        <div class="form-group">
-                                <label for="id_barang">Id Barang :</label>
-                            </div>
+                      <input type="hidden" name="id_barang" value="<?php echo $rows->id_barang;?>">
 
 
                             
@@ -36,8 +34,8 @@
                         </div>
                        
                         <div class="form-group">
-                                <label for="nama_barang">Nama Barang :</label>
-                                <input type="text" class="form-control" id="nama_barang" name="nama_barang" value="<?php echo $rows->nama_barang;?>"placeholder="nama_barang"  name="nama_barang"  >
+                                <label for="nama_kategori">Nama Barang :</label>
+                                <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" value="<?php echo $rows->nama_kategori;?>"placeholder="nama_kategori"  name="nama_barang"  >
                         </div>
 
 
@@ -45,7 +43,7 @@
                                 <label for="total">Total :</label>
                                 <input type="text" class="form-control" id="total" value="<?php echo $rows->total;?>"placeholder="total"  name="total"  >
                         </div>
-                        
+                        <input type="hidden" name="total_lama" value="<?php echo $rows->total;?>">
                             <div class="form-group">
                                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
                                     Update

@@ -11,6 +11,7 @@ class ProduksiClient extends CI_Controller
         $this->load->library('curl');
         
         $this->API = "http://localhost:8080/dummyTA/produksi";
+        $this->API2 = "http://localhost:8080/dummyTA/detailstockproduksi";
     }
 
     public function index()
@@ -85,6 +86,20 @@ class ProduksiClient extends CI_Controller
             'tanggal'                 => $this->input->post('tanggal'),
         );
         $insert =  $this->curl->simple_post($this->API,$data);
+        
+        // update stok barang
+        $detail_produksi = json_decode($this->curl->simple_get($this->API2), true);
+
+
+        $data2 = array(
+            'id_detailstockproduksi' => $detail_produksi[0]['id_detailstockproduksi'],
+            'tanggal_stockproduksi' => date('Y-m-d'),
+            'stock_produksi' => $detail_produksi[0]['stock_produksi'] + $this->input->post('jumlah_produksi')
+            
+        );
+
+        $update = $this->curl->simple_put($this->API2, $data2, array(CURLOPT_BUFFERSIZE => 10));
+
         if ($insert) {
             echo"berhasil";
         } else {
@@ -158,6 +173,20 @@ class ProduksiClient extends CI_Controller
         );
         
         $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
+
+          // update stok barang
+          $detail_produksi = json_decode($this->curl->simple_get($this->API2), true);
+
+
+          $data2 = array(
+              'id_detailstockproduksi' => $detail_produksi[0]['id_detailstockproduksi'],
+              'tanggal_stockproduksi' => date('Y-m-d'),
+              'stock_produksi' => $detail_produksi[0]['stock_produksi'] + ($this->input->post('jumlah_produksi') - $this->input->post('jumlah_produksi_lama'))
+              
+          );
+  
+          $update = $this->curl->simple_put($this->API2, $data2, array(CURLOPT_BUFFERSIZE => 10));
+
         if ($update) {
             echo"berhasil";
             // $this->session->set_flashdata('result', 'Update Data produksi Berhasil');
@@ -226,14 +255,6 @@ public function deleteproduksi()
     // die;
     redirect('produksiclient/index1');
 }
-
-
-
-
-
-
-
-
 
 
 }

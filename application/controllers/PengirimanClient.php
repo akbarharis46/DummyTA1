@@ -13,7 +13,7 @@ class PengirimanClient extends CI_Controller
         
         $this->API = "http://localhost:8080/dummyTA/pengiriman";
         $this->API1 = "http://localhost:8080/dummyTA/detail";
-        $this->API2 = "http://localhost:8080/dummyTA/detailproduksi";
+        $this->API2 = "http://localhost:8080/dummyTA/detailstockproduksi";
     }
 
     public function index()
@@ -101,6 +101,20 @@ class PengirimanClient extends CI_Controller
             'status_pengiriman'              => $this->input->post('status_pengiriman'),     
         );
         $insert =  $this->curl->simple_post($this->API,$data);
+
+        // Kurangi stok
+      $detail_produksi = json_decode($this->curl->simple_get($this->API2), true);
+
+
+      $data2 = array(
+        'id_detailstockproduksi' => $detail_produksi[0]['id_detailstockproduksi'],
+        'tanggal_stockproduksi' => date('Y-m-d'),
+        'stock_produksi' => $detail_produksi[0]['stock_produksi'] - $this->input->post('jumlah')
+        
+      );
+      
+      $update = $this->curl->simple_put($this->API2, $data2, array(CURLOPT_BUFFERSIZE => 10));
+
         if ($insert) {
             echo"berhasil";
             //$this->session->set_flashdata('result', 'Data pengiriman Berhasil Ditambahkan');
@@ -183,8 +197,23 @@ class PengirimanClient extends CI_Controller
             
             
         );
+
         
         $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
+
+        // Kurangi stok
+        $detail_produksi = json_decode($this->curl->simple_get($this->API2), true);
+
+
+        $data2 = array(
+            'id_detailstockproduksi' => $detail_produksi[0]['id_detailstockproduksi'],
+            'tanggal_stockproduksi' => date('Y-m-d'),
+            'stock_produksi' => $detail_produksi[0]['stock_produksi'] - ($this->input->post('jumlah') - $this->input->post('jumlah_lama'))
+            
+        );
+
+        $update = $this->curl->simple_put($this->API2, $data2, array(CURLOPT_BUFFERSIZE => 10));
+
         if ($update) {
             echo"berhasil";
             // $this->session->set_flashdata('result', 'Update Data pengiriman Berhasil');
@@ -291,6 +320,9 @@ class PengirimanClient extends CI_Controller
       $jumlah_pengiriman    = $this->input->post('jumlah');
       $tanggal_masuk         = $this->input->post('tanggal');
       $tanggal_diterima         = $this->input->post('tanggal_diterima');
+
+      
+
       $data1 = array(
               'id_pengiriman' => $id_pengiriman,
               'namapengirim' =>$namapengirim,
@@ -303,19 +335,25 @@ class PengirimanClient extends CI_Controller
               'tanggal_masuk' => $tanggal_masuk,
               'tanggal_diterima' => $tanggal_diterima
       );
-      $insert =  $this->curl->simple_post($this->API1,$data1);
+      $insert =   $this->curl->simple_post($this->API1,$data1);
 
-      // Kurangi stok
-      $detail_produksi = json_decode($this->curl->simple_get($this->API2), true);
-
-      $data2 = array(
-        'id_detailproduksi' => $detail_produksi[0]['id_detailproduksi'],
-        'stock_produksi' => $detail_produksi[0]['stock_produksi'] - $jumlah_pengiriman
+      $data = array(
+            'id_pengiriman'                  => $this->input->post('id_pengiriman'),
+            'nama_pengirim'                  => $this->input->post('nama_pengirim'),
+            'nomorhp'                        => $this->input->post('nomorhp'),
+            'tujuan'                         => $this->input->post('tujuan'),
+            'jumlah'                         => $this->input->post('jumlah'),
+            'jenis_kendaraan'                => $this->input->post('jenis_kendaraan'),
+            'nomor_kendaraan'                => $this->input->post('nomor_kendaraan'),
+            'tanggal'                        => $this->input->post('tanggal'),
+            'status_pengiriman'              => $this->input->post('status_pengiriman'),
+            
+            
+        );
         
-      );
-      
-      $update = $this->curl->simple_put($this->API2, $data2, array(CURLOPT_BUFFERSIZE => 10));
+        $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
 
+      
 
     //   var_dump($insert);
     //   exit;

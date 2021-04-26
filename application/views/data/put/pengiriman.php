@@ -50,6 +50,7 @@
 
                             <div class="form-group">
                                 <label for="jumlah">Jumlah Pengiriman :</label>
+                                <input type="hidden" class="form-control" id="jumlah_lama" value="<?php echo $rows->jumlah; ?>" name="jumlah_lama" required  >
                                 <input type="text" class="form-control" id="jumlah" value="<?php echo $rows->jumlah; ?>" name="jumlah" required  >
                             </div>
 

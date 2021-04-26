@@ -20,15 +20,15 @@ class Pengiriman extends REST_Controller
         $id2 = $this->get('id_detailpengiriman');
 
         if ($id == '') {
-            $pengiriman = $this->db->get('pengiriman')->result();
+            $pengiriman = $this->db->get_where('pengiriman', ['status_pengiriman' => 'Proses Pengiriman'])->result();
         } else {
             $this->db->where('id_pengiriman', $id);
-            $pengiriman = $this->db->get('pengiriman')->result();
+            $pengiriman = $this->db->get_where('pengiriman', ['status_pengiriman' => 'Proses Pengiriman'])->result();
         } 
         if ($id2 != '') {
             
             $this->db->where('id_detailpengiriman', $id2);
-            $pengiriman = $this->db->get('pengiriman')->result();
+            $pengiriman = $this->db->get_where('pengiriman', ['status_pengiriman' => 'Proses Pengiriman'])->result();
         }
 
         $this->response($pengiriman, 200);

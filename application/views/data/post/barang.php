@@ -27,7 +27,7 @@
                     <?php for ($i = 0; $i < $count; $i++) : ?>
                     <!-- Form Start -->
                     <div class="form-group">
-                        <label for="nama_kategori">Nama Barang  :</label>
+                        <label for="nama_kategori">Nama Barang <?= $i+1 ?> :</label>
                         <select class="form-control" name="nama_kategori[]" >
                             <option value="" selected="">-- Pilih --</option>
                             <?php foreach ($kategori as $rows) : ?>
@@ -52,9 +52,11 @@
 
 
                     <div class="form-group">
-                        <label for="total">Jumlah :</label>
+                        <label for="total">Jumlah Barang  :</label>
                         <input type="number" class="form-control" id="total" name="total[]" placeholder="total"  name="total"  >
                     </div>
+
+                    <hr>
        
                     <!-- <hr style="height:2px;border-width:0;color:gray;background-color:gray"> -->
                     <br>

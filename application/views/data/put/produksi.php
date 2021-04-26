@@ -48,6 +48,7 @@
 
                             <div class="form-group">
                                 <label for="jumlah_produksi">Jumlah Hasil Produksi :</label>
+                                <input type="hidden" class="form-control" id="jumlah_produksi_lama" value="<?php echo $rows->jumlah_produksi; ?>" name="jumlah_produksi_lama" required  >
                                 <input type="text" class="form-control" id="jumlah_produksi" value="<?php echo $rows->jumlah_produksi; ?>" name="jumlah_produksi" required  >
                             </div>
 
