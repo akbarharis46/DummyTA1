@@ -29,7 +29,7 @@ class KategoriClient extends CI_Controller
         $data['title'] = "kategori";
         $this->load->view('header1');
         $this->load->view('bar1');
-        $this->load->view('staffproduksi/kategori', $data);
+        $this->load->view('staffproduksi/kategoristaffgudang', $data);
         $this->load->view('footer');
     }
 
@@ -39,7 +39,7 @@ class KategoriClient extends CI_Controller
         $data['title'] = "kategori";
         $this->load->view('header1');
         $this->load->view('bar2');
-        $this->load->view('staffgudang/kategori', $data);
+        $this->load->view('staffgudang/kategoristaffgudang', $data);
         $this->load->view('footer');
     }
 
@@ -50,7 +50,7 @@ class KategoriClient extends CI_Controller
         $data['title'] = "kategori";
         $this->load->view('header1');
         $this->load->view('bar3');
-        $this->load->view('staffpengiriman/kategori', $data);
+        $this->load->view('staffpengiriman/kategoristaffgudang', $data);
         $this->load->view('footer');
     }
     
@@ -68,7 +68,7 @@ class KategoriClient extends CI_Controller
       $data['title'] = "Tambah Data Kategori";
       $this->load->view('header1');
       $this->load->view('bar2');
-      $this->load->view('staffgudang/postkategori', $data);
+      $this->load->view('staffgudang/postkategori_staffgudang', $data);
       $this->load->view('footer');
     }
 
@@ -140,7 +140,7 @@ class KategoriClient extends CI_Controller
         $data['title'] = "Edit Data Kategori";
         $this->load->view('header1');
         $this->load->view('bar2');
-        $this->load->view('staffgudang/putkategori', $data);
+        $this->load->view('staffgudang/putkategori_staffgudang', $data);
         $this->load->view('footer');
         
     }

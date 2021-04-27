@@ -42,7 +42,7 @@
                with font-awesome or any other icon font library -->
                
           <li class="nav-item ">
-           <a href="<?php echo site_url(); ?>staffproduksiclient" class="nav-link" id="navHome">
+           <a href="<?php echo site_url(); ?>adminclient" class="nav-link" id="navHome">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Dashboard
@@ -51,7 +51,14 @@
           </li>
          
 
-          </li>
+                 
+        <li >
+            <a href="<?php echo site_url(); ?>userclient" class="nav-link">
+            <i class="fa fa-address-card"></i> <span>User Info</span>
+
+          </a>
+          
+        </li>
 
           <li class="nav-item has-treeview" >
             <a href="" class="nav-link" id="navData" style="background:rgba(52,58,64,255); color:white;">
@@ -61,13 +68,21 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo site_url(); ?>produksiclient/index1" class="nav-link">
-                <i class="fa fa-cog"></i> Olah Data Produksi</a></li>
+                <i class="fa fa-cog"></i>Data Produksi</a></li>
                 </a>
               </li>
 
+
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>xxxx" class="nav-link">
-                <i class="fa fa-cog"></i> Olah Detail Data Produksi</a></li>
+                <a href="<?php echo site_url(); ?>detailproduksiclient" class="nav-link">
+                <i class="fa fa-cog"></i>Detail Produksi</a></li>
+                </a>
+              </li>
+
+
+              <li class="nav-item">
+                <a href="<?php echo site_url(); ?>detailstockproduksiclient" class="nav-link">
+                <i class="fa fa-cog"></i> Stock Barang Produksi</a></li>
                 </a>
               </li>
               
@@ -87,28 +102,24 @@
             <ul class="nav nav-treeview">
 
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>kategoriclient/index1" class="nav-link">
-                <i class="fa fa-cube"></i>Data Kategori Barang</a></li>
+                <a href="<?php echo site_url(); ?>kategoriclient" class="nav-link">
+                <i class="fa fa-cube"></i>Data Barang</a></li>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>barangclient/index1" class="nav-link">
+                <a href="<?php echo site_url(); ?>barangclient" class="nav-link">
                 <i class="fa fa-shopping-cart"></i> Barang Masuk</a></li>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>xxxx" class="nav-link">
-                <i class="fa fa-cubes"></i> Data Semua Barang</a></li>
+                <a href="<?php echo site_url(); ?>StockBarangClient" class="nav-link">
+                <i class="fa fa-cubes"></i> Stock Barang</a></li>
                 </a>
               </li>
 
-              <li class="nav-item">
-                <a href="<?php echo site_url(); ?>xxxx" class="nav-link">
-                <i class="fa fa-file"></i> Cetak Data Gudang</a></li>
-                </a>
-              </li>
+             
 
             </ul>
 
@@ -119,30 +130,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>pengirimanclient/index1" class="nav-link">
-                <i class="fa fa-cog"></i> Olah Data Pengiriman</a></li>
+                <a href="<?php echo site_url(); ?>pengirimanclient" class="nav-link">
+                <i class="fa fa-cog"></i>Data Pengiriman</a></li>
                 </a>
               </li>
               
             
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>xxxx" class="nav-link">
-                <i class="fa fa-cog"></i> Olah Status Pengiriman</a></li>
+                <a href="<?php echo site_url(); ?>detailclient" class="nav-link">
+                <i class="fa fa-cog"></i>Detail Pengiriman</a></li>
                 </a>
               </li>
 
 
 
-              <li class="nav-item">
-                <a href="<?php echo site_url(); ?>xxxx" class="nav-link">
-                <i class="fa fa-file"></i> Cetak Data Pengiriman</a></li>
-                </a>
-              </li>
             </ul>
 
 
             <li >
-            <a href="<?php echo site_url(); ?>xxxx" class="nav-link">
+            <a href="<?php echo site_url().'BackupDatabase_controller/backup'; ?>" class="nav-link">
           <i class="fa fa-database"></i> <span>Backup Database</span>
 
           </a>

@@ -1,4 +1,4 @@
-<?php if($this->session->userdata('level')!='Staff Produksi'){redirect('login');};?>
+<?php if($this->session->userdata('level')!='Staff Gudang'){redirect('login');};?>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -10,7 +10,7 @@
       <div class="container-fluid" >
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-tablet" ></i> Update Data Produksi</h2>
+            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-tablet" ></i> Data Barang</h2>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -20,44 +20,18 @@
     <div class="content">
       <div class="container-fluid">
       <div class="alert alert-secondary" role="alert">
-      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Produksi &nbsp; > <i class="nav-icon fas fa-pen"></i>Update kategori
+      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Barang&nbsp; > <i class="nav-icon fas fa-pen"></i>Update kategori
         </div>
-            <form action="<?php echo site_url(); ?>produksiclient/put_processproduksi"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()">
-                 <?php foreach ($produksi as $rows) : ?>
+            <form action="<?php echo site_url(); ?>kategoriclient/put_processkategori"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()">
+                 <?php foreach ($kategori as $rows) : ?>
                             <div class="form-group">
-                                <label for="id_produksi">ID Produksi :</label>
-                                <input type="text" class="form-control" id="id_produksi" value="<?php echo $rows->id_produksi; ?>" name="id_produksi" required readonly>
+                                <label for="id_kategori">ID Kategori :</label>
+                                <input type="text" class="form-control" id="id_kategori" value="<?php echo $rows->id_kategori; ?>" name="id_kategori" required readonly>
                             </div>
-
-
                             <div class="form-group">
-                                <label for="nama_staff">Nama Pengawas Produksi :</label>
-                                <input type="text" class="form-control" id="nama_staff" value="<?php echo $rows->nama_staff; ?>" name="nama_staff" required  >
+                                <label for="nama_kategori">Nama Kategori :</label>
+                                <input type="text" class="form-control" id="nama_kategori" value="<?php echo $rows->nama_kategori; ?>" name="nama_kategori" required  >
                             </div>
-
-
-                            <label for="shift">Shift Produksi  :</label>
-        <!-- <input type="option" class="form-control" id="status_pengiriman" placeholder="Pilih Status  Pengiriman" name="status_pengiriman" > -->
-                                <select name="shift" id="shift" class="form-control">
-                                <option value="shift1">1</option>
-                                <option value="shift2">2</option>
-                                <option value="shift3">3</option>
-                             </select>
-
-
-
-                            <div class="form-group">
-                                <label for="jumlah_produksi">Jumlah Hasil Produksi :</label>
-                                <input type="text" class="form-control" id="jumlah_produksi" value="<?php echo $rows->jumlah_produksi; ?>" name="jumlah_produksi" required  >
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="tanggal">Tanggal Produksi :</label>
-                                <input type="date" class="form-control" id="tanggal" value="<?php echo $rows->tanggal; ?>" name="tanggal" required  >
-                            </div>
-
-
                         
                             <div class="form-group">
                             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">

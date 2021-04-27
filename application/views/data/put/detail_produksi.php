@@ -23,25 +23,32 @@
       <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-tablet"></i> Barang&nbsp; > <i class="nav-icon fas fa-pen"></i>Update Penduduk
         </div>
             <form action="<?php echo site_url(); ?>detailproduksiclient/put_process"  class="needs-validation" method="POST" enctype="multipart/form-data" onload="setSelectBoxByText()" >
-                 <?php foreach ($barang as $rows) : ?>
+                 <?php foreach ($detailproduksi as $rows) : ?>
                         <div class="form-group">
-                                <label for="id_barang">Id Barang :</label>
+                                <label for="id_detailproduksi">Id Detail :</label>
+                                <input type="text" class="form-control" name="id_detailproduksi" id="selected"value="<?php echo $rows->id_detailproduksi;?>" readonly>
+
                             </div>
+           
+                            <div class="form-group">
+                            <label for="id_produksi" >ID Produksi :</label>
+                                <input type="text" class="form-control" name="id_produksi" id="selected"value="<?php echo $rows->id_produksi;?>" readonly>
+                        </div>
                             
                             <div class="form-group">
-                            <label for="nama_kategori" >Kategori :</label>
-                                <input type="text" class="form-control" name="nama_kategori" id="selected"value="<?php echo $rows->nama_kategori;?>" readonly>
+                            <label for="tanggal" >Kategori :</label>
+                                <input type="date" class="form-control" name="tanggal" id="selected"value="<?php echo $rows->tanggal;?>"placeholder="tanggal"  name="tanggal"  >
                         </div>
                        
                         <div class="form-group">
-                                <label for="nama_barang">Nama Barang :</label>
-                                <input type="text" class="form-control" id="nama_barang" name="nama_barang" value="<?php echo $rows->nama_barang;?>"placeholder="nama_barang"  name="nama_barang"  >
+                                <label for="nama_staff">Nama Staff :</label>
+                                <input type="text" class="form-control" id="nama_staff" name="nama_staff" value="<?php echo $rows->nama_staff;?>"placeholder="nama_staff"  name="nama_staff"  >
                         </div>
 
 
                         <div class="form-group">
-                                <label for="total">Total :</label>
-                                <input type="text" class="form-control" id="total" value="<?php echo $rows->total;?>"placeholder="total"  name="total"  >
+                                <label for="shift">shift :</label>
+                                <input type="text" class="form-control" id="shift" value="<?php echo $rows->shift;?>"placeholder="shift"  name="shift"  >
                         </div>
                         
                             <div class="form-group">

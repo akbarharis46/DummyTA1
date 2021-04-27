@@ -45,13 +45,14 @@ class DetailProduksi extends REST_Controller
         $id = $this->put('id_detailproduksi');
         $data = array(
             
+            'id_produksi'           => $this->put('id_produksi'),
             'nama_staff'           => $this->put('nama_staff'),
             'tanggal'                  => $this->put('tanggal'),
             'shift'                  => $this->put('shift'),
             
         );
         $this->db->where('id_detailproduksi', $id);
-        $update = $this->db->update('barang', $data);
+        $update = $this->db->update('detail_produksi', $data);
         if ($update) {
             $this->response($data, 200);
         } else {

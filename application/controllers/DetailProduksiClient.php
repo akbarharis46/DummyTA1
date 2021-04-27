@@ -139,7 +139,7 @@ class DetailProduksiClient extends CI_Controller
         $data['title'] = "Edit Data Detail Produksi";
         $this->load->view('header0');
         $this->load->view('bar');
-        $this->load->view('data/put/detail_stockproduksi', $data);
+        $this->load->view('data/put/detail_produksi', $data);
         $this->load->view('footer');
 
     }
@@ -162,10 +162,11 @@ class DetailProduksiClient extends CI_Controller
     {
         $data = array(
             
-            'id_detailproduksi'            => $this->input->post('id_detailproduksi'),
+            'id_detailproduksi'              => $this->input->post('id_detailproduksi'),
+            'id_produksi'                    => $this->input->post('id_produksi'),
             'tanggal'                        => $this->input->post('tanggal'),
-            'nama_staff'            => $this->input->post('nama_staff'),
-            'shift'            => $this->input->post('shift'),
+            'nama_staff'                     => $this->input->post('nama_staff'),
+            'shift'                          => $this->input->post('shift'),
             
         );
         
@@ -215,7 +216,7 @@ class DetailProduksiClient extends CI_Controller
 
     public function delete()
     {
-        $params = array('id_detailstockproduksi' =>  $this->uri->segment(3));
+        $params = array('id_detailproduksi' =>  $this->uri->segment(3));
         $delete =  $this->curl->simple_delete($this->API, $params);
         if ($delete) {
             $this->session->set_flashdata('result', 'Hapus Data kategori Berhasil');
@@ -224,7 +225,7 @@ class DetailProduksiClient extends CI_Controller
         }
         // print_r($delete);
         // die;
-        redirect('detailstockproduksiclient');
+        redirect('detailproduksiclient');
     }
 
 
@@ -242,6 +243,12 @@ class DetailProduksiClient extends CI_Controller
 //         // die;
 //         redirect('barangclient/index2');
 //     }
+
+
+
+
+
+
 
 }
 ?>

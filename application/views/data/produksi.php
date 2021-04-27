@@ -110,8 +110,15 @@
                         <td>
                             <a href="<?php echo site_url(); ?>produksiclient/put/<?php echo $rows->id_produksi; ?>" class="btn btn-warning">
                             <i class="fa fa-pen" aria-hidden="true"></i></a>
+
+
+                            <a class="btn btn-success "  href="<?=base_url();?>produksiclient/data_produksikeluar/<?= $rows->id_produksi;?>">
+                            <i class="ion-android-exit" aria-hidden="true"></i></a>
+
+
                             <a href="<?= base_url(); ?>produksiclient/delete/<?= $rows->id_produksi; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
                             <i class="fa fa-trash" aria-hidden="true"></i></a>
+
                         </td>
                     </tr>
                     <?php endforeach ; ?>

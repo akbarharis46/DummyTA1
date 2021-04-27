@@ -11,7 +11,7 @@ class ProduksiClient extends CI_Controller
         $this->load->library('curl');
         
         $this->API = "http://localhost:8080/dummyTA/produksi";
-        $this->API2 = "http://localhost:8080/dummyTA/detailstockproduksi";
+        $this->API2 = "http://localhost:8080/dummyTA/detailproduksi";
     }
 
     public function index()
@@ -73,7 +73,7 @@ class ProduksiClient extends CI_Controller
       $data['title'] = "Tambah Data produksi";
       $this->load->view('header1');
       $this->load->view('bar1');
-      $this->load->view('staffproduksi/post', $data);
+      $this->load->view('staffproduksi/hasil_produksip', $data);
       $this->load->view('footer');
     }
   
@@ -152,7 +152,7 @@ class ProduksiClient extends CI_Controller
         $data['title'] = "Edit Data produksi";
         $this->load->view('header1');
         $this->load->view('bar1');
-        $this->load->view('staffproduksi/put', $data);
+        $this->load->view('staffproduksi/hasil_produksiput', $data);
         $this->load->view('footer');
 
     }
@@ -256,6 +256,70 @@ public function deleteproduksi()
     redirect('produksiclient/index1');
 }
 
+public function data_produksikeluar()
+{
+  $params = array('id_produksi' =>  $this->uri->segment(3));
+  $data['detailproduksi'] = json_decode($this->curl->simple_get($this->API2));
+  $data['produksi'] = json_decode($this->curl->simple_get($this->API,$params));
+  $data['title'] = "Edit Data pengiriman";
+  $this->load->view('header0');
+  $this->load->view('bar');
+  $this->load->view('data/perpindahan_dataproduksi',$data);
+  $this->load->view('footer');
+}
+
+public function prosesdata_produksikeluar()
+{
+  $this->load->model('admin_model');
+  $this->db->where('id_produksi', 'id_produksi');
+  $this->form_validation->set_rules('tanggal','Tanggal Diterima','trim|required');
+
+
+
+  // $this->form_validation->set_rules('jumlah_pengiriman-jumlah_pengiriman','Jumlah Pengiriman','trim|required');
+  if($this->form_validation->run() === true)
+  {
+    $id_produksi   = $this->input->post('id_produksii');
+    $nama_staff   = $this->input->post('nama_staff');
+    $shift    = $this->input->post('shift');
+    $tanggal         = $this->input->post('tanggal');
+    $jumlah_produksi         = $this->input->post('jumlah_produksi');
+
+    $data1 = array(
+            'id_produksi' => $id_produksi,
+            'nama_staff' =>$nama_staff,
+            'shift' =>$shift,
+            'tanggal' =>$tanggal,         
+            'jumlah_produksi' =>$jumlah_produksi,         
+            
+    );
+    $insert =   $this->curl->simple_post($this->API2,$data1);
+
+    $data = array(
+          'id_produksi'                  => $this->input->post('id_produksi'),
+          'nama_staff'                  => $this->input->post('nama_staff'),
+          'shift'                        => $this->input->post('shift'),
+          'tanggal'                         => $this->input->post('tanggal'),
+          'jumlah_produksi'                         => $this->input->post('jumlah_produksi'),
+          
+          
+      );
+      
+      $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
+
+      if($insert){
+        //   print_r($update);
+        //   exit;
+          echo"berhasil";   
+          redirect('detailproduksiclient');
+          
+        } else {
+            echo"gagal";
+        }
+      } else{
+          redirect('detailproduksiclient');
+      }
+  }
 
 }
 ?>
