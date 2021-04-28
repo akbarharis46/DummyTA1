@@ -25,7 +25,7 @@ class BarangClient extends CI_Controller
     }
     
 
-    public function index1()
+    public function indexproduksi()
     {
         $data['barang'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "barang";
@@ -35,7 +35,7 @@ class BarangClient extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function index2()
+    public function indexgudang()
     {
         $data['barang'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "barang";
@@ -46,7 +46,7 @@ class BarangClient extends CI_Controller
     }
 
 
-    public function index3()
+    public function indexpengiriman()
     {
         $data['barang'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "barang";

@@ -23,7 +23,7 @@ class KategoriClient extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function index1()
+    public function indexproduksi()
     {
         $data['kategori'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "kategori";
@@ -33,7 +33,7 @@ class KategoriClient extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function index2()
+    public function indexgudang()
     {
         $data['kategori'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "kategori";
@@ -44,13 +44,13 @@ class KategoriClient extends CI_Controller
     }
 
 
-    public function index3()
+    public function indexpengiriman()
     {
         $data['kategori'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "kategori";
         $this->load->view('header1');
         $this->load->view('bar3');
-        $this->load->view('staffpengiriman/kategoristaffgudang', $data);
+        $this->load->view('staffpengiriman/kategori', $data);
         $this->load->view('footer');
     }
     

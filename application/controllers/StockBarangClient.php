@@ -25,36 +25,36 @@ class StockBarangClient extends CI_Controller
     }
     
 
-    // public function index1()
-    // {
-    //     $data['barang'] = json_decode($this->curl->simple_get($this->API));
-    //     $data['title'] = "barang";
-    //     $this->load->view('header1');
-    //     $this->load->view('bar1');
-    //     $this->load->view('staffproduksi/barang', $data);
-    //     $this->load->view('footer');
-    // }
+    public function indexproduksi()
+    {
+        $data['stockbarang'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "Stock Barang";
+        $this->load->view('header1');
+        $this->load->view('bar1');
+        $this->load->view('staffproduksi/stock_barang', $data);
+        $this->load->view('footer');
+    }
 
-    // public function index2()
-    // {
-    //     $data['barang'] = json_decode($this->curl->simple_get($this->API));
-    //     $data['title'] = "barang";
-    //     $this->load->view('header1');
-    //     $this->load->view('bar2');
-    //     $this->load->view('staffgudang/barang', $data);
-    //     $this->load->view('footer');
-    // }
+    public function indexgudang()
+    {
+        $data['stockbarang'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "Stock Barang";
+        $this->load->view('header1');
+        $this->load->view('bar2');
+        $this->load->view('staffgudang/stock_barang', $data);
+        $this->load->view('footer');
+    }
 
 
-    // public function index3()
-    // {
-    //     $data['barang'] = json_decode($this->curl->simple_get($this->API));
-    //     $data['title'] = "barang";
-    //     $this->load->view('header1');
-    //     $this->load->view('bar3');
-    //     $this->load->view('staffpengiriman/barang', $data);
-    //     $this->load->view('footer');
-    // }
+    public function indexpengiriman()
+    {
+        $data['stockbarang'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "Stock Barang";
+        $this->load->view('header1');
+        $this->load->view('bar3');
+        $this->load->view('staffpengiriman/stock_barang', $data);
+        $this->load->view('footer');
+    }
 
 
 

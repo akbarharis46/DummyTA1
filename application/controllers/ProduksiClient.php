@@ -23,7 +23,7 @@ class ProduksiClient extends CI_Controller
         $this->load->view('data/produksi', $data);
         $this->load->view('footer');
     }
-    public function index1()
+    public function indexproduksi()
     {
         $data['produksi'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "produksi";
@@ -33,7 +33,7 @@ class ProduksiClient extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function index2()
+    public function indexgudang()
     {
         $data['produksi'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "produksi";
@@ -44,7 +44,7 @@ class ProduksiClient extends CI_Controller
     }
 
 
-    public function index3()
+    public function indexpengiriman()
     {
         $data['produksi'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "produksi";
