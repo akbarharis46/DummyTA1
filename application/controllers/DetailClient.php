@@ -25,6 +25,19 @@ class DetailClient extends CI_Controller
     }
 
 
+    public function indexpengiriman()
+    {
+        $data['detail'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "Kategori";
+        $this->load->view('header1');
+        $this->load->view('bar3');
+        $this->load->view('staffpengiriman/barang_keluar', $data);
+        $this->load->view('footer');
+
+    }
+    
+
+
 public function delete()
 {
     $params = array('id_detailpengiriman' =>  $this->uri->segment(3));
@@ -37,6 +50,22 @@ public function delete()
     // print_r($delete);
     // die;
     redirect('detailclient/index');
+}
+
+
+
+public function deletestaffpengiriman()
+{
+    $params = array('id_detailpengiriman' =>  $this->uri->segment(3));
+    $delete =  $this->curl->simple_delete($this->API, $params);
+    if ($delete) {
+        $this->session->set_flashdata('result', 'Hapus Data produksi Berhasil');
+    } else {
+        $this->session->set_flashdata('result', 'Hapus Data produksi Gagal');
+    }
+    // print_r($delete);
+    // die;
+    redirect('detailclient/indexpengiriman');
 }
 
     

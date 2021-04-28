@@ -1,4 +1,4 @@
-<?php if($this->session->userdata('level')!='Staff Pengiriman'){redirect('login');};?>
+<?php if($this->session->userdata('level')!='admin'){redirect('login');};?>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -50,6 +50,7 @@
 
                             <div class="form-group">
                                 <label for="jumlah">Jumlah Pengiriman :</label>
+                                <input type="hidden" class="form-control" id="jumlah_lama" value="<?php echo $rows->jumlah; ?>" name="jumlah_lama" required  >
                                 <input type="text" class="form-control" id="jumlah" value="<?php echo $rows->jumlah; ?>" name="jumlah" required  >
                             </div>
 
@@ -72,17 +73,21 @@
                                 <input type="date" class="form-control" id="tanggal" value="<?php echo $rows->tanggal; ?>" name="tanggal" required  >
                             </div>
 
-      
+
+                           
                             <div class="form-group">
+
                             <label for="status_pengiriman">Status Pengiriman :</label>
                             <!-- <input type="option" class="form-control" id="status_pengiriman" placeholder="Pilih Status  Pengiriman" name="status_pengiriman" > -->
                             <select name="status_pengiriman" id="status_pengiriman" class="form-control">
                             <option value="Proses Pengiriman">Proses Pengiriman</option>
-                            <option value="Barang Sudah Sampai">Barang Sudah Sampai</option>
+                            <option value="Sudah Terkirim">Barang Sudah Sampai</option>
           </select>
 
 </div>  
-                    
+
+
+                        
                             <div class="form-group">
                             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
                             <a  style="color:white">Update </a>

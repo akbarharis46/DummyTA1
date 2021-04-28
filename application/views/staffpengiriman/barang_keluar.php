@@ -9,7 +9,7 @@
       <div class="container-fluid" >
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-microphone" ></i> Data barang</h2>
+            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-microphone" ></i> Data Pengiriman Barang</h2>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -19,7 +19,7 @@
     <div class="content">
       <div class="container-fluid">
       <div class="alert alert-secondary" role="alert">
-      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-microphone"></i> barang
+      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-microphone"></i> Pengiriman
         </div>
         <div class="row">
           <div class="col"> 
@@ -27,8 +27,8 @@
               <div class="card">
             <!-- /.card-header -->
             <div class="card-body" >
-                <div class='card-header' style="margin-left:-20px;">
-              
+                    <div class='card-header' style="margin-left:-20px;">
+          
 
                     </div>   
                   <span>
@@ -79,27 +79,55 @@
               <table id="tabel" class="table table-bordered">
                 <thead>
                 <tr>
-                  <th>No </th>
-                  <th>Tanggal</th>
-                  <th>Nama Kategori</th>
-                  <th>Nama Barang</th>
-                  <th>Jumlah Barang Masuk</th>
-                
-                 
+                  <th>NOMOR</th>
+                  <th>NAMA PENGIRIM</th>
+                  <th>NOMOR HP PETUGAS PENGIRIMAN</th>
+                  <th>TUJUAN PENGIRIMAN</th>
+                  <th>JUMLAH PENGIRIMAN</th>
+                  <th>JENIS KENDARAAN</th>
+                  <th>NOMOR KENDARAAn</th>
+                  <th>TANGGAL PENGIRIMAN</th>
+                  <th>TANGGAL BARANG DITERIMA</th>
+                  <th>STATUS PENGIRIMAN</th>
+                  <th>AKSI</th>
+ 
                 </tr>
                 </thead>
                 <tbody>
                 <?php 
-                $i=1;
-                foreach ($barang as $rows) : ?>
+                  $i=1;
+
+                foreach ($detail as $rows) : ?>
                     <tr>
                         <td><?php echo  $i++; ?></td>
-                        <td><?php echo $rows->tanggal; ?> </td>
-                        <td><?php echo $rows->nama_kategori; ?> </td>
-                        <td><?php echo $rows->nama_barang; ?></td>
-                        <td><?php echo $rows->total; ?>
+
+                        
+                        <td><?php echo $rows->namapengirim; ?>
+                        <td><?php echo $rows->no_hp; ?>
+                        <td><?php echo $rows->tujuan_pengiriman; ?>
+                        <td><?php echo $rows->jumlah_pengiriman; ?>
+                        <td><?php echo $rows->jeniskendaraan; ?>
+                        <td><?php echo $rows->no_kendaraan; ?>
+                        <td><?php echo $rows->tanggal_masuk; ?>
+                        <td><?php echo $rows->tanggal_diterima; ?>
+                        <td><?php echo $rows->status; ?>
+
+                        
+
+
                             </td>
-                  
+                        <td>
+
+                        <a href="<?= base_url(); ?>detailclient/deletestaffpengiriman/<?= $rows->id_detailpengiriman; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
+                            <i class="fa fa-trash" aria-hidden="true"></i></a>
+
+                            
+                            <a href="<?php echo site_url(); ?>#/put/<?php echo $rows->id_detailpengiriman; ?>" class="btn btn-danger">
+                            <i class="fa fa-book" aria-hidden="true"></i></a>
+                           
+                        </td>
+
+                        
                     </tr>
                     <?php endforeach ; ?>
                 </tbody>
@@ -115,4 +143,5 @@
     </div>
     <!-- /.content -->
   </div>
+  
   <!-- /.content-wrapper -->

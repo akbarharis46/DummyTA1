@@ -134,14 +134,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>pengirimanclient" class="nav-link">
+                <a href="<?php echo site_url(); ?>pengirimanclient/index3" class="nav-link">
                 <i class="fa fa-cog"></i>Data Pengiriman</a></li>
                 </a>
               </li>
               
             
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>detailclient" class="nav-link">
+                <a href="<?php echo site_url(); ?>detailclient/indexpengiriman" class="nav-link">
                 <i class="fa fa-cog"></i>Detail Pengiriman</a></li>
                 </a>
               </li>

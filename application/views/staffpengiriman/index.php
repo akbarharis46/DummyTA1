@@ -32,7 +32,7 @@
     <div class="content" >
       <div class="container-fluid">
       <div class="alert alert-secondary" role="alert">
-      <i class="nav-icon fas fa-home"></i> SELAMAT DATANG STAFF PENGIRIMAN
+      <i class="nav-icon fas fa-home"></i> SELAMAT DATANG STAFF PRODUKSI
         </div>
         <div class="row">
           <div class="col"> 

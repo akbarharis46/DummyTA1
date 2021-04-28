@@ -27,7 +27,7 @@ class PengirimanClient extends CI_Controller
     }
 
 
-    public function index1()
+    public function indexstaffproduksi()
     {
         $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "pengiriman";
@@ -37,7 +37,7 @@ class PengirimanClient extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function index2()
+    public function indexstaffgudang()
     {
         $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "pengiriman";
@@ -48,7 +48,7 @@ class PengirimanClient extends CI_Controller
     }
 
 
-    public function index3()
+    public function indexstaffpengiriman()
     {
         $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "pengiriman";
@@ -68,23 +68,17 @@ class PengirimanClient extends CI_Controller
       $this->load->view('data/post/pengiriman', $data);
       $this->load->view('footer');
     }
+
   
     public function postpengiriman()
     {
       $data['title'] = "Tambah Data pengiriman";
       $this->load->view('header1');
       $this->load->view('bar3');
-      $this->load->view('staffpengiriman/post', $data);
+      $this->load->view('staffpengiriman/post/pengiriman', $data);
       $this->load->view('footer');
     }
   
-
-
-
-
-   
-
-
 
 
     public function post_process()
@@ -151,7 +145,7 @@ class PengirimanClient extends CI_Controller
           }
           // print_r($insert);
           //  exit;
-          redirect('pengirimanclient/index3');
+          redirect('pengirimanclient/indexstaffpengiriman');
         }
     
 
@@ -175,7 +169,7 @@ class PengirimanClient extends CI_Controller
             $data['title'] = "Edit Data pengiriman";
             $this->load->view('header1');
             $this->load->view('bar3');
-            $this->load->view('staffpengiriman/put', $data);
+            $this->load->view('staffpengiriman/put/pengiriman', $data);
             $this->load->view('footer');
        
         }
@@ -256,7 +250,9 @@ class PengirimanClient extends CI_Controller
         }
         // print_r($update);
         // die;
-        redirect('pengirimanclient/index3');
+        redirect('pengirimanclient/indexstaffpengiriman');
+
+
     }
     public function delete()
     {
@@ -271,6 +267,8 @@ class PengirimanClient extends CI_Controller
         // die;
         redirect('pengirimanclient');
     }
+
+    
     public function deletepengiriman()
     {
         $params = array('id_pengiriman' =>  $this->uri->segment(3));
@@ -282,7 +280,7 @@ class PengirimanClient extends CI_Controller
         }
         // print_r($delete);
         // die;
-        redirect('pengirimanclient/index3');
+        redirect('pengirimanclient/indexstaffpengiriman');
     }
 
 
@@ -298,6 +296,17 @@ class PengirimanClient extends CI_Controller
     $this->load->view('footer');
   }
 
+  public function barangkeluar_staffpengiriman()
+  {
+    $uri = array('id_pengiriman' =>  $this->uri->segment(3));
+    $data['pengiriman'] = json_decode($this->curl->simple_get($this->API,$uri));
+    $data['detail'] = json_decode($this->curl->simple_get($this->API1));
+    $data['title'] = "Edit Data pengiriman";
+    $this->load->view('header1');
+    $this->load->view('bar3');
+    $this->load->view('staffpengiriman/perpindahan_barang',$data);
+    $this->load->view('footer');
+  }
 
 
 
@@ -368,6 +377,77 @@ class PengirimanClient extends CI_Controller
             redirect('detailclient');
         }
     }
+
+
+    public function proses_data_keluarstaffpengiriman()
+    {
+      $this->load->model('admin_model');
+      $this->db->set("jumlah_pengiriman","jumlah_pengiriman - jumlah_pengiriman");
+      $this->db->where('id_pengiriman', 'id_pengiriman');
+      $this->form_validation->set_rules('tanggal_diterima','Tanggal Diterima','trim|required');
+      // $this->form_validation->set_rules('jumlah_pengiriman-jumlah_pengiriman','Jumlah Pengiriman','trim|required');
+      if($this->form_validation->run() === true)
+      {
+        $id_pengiriman   = $this->input->post('id_pengiriman');
+        $namapengirim   = $this->input->post('nama_pengirim');
+        $no_hp    = $this->input->post('nomorhp');
+        $jeniskendaraan         = $this->input->post('jenis_kendaraan');
+        $tujuan_pengiriman         = $this->input->post('tujuan');
+        $no_kendaraan         = $this->input->post('nomor_kendaraan');
+        $status         = $this->input->post('status_pengiriman');
+        $jumlah_pengiriman    = $this->input->post('jumlah');
+        $tanggal_masuk         = $this->input->post('tanggal');
+        $tanggal_diterima         = $this->input->post('tanggal_diterima');
+  
+        
+  
+        $data1 = array(
+                'id_pengiriman' => $id_pengiriman,
+                'namapengirim' =>$namapengirim,
+                'no_hp' =>$no_hp,
+                'jeniskendaraan' =>$jeniskendaraan,         
+                'tujuan_pengiriman' =>$tujuan_pengiriman,        
+                'no_kendaraan' =>$no_kendaraan,         
+                'status' =>$status,         
+                'jumlah_pengiriman' => $jumlah_pengiriman,
+                'tanggal_masuk' => $tanggal_masuk,
+                'tanggal_diterima' => $tanggal_diterima
+        );
+        $insert =   $this->curl->simple_post($this->API1,$data1);
+  
+        $data = array(
+              'id_pengiriman'                  => $this->input->post('id_pengiriman'),
+              'nama_pengirim'                  => $this->input->post('nama_pengirim'),
+              'nomorhp'                        => $this->input->post('nomorhp'),
+              'tujuan'                         => $this->input->post('tujuan'),
+              'jumlah'                         => $this->input->post('jumlah'),
+              'jenis_kendaraan'                => $this->input->post('jenis_kendaraan'),
+              'nomor_kendaraan'                => $this->input->post('nomor_kendaraan'),
+              'tanggal'                        => $this->input->post('tanggal'),
+              'status_pengiriman'              => $this->input->post('status_pengiriman'),
+              
+              
+          );
+          
+          $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
+  
+        
+  
+      //   var_dump($insert);
+      //   exit;
+           if($insert){
+               echo"berhasil";   
+              redirect('detailclient/indexpengiriman');
+  
+              } else {
+                  echo"gagal";
+              }
+          } else{
+              redirect('detailclient/indexpengiriman');
+          }
+      }
+
+
 }
 
 
