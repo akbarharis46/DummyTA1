@@ -25,9 +25,9 @@ class AdminClient extends CI_Controller
     public function indexproduksi()
     {
         $data['title'] = "Dashboard";
-        $this->load->view('header0');
-        $this->load->view('bar');
-        $this->load->view('admin/index', $data, FALSE);
+        $this->load->view('header1');
+        $this->load->view('bar1');
+        $this->load->view('staffproduksi/index', $data, FALSE);
         $this->load->view('footer');
     }
 
@@ -35,9 +35,9 @@ class AdminClient extends CI_Controller
     public function indexgudang()
     {
         $data['title'] = "Dashboard";
-        $this->load->view('header0');
-        $this->load->view('bar');
-        $this->load->view('admin/index', $data, FALSE);
+        $this->load->view('header1');
+        $this->load->view('bar2');
+        $this->load->view('staffgudang/index', $data, FALSE);
         $this->load->view('footer');
     }
 

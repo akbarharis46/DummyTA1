@@ -27,7 +27,7 @@ class PengirimanClient extends CI_Controller
     }
 
 
-    public function indexstaffproduksi()
+    public function indexproduksi()
     {
         $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "pengiriman";
@@ -37,7 +37,7 @@ class PengirimanClient extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function indexstaffgudang()
+    public function indexgudang()
     {
         $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "pengiriman";

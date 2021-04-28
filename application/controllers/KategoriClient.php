@@ -29,7 +29,7 @@ class KategoriClient extends CI_Controller
         $data['title'] = "kategori";
         $this->load->view('header1');
         $this->load->view('bar1');
-        $this->load->view('staffproduksi/kategoristaffgudang', $data);
+        $this->load->view('staffproduksi/kategori', $data);
         $this->load->view('footer');
     }
 
@@ -39,7 +39,7 @@ class KategoriClient extends CI_Controller
         $data['title'] = "kategori";
         $this->load->view('header1');
         $this->load->view('bar2');
-        $this->load->view('staffgudang/kategoristaffgudang', $data);
+        $this->load->view('staffgudang/kategori', $data);
         $this->load->view('footer');
     }
 
@@ -68,7 +68,7 @@ class KategoriClient extends CI_Controller
       $data['title'] = "Tambah Data Kategori";
       $this->load->view('header1');
       $this->load->view('bar2');
-      $this->load->view('staffgudang/postkategori_staffgudang', $data);
+      $this->load->view('staffgudang/post/kategori', $data);
       $this->load->view('footer');
     }
 
@@ -112,7 +112,7 @@ class KategoriClient extends CI_Controller
         }
         // print_r($insert);
         // die;
-        redirect('kategoriclient/index2');
+        redirect('kategoriclient/indexgudang');
       }
 
 
@@ -140,7 +140,7 @@ class KategoriClient extends CI_Controller
         $data['title'] = "Edit Data Kategori";
         $this->load->view('header1');
         $this->load->view('bar2');
-        $this->load->view('staffgudang/putkategori_staffgudang', $data);
+        $this->load->view('staffgudang/put/kategori', $data);
         $this->load->view('footer');
         
     }
@@ -184,7 +184,7 @@ class KategoriClient extends CI_Controller
         }
         // print_r($update);
         // die;
-        redirect('kategoriclient/index2');
+        redirect('kategoriclient/indexgudang');
     }
 
 
@@ -214,7 +214,7 @@ class KategoriClient extends CI_Controller
         }
         // print_r($delete);
         // die;
-        redirect('kategoriclient/index2');
+        redirect('kategoriclient/indexgudang');
     }
 }
 ?>

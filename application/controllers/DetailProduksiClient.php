@@ -31,7 +31,7 @@ class DetailProduksiClient extends CI_Controller
         $data['title'] = "DetailProudksiClient";
         $this->load->view('header1');
         $this->load->view('bar1');
-        $this->load->view('staffproduksi/barang', $data);
+        $this->load->view('staffproduksi/detail_produksi1', $data);
         $this->load->view('footer');
     }
 
@@ -41,7 +41,7 @@ class DetailProduksiClient extends CI_Controller
         $data['title'] = "DetailProudksiClient";
         $this->load->view('header1');
         $this->load->view('bar2');
-        $this->load->view('staffgudang/barang', $data);
+        $this->load->view('staffgudang/detail_produksi1', $data);
         $this->load->view('footer');
     }
 

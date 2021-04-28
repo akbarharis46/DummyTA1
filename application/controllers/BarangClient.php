@@ -78,11 +78,12 @@ class BarangClient extends CI_Controller
     {
      $this->API2 = "http://localhost:8080/dummyTA/kategori";
      $data['kategori'] = json_decode($this->curl->simple_get($this->API2));
+     $data['count'] = $this->input->post('count');
 
       $data['title'] = "Tambah Data barang";
       $this->load->view('header1');
       $this->load->view('bar2');
-      $this->load->view('staffgudang/postbarang', $data);
+      $this->load->view('staffgudang/post/barang', $data);
       $this->load->view('footer');
     }
 
@@ -127,30 +128,49 @@ class BarangClient extends CI_Controller
         redirect('barangclient');
       }
 
+    public function post_processbarang()
+    {
+        $count = $this->input->post('count');
+        
+        for ($i=0; $i < $count; $i++) { 
+            $data = array(
+                'nama_kategori'           => $this->input->post('nama_kategori')[$i],
+                'total'                  => $this->input->post('total')[$i],
+                'tanggal'                  => date('Y-m-d'),
+         
+            );
 
+            $insert =  $this->curl->simple_post($this->API, $data);
 
-      public function post_processbarang()
-      {
-          $data = array(
-              'nama_barang'            => $this->input->post('nama_barang'),
-              'nama_kategori'           => $this->input->post('nama_kategori'),
-              'total'                  => $this->input->post('total'),
-              'tanggal'                  => $this->input->post('tanggal'),
-       
-          );
-          $insert =  $this->curl->simple_post($this->API,$data);
-          if ($insert) {
-              // echo"berhasil";
-              $this->session->set_flashdata('result', 'Data Kategori Berhasil Ditambahkan');
-          } else {
-              // echo"gagal berhasil";
-              $this->session->set_flashdata('result', 'Data Kategori Gagal Ditambahkan');
-          }
-          // print_r($insert);
-          // die;
-          redirect('barangclient/index2');
+            $detail_semuabarang = $this->db->get_where('detail_semuabarang', ['nama_barang' => $data['nama_kategori']])->row_array();
+
+            //update stok
+            $id = $detail_semuabarang['id_detailsemuabarang'];
+            $data = array(
+                'tanggal_stockgudang'            => date('Y-m-d'),  
+                'stock_pabrik'            => $detail_semuabarang['stock_pabrik'] + $data['total'],
+                
+            );
+            
+            $this->db->where('id_detailsemuabarang', $id);
+            $update = $this->db->update('detail_semuabarang', $data);
         }
+        
+        if ($insert) {
+            // echo"berhasil";
+            $this->session->set_flashdata('result', 'Data Kategori Berhasil Ditambahkan');
+        } else {
+            // echo"gagal berhasil";
+            $this->session->set_flashdata('result', 'Data Kategori Gagal Ditambahkan');
+        }
+        // print_r($insert);
+        // die;
+        redirect('barangclient/indexgudang');
+      }
 
+
+
+ 
 
 
     
@@ -174,7 +194,7 @@ class BarangClient extends CI_Controller
         $data['title'] = "Edit Data Barang";
         $this->load->view('header1');
         $this->load->view('bar2');
-        $this->load->view('staffgudang/putbarang', $data);
+        $this->load->view('staffgudang/put/barang', $data);
         $this->load->view('footer');
 
     }
@@ -240,7 +260,7 @@ class BarangClient extends CI_Controller
         }
         // print_r($update);
         // die;
-        redirect('barangclient/index2');
+        redirect('barangclient/indexgudang');
     }
 
 
@@ -275,7 +295,7 @@ class BarangClient extends CI_Controller
         }
         // print_r($delete);
         // die;
-        redirect('barangclient/index2');
+        redirect('barangclient/indexgudang');
     }
 }
 ?>

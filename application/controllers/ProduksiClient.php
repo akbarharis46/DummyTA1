@@ -73,7 +73,7 @@ class ProduksiClient extends CI_Controller
       $data['title'] = "Tambah Data produksi";
       $this->load->view('header1');
       $this->load->view('bar1');
-      $this->load->view('staffproduksi/hasil_produksip', $data);
+      $this->load->view('staffproduksi/post/produksi', $data);
       $this->load->view('footer');
     }
   
@@ -124,7 +124,7 @@ class ProduksiClient extends CI_Controller
         } else {
             echo"gagal ";
         }
-        redirect('produksiclient/index1');
+        redirect('produksiclient/indexproduksi');
       }
     
 
@@ -152,13 +152,10 @@ class ProduksiClient extends CI_Controller
         $data['title'] = "Edit Data produksi";
         $this->load->view('header1');
         $this->load->view('bar1');
-        $this->load->view('staffproduksi/hasil_produksiput', $data);
+        $this->load->view('staffproduksi/put/produksi', $data);
         $this->load->view('footer');
 
     }
-
-
-
 
     public function put_process()
     {
@@ -223,7 +220,7 @@ class ProduksiClient extends CI_Controller
         }
         // print_r($update);
         // die;
-        redirect('produksiclient/index1');
+        redirect('produksiclient/indexproduksi');
     }
 
 
@@ -253,7 +250,7 @@ public function deleteproduksi()
     }
     // print_r($delete);
     // die;
-    redirect('produksiclient/index1');
+    redirect('produksiclient/indexproduksi');
 }
 
 public function data_produksikeluar()
@@ -267,6 +264,22 @@ public function data_produksikeluar()
   $this->load->view('data/perpindahan_dataproduksi',$data);
   $this->load->view('footer');
 }
+
+
+
+public function data_staffproduksikeluar()
+{
+  $params = array('id_produksi' =>  $this->uri->segment(3));
+  $data['detailproduksi'] = json_decode($this->curl->simple_get($this->API2));
+  $data['produksi'] = json_decode($this->curl->simple_get($this->API,$params));
+  $data['title'] = "Edit Data pengiriman";
+  $this->load->view('header1');
+  $this->load->view('bar1');
+  $this->load->view('staffproduksi/perpindahan_dataproduksi',$data);
+  $this->load->view('footer');
+}
+
+
 
 public function prosesdata_produksikeluar()
 {
@@ -318,6 +331,60 @@ public function prosesdata_produksikeluar()
         }
       } else{
           redirect('detailproduksiclient');
+      }
+  }
+
+
+public function prosesdata_staffproduksikeluar()
+{
+  $this->load->model('admin_model');
+  $this->db->where('id_produksi', 'id_produksi');
+  $this->form_validation->set_rules('tanggal','Tanggal Diterima','trim|required');
+
+
+
+  // $this->form_validation->set_rules('jumlah_pengiriman-jumlah_pengiriman','Jumlah Pengiriman','trim|required');
+  if($this->form_validation->run() === true)
+  {
+    $id_produksi   = $this->input->post('id_produksii');
+    $nama_staff   = $this->input->post('nama_staff');
+    $shift    = $this->input->post('shift');
+    $tanggal         = $this->input->post('tanggal');
+    $jumlah_produksi         = $this->input->post('jumlah_produksi');
+
+    $data1 = array(
+            'id_produksi' => $id_produksi,
+            'nama_staff' =>$nama_staff,
+            'shift' =>$shift,
+            'tanggal' =>$tanggal,         
+            'jumlah_produksi' =>$jumlah_produksi,         
+            
+    );
+    $insert =   $this->curl->simple_post($this->API2,$data1);
+
+    $data = array(
+          'id_produksi'                  => $this->input->post('id_produksi'),
+          'nama_staff'                  => $this->input->post('nama_staff'),
+          'shift'                        => $this->input->post('shift'),
+          'tanggal'                         => $this->input->post('tanggal'),
+          'jumlah_produksi'                         => $this->input->post('jumlah_produksi'),
+          
+          
+      );
+      
+      $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
+
+      if($insert){
+        //   print_r($update);
+        //   exit;
+          echo"berhasil";   
+          redirect('detailproduksiclient/indexproduksi');
+          
+        } else {
+            echo"gagal";
+        }
+      } else{
+          redirect('detailproduksiclient/indexproduksi');
       }
   }
 

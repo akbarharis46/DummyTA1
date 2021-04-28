@@ -72,19 +72,18 @@ class StockBarangClient extends CI_Controller
     }
 
 
-    // public function postbarang()
-    // {
-    //  $this->API2 = "http://localhost:8080/dummyTA/kategori";
-    //  $data['kategori'] = json_decode($this->curl->simple_get($this->API2));
+    public function poststock()
+    {
+        $data['stockbarang'] = json_decode($this->curl->simple_get($this->API));
+        $data['kategori'] = json_decode($this->curl->simple_get($this->API2));
+   
+         $data['title'] = "Tambah Data Detai Produksi";
+         $this->load->view('header1');
+         $this->load->view('bar2');
+         $this->load->view('staffgudang/post/stock_barang', $data);
+         $this->load->view('footer');
 
-    //   $data['title'] = "Tambah Data barang";
-    //   $this->load->view('header1');
-    //   $this->load->view('bar2');
-    //   $this->load->view('staffgudang/postbarang', $data);
-    //   $this->load->view('footer');
-    // }
-
-  
+    }
     public function post_process()
     {
         $data = array(
@@ -110,30 +109,33 @@ class StockBarangClient extends CI_Controller
         // die;
         redirect('stockbarangclient');
       }
+    public function post_processstock()
+    {
+        $data = array(
+
+        
+            'nama_barang'            => $this->input->post('nama_barang'),
+            'tanggal_stockgudang'            => $this->input->post('tanggal_stockgudang'),
+            'stock_pabrik'            => $this->input->post('stock_pabrik'),
+         
+        );
+        $insert =  $this->curl->simple_post($this->API,$data);
+        // print_r($data);
+        // exit;
+
+        if ($insert) {
+            echo"berhasil";
+            $this->session->set_flashdata('result', 'Data Kategori Berhasil Ditambahkan');
+        } else {
+            echo"gagal";
+            $this->session->set_flashdata('result', 'Data Kategori Gagal Ditambahkan');
+        }
+        // print_r($data);
+        // die;
+        redirect('stockbarangclient/indexgudang');
+      }
 
 
-
-    //   public function post_processbarang()
-    //   {
-    //       $data = array(
-    //           'nama_barang'            => $this->input->post('nama_barang'),
-    //           'nama_kategori'           => $this->input->post('nama_kategori'),
-    //           'total'                  => $this->input->post('total'),
-    //           'tanggal'                  => $this->input->post('tanggal'),
-       
-    //       );
-    //       $insert =  $this->curl->simple_post($this->API,$data);
-    //       if ($insert) {
-    //           // echo"berhasil";
-    //           $this->session->set_flashdata('result', 'Data Kategori Berhasil Ditambahkan');
-    //       } else {
-    //           // echo"gagal berhasil";
-    //           $this->session->set_flashdata('result', 'Data Kategori Gagal Ditambahkan');
-    //       }
-    //       // print_r($insert);
-    //       // die;
-    //       redirect('barangclient/index2');
-    //     }
 
 
 
@@ -149,19 +151,20 @@ class StockBarangClient extends CI_Controller
         $this->load->view('footer');
 
     }
+    
+    public function putstock()
+    {
+        $params = array('id_detailsemuabarang' =>  $this->uri->segment(3));
+        $data['stockbarang'] = json_decode($this->curl->simple_get($this->API, $params));
+        $data['title'] = "Edit Data Barang";
+        $this->load->view('header1');
+        $this->load->view('bar2');
+        $this->load->view('staffgudang/put/stock_barang', $data);
+        $this->load->view('footer');
+
+    }
 
 
-    // public function putbarang()
-    // {
-    //     $params = array('id_barang' =>  $this->uri->segment(3));
-    //     $data['barang'] = json_decode($this->curl->simple_get($this->API, $params));
-    //     $data['title'] = "Edit Data Barang";
-    //     $this->load->view('header1');
-    //     $this->load->view('bar2');
-    //     $this->load->view('staffgudang/putbarang', $data);
-    //     $this->load->view('footer');
-
-    // }
 
 
     public function put_process()
@@ -188,33 +191,30 @@ class StockBarangClient extends CI_Controller
         // die;
         redirect('stockbarangclient');
     }
-
-
-
-    // public function put_processbarang()
-    // {
-    //     $data = array(
+    public function put_processstock()
+    {
+        $data = array(
             
-    //         'id_barang'            => $this->input->post('id_barang'),
-    //         'nama_barang'            => $this->input->post('nama_barang'),
-    //         'nama_kategori'           => $this->input->post('nama_kategori'),
-    //         'total'                  => $this->input->post('total'),
-    //         'tanggal'                  => $this->input->post('tanggal'),
-    //     );
+            'id_detailsemuabarang'            => $this->input->post('id_detailsemuabarang'),
+            'id_barang'            => $this->input->post('id_barang'),
+            'tanggal_stockgudang'            => $this->input->post('tanggal_stockgudang'),
+            'nama_barang'            => $this->input->post('nama_barang'),
+            'stock_pabrik'            => $this->input->post('stock_pabrik'),
+            
+        );
         
-    //     $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
-    //     if ($update) {
-    //         echo"berhasil";
-    //         // $this->session->set_flashdata('result', 'Update Data kategori Berhasil');
-    //     } else {
-    //         echo"gagal";
-    //         // $this->session->set_flashdata('result', 'Update Data kategori Gagal');
-    //     }
-    //     // print_r($update);
-    //     // die;
-    //     redirect('barangclient/index2');
-    // }
-
+        $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
+        if ($update) {
+            echo"berhasil";
+            // $this->session->set_flashdata('result', 'Update Data kategori Berhasil');
+        } else {
+            echo"gagal";
+            // $this->session->set_flashdata('result', 'Update Data kategori Gagal');
+        }
+        // print_r($update);
+        // die;
+        redirect('stockbarangclient/indexgudang');
+    }
 
 
 
@@ -233,22 +233,21 @@ class StockBarangClient extends CI_Controller
         // die;
         redirect('stockbarangclient');
     }
+    public function deletestock()
+    {
+        $params = array('id_detailsemuabarang' =>  $this->uri->segment(3));
+        $delete =  $this->curl->simple_delete($this->API, $params);
+        if ($delete) {
+            $this->session->set_flashdata('result', 'Hapus Data kategori Berhasil');
+        } else {
+            $this->session->set_flashdata('result', 'Hapus Data kategori Gagal');
+        }
+        // print_r($delete);
+        // die;
+        redirect('stockbarangclient/indexgudang');
+    }
 
 
-
-//     public function deletebarang()
-//     {
-//         $params = array('id_barang' =>  $this->uri->segment(3));
-//         $delete =  $this->curl->simple_delete($this->API, $params);
-//         if ($delete) {
-//             $this->session->set_flashdata('result', 'Hapus Data kategori Berhasil');
-//         } else {
-//             $this->session->set_flashdata('result', 'Hapus Data kategori Gagal');
-//         }
-//         // print_r($delete);
-//         // die;
-//         redirect('barangclient/index2');
-//     }
 
 }
 

@@ -25,36 +25,36 @@ class DetailStockProduksiClient extends CI_Controller
     }
     
 
-    // public function index1()
-    // {
-    //     $data['barang'] = json_decode($this->curl->simple_get($this->API));
-    //     $data['title'] = "barang";
-    //     $this->load->view('header1');
-    //     $this->load->view('bar1');
-    //     $this->load->view('staffproduksi/barang', $data);
-    //     $this->load->view('footer');
-    // }
+    public function indexproduksi()
+    {
+        $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "barang";
+        $this->load->view('header1');
+        $this->load->view('bar1');
+        $this->load->view('staffproduksi/detail_produksi', $data);
+        $this->load->view('footer');
+    }
 
-    // public function index2()
-    // {
-    //     $data['barang'] = json_decode($this->curl->simple_get($this->API));
-    //     $data['title'] = "barang";
-    //     $this->load->view('header1');
-    //     $this->load->view('bar2');
-    //     $this->load->view('staffgudang/barang', $data);
-    //     $this->load->view('footer');
-    // }
+    public function indexgudang()
+    {
+        $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "barang";
+        $this->load->view('header1');
+        $this->load->view('bar2');
+        $this->load->view('staffgudang/detail_produksi', $data);
+        $this->load->view('footer');
+    }
 
 
-    // public function index3()
-    // {
-    //     $data['barang'] = json_decode($this->curl->simple_get($this->API));
-    //     $data['title'] = "barang";
-    //     $this->load->view('header1');
-    //     $this->load->view('bar3');
-    //     $this->load->view('staffpengiriman/barang', $data);
-    //     $this->load->view('footer');
-    // }
+    public function indexpengiriman()
+    {
+        $data['baradetailstockproduksing'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "barang";
+        $this->load->view('header1');
+        $this->load->view('bar3');
+        $this->load->view('staffpengiriman/detail_produksi', $data);
+        $this->load->view('footer');
+    }
 
 
 

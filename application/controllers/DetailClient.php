@@ -25,6 +25,26 @@ class DetailClient extends CI_Controller
     }
 
 
+    public function indexproduksi()
+    {
+        $data['detail'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "Kategori";
+        $this->load->view('header1');
+        $this->load->view('bar1');
+        $this->load->view('staffproduksi/barang_keluar', $data);
+        $this->load->view('footer');
+
+    }
+    public function indexgudang()
+    {
+        $data['detail'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "Kategori";
+        $this->load->view('header1');
+        $this->load->view('bar2');
+        $this->load->view('staffgudang/barang_keluar', $data);
+        $this->load->view('footer');
+
+    }
     public function indexpengiriman()
     {
         $data['detail'] = json_decode($this->curl->simple_get($this->API));
