@@ -15,8 +15,10 @@ class DetailClient extends CI_Controller
 
     public function index()
     {
+        
         $data['detail'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "Kategori";
+
         $this->load->view('header0');
         $this->load->view('bar');
         $this->load->view('data/barang_keluar', $data);

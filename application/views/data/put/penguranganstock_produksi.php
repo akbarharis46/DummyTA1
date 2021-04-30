@@ -76,6 +76,8 @@
                                 var etxt = document.getElementById("selected").value;
                                 document.getElementById("selected").style.display = "none";
                                 setSelectBoxByText(eid, etxt)
+
+ 
                             </script>
                     </form>
                 </div>

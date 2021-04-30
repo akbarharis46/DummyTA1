@@ -42,8 +42,8 @@
 
                 <div class="form-group">
 
-                            <label for="jumlah">Jumlah Pengiriman Barang  :</label>
-                            <input type="text" class="form-control" id="jumlah" placeholder="Masukkan Jumlah Pengiriman" name="jumlah" >
+                            <label for="jumlah_pengiriman_barang">Jumlah Pengiriman Barang  :</label>
+                            <input type="text" class="form-control" id="jumlah_pengiriman_barang" placeholder="Masukkan Jumlah Pengiriman" name="jumlah" >
                 </div>
                 <div class="form-group">
 

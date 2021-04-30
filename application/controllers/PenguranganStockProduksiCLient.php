@@ -196,7 +196,6 @@ class PenguranganStockProduksiClient extends CI_Controller
             'tanggal_stockgudang'            => date('Y-m-d'),  
             'stock_pabrik'            => $detail_semuabarang['stock_pabrik'] - ($this->input->post('jumlah_pengurangan') - $this->input->post('jumlah_pengurangan_lama')),
         );
-
         $this->db->where('id_detailsemuabarang', $id);
         $update = $this->db->update('detail_semuabarang', $data1);
 

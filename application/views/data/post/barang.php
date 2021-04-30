@@ -53,7 +53,7 @@
 
                     <div class="form-group">
                         <label for="total">Jumlah Barang  :</label>
-                        <input type="number" class="form-control" id="total" name="total[]" placeholder="total"  name="total"  >
+                        <input type="number" class="form-control" id="total" name="total[]" placeholder="total"  name="total" required >
                     </div>
 
                     <hr>

@@ -63,6 +63,8 @@ class PengirimanClient extends CI_Controller
     public function post()
     {
       $data['title'] = "Tambah Data pengiriman";
+      $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API2));
+
       $this->load->view('header0');
       $this->load->view('bar');
       $this->load->view('data/post/pengiriman', $data);

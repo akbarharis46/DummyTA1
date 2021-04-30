@@ -30,7 +30,7 @@
             <?php for ($i = 0; $i < $count; $i++) : ?>
             <div class="form-group">
                 <label for="id_detailsemuabarang">Nama Barang <?= $i+1 ?>  :</label>
-                <select class="form-control" name="id_detailsemuabarang[]" >
+                <select class="form-control" id="id_detailsemuabarang-<?= $i ?>" name="id_detailsemuabarang[]" >
                     <option value="" selected="">Pilih Barang</option>
                     <?php foreach ($detail_semuabarang as $rows) : ?>
                         <option value="<?php echo $rows->id_detailsemuabarang; ?>"> <?php echo $rows->nama_barang   ; ?> </option>
@@ -89,6 +89,7 @@
                             maxView: 4,
                             });
                         </script>
+                        
                         <script>
                                 function setSelectBoxByText(eid, etxt) {
                                     var eid = document.getElementById(eid);
