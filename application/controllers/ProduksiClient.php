@@ -11,7 +11,8 @@ class ProduksiClient extends CI_Controller
         $this->load->library('curl');
         
         $this->API = "http://localhost:8080/dummyTA/produksi";
-        $this->API2 = "http://localhost:8080/dummyTA/detailproduksi";
+        $this->API1 = "http://localhost:8080/dummyTA/detailproduksi";
+        $this->API2 = "http://localhost:8080/dummyTA/detailstockproduksi";
     }
 
     public function index()
@@ -90,7 +91,6 @@ class ProduksiClient extends CI_Controller
         // update stok barang
         $detail_produksi = json_decode($this->curl->simple_get($this->API2), true);
 
-
         $data2 = array(
             'id_detailstockproduksi' => $detail_produksi[0]['id_detailstockproduksi'],
             'tanggal_stockproduksi' => date('Y-m-d'),
@@ -99,7 +99,6 @@ class ProduksiClient extends CI_Controller
         );
 
         $update = $this->curl->simple_put($this->API2, $data2, array(CURLOPT_BUFFERSIZE => 10));
-
         if ($insert) {
             echo"berhasil";
         } else {
@@ -118,7 +117,21 @@ class ProduksiClient extends CI_Controller
             'jumlah_produksi'         => $this->input->post('jumlah_produksi'),
             'tanggal'                 => $this->input->post('tanggal'),
         );
+
+
         $insert =  $this->curl->simple_post($this->API,$data);
+
+
+        $detail_produksi = json_decode($this->curl->simple_get($this->API2), true);
+
+        $data2 = array(
+            'id_detailstockproduksi' => $detail_produksi[0]['id_detailstockproduksi'],
+            'tanggal_stockproduksi' => date('Y-m-d'),
+            'stock_produksi' => $detail_produksi[0]['stock_produksi'] + $this->input->post('jumlah_produksi')
+            
+        );
+
+        $update = $this->curl->simple_put($this->API2, $data2, array(CURLOPT_BUFFERSIZE => 10));
         if ($insert) {
             echo"berhasil";
         } else {
@@ -127,10 +140,6 @@ class ProduksiClient extends CI_Controller
         redirect('produksiclient/indexproduksi');
       }
     
-
-
-
-
 
 
     public function put()
@@ -292,7 +301,7 @@ public function prosesdata_produksikeluar()
   // $this->form_validation->set_rules('jumlah_pengiriman-jumlah_pengiriman','Jumlah Pengiriman','trim|required');
   if($this->form_validation->run() === true)
   {
-    $id_produksi   = $this->input->post('id_produksii');
+    $id_produksi   = $this->input->post('id_produksi');
     $nama_staff   = $this->input->post('nama_staff');
     $shift    = $this->input->post('shift');
     $tanggal         = $this->input->post('tanggal');
@@ -306,10 +315,11 @@ public function prosesdata_produksikeluar()
             'jumlah_produksi' =>$jumlah_produksi,         
             
     );
-    $insert =   $this->curl->simple_post($this->API2,$data1);
 
-    $data = array(
-          'id_produksi'                  => $this->input->post('id_produksi'),
+    $insert =   $this->curl->simple_post($this->API1,$data1);
+
+    $data2 = array(
+          'id_produksi'                  => $id_produksi,
           'nama_staff'                  => $this->input->post('nama_staff'),
           'shift'                        => $this->input->post('shift'),
           'tanggal'                         => $this->input->post('tanggal'),
@@ -317,8 +327,9 @@ public function prosesdata_produksikeluar()
           
           
       );
+
       
-      $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
+      $update =  $this->curl->simple_put($this->API, $data2, array(CURLOPT_BUFFERSIZE => 10));
 
       if($insert){
         //   print_r($update);

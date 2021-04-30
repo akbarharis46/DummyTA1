@@ -28,6 +28,7 @@ class DetailProduksi extends REST_Controller
     function index_post()
     {
         $data = array(
+            'id_produksi'           => $this->post('id_produksi'),
             'nama_staff'           => $this->post('nama_staff'),
             'tanggal'                 => $this->post('tanggal'),
             'shift'                  => $this->post('shift'),
