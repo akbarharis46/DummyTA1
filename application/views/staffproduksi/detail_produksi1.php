@@ -105,14 +105,14 @@
                         <td><?php echo $rows->shift; ?>
                             </td>
                         <td>
-                            <a href="<?php echo site_url(); ?>detailproduksiclient/put/<?php echo $rows->id_detailproduksi; ?>" class="btn btn-warning">
+                            <a href="<?php echo site_url(); ?>detailproduksiclient/putproduksi/<?php echo $rows->id_detailproduksi; ?>" class="btn btn-warning">
                             <i class="fa fa-pen" aria-hidden="true"></i></a>
 
-                            <a href="<?php echo site_url(); ?>detailproduksiclient/put/<?php echo $rows->id_detailproduksi; ?>" class="btn btn-primary">
+                            <a href="<?php echo site_url(); ?>penguranganstockproduksiclient/indexproduksi/<?php echo $rows->id_detailproduksi; ?>" class="btn btn-primary">
                             <i class="fa fa-eye" aria-hidden="true" ></i></a>
 
 
-                            <a href="<?= base_url(); ?>detailproduksiclient/delete/<?= $rows->id_detailproduksi; ?>" class="btn btn-danger" onClick="return confirm('Apakah Yakin Untuk Menghapus Data?');">
+                            <a href="<?= base_url(); ?>detailproduksiclient/deleteproduksi/<?= $rows->id_detailproduksi; ?>" class="btn btn-danger" onClick="return confirm('Apakah Yakin Untuk Menghapus Data?');">
                             <i class="fa fa-trash" aria-hidden="true"></i></a>
 
 

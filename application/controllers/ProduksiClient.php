@@ -17,8 +17,10 @@ class ProduksiClient extends CI_Controller
 
     public function index()
     {
+        $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API));
         $data['produksi'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "produksi";
+        // var_dump($data['detailstockproduksi']);die;
         $this->load->view('header0');
         $this->load->view('bar');
         $this->load->view('data/produksi', $data);

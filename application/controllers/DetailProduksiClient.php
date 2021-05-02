@@ -143,6 +143,17 @@ class DetailProduksiClient extends CI_Controller
         $this->load->view('footer');
 
     }
+    public function putproduksi()
+    {
+        $params = array('id_detailproduksi' =>  $this->uri->segment(3));
+        $data['detailproduksi'] = json_decode($this->curl->simple_get($this->API, $params));
+        $data['title'] = "Edit Data Detail Produksi";
+        $this->load->view('header1');
+        $this->load->view('bar1');
+        $this->load->view('staffproduksi/put/detail_produksi', $data);
+        $this->load->view('footer');
+
+    }
 
 
     // public function putbarang()
@@ -181,6 +192,30 @@ class DetailProduksiClient extends CI_Controller
         // print_r($update);
         // die;
         redirect('detailproduksiclient');
+    }
+    public function put_processproduksi()
+    {
+        $data = array(
+            
+            'id_detailproduksi'              => $this->input->post('id_detailproduksi'),
+            'id_produksi'                    => $this->input->post('id_produksi'),
+            'tanggal'                        => $this->input->post('tanggal'),
+            'nama_staff'                     => $this->input->post('nama_staff'),
+            'shift'                          => $this->input->post('shift'),
+            
+        );
+        
+        $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
+        if ($update) {
+            echo"berhasil";
+            // $this->session->set_flashdata('result', 'Update Data kategori Berhasil');
+        } else {
+            echo"gagal";
+            // $this->session->set_flashdata('result', 'Update Data kategori Gagal');
+        }
+        // print_r($update);
+        // die;
+        redirect('detailproduksiclient/indexproduksi');
     }
 
 
@@ -226,6 +261,19 @@ class DetailProduksiClient extends CI_Controller
         // print_r($delete);
         // die;
         redirect('detailproduksiclient');
+    }
+    public function deleteproduksi()
+    {
+        $params = array('id_detailproduksi' =>  $this->uri->segment(3));
+        $delete =  $this->curl->simple_delete($this->API, $params);
+        if ($delete) {
+            $this->session->set_flashdata('result', 'Hapus Data kategori Berhasil');
+        } else {
+            $this->session->set_flashdata('result', 'Hapus Data kategori Gagal');
+        }
+        // print_r($delete);
+        // die;
+        redirect('detailproduksiclient/indexproduksi');
     }
 
 
