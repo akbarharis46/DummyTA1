@@ -85,7 +85,7 @@
                 <thead>
                 <tr>
                   <th>NOMOR</th>
-                  <th>TANGGL</th>
+                  <th>TANGGAL</th>
                   <th>NAMA BARANG</th>
                   <th>STOCK BARANG</th>
                   <th>AKSI</th>
