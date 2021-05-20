@@ -26,14 +26,28 @@
               <!-- Tabel -->
               <div class="card">
             <!-- /.card-header -->
-            <div class="card-body" >
-                    <div class='card-header' style="margin-left:-20px;">
-                <a class='btn btn-primary'href="<?php echo site_url(); ?>produksiclient/post/">
-                    <i class="fa fa-plus"></i>
-                    <span >
-                        Tambah
-                    </span>
-                    </a>
+            <div class="card-body">
+            	<div class='card-header' style="margin-left:-20px;">
+            		<a class='btn btn-primary' href="<?php echo site_url(); ?>produksiclient/post/">
+            			<i class="fa fa-plus"></i>
+            			<span>
+            				Tambah
+            			</span>
+            		</a>
+
+
+
+                <a class='btn btn-danger' href="<?php echo site_url(); ?>produksiclient/exportToPDF/">
+            			<i class="fa fa-file-pdf"></i>
+            			<span>
+            				Cetak PDF
+            			</span>
+            		</a>
+
+
+
+
+
 
                     </div>   
                   <span>
