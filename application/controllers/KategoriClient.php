@@ -10,7 +10,10 @@ class KategoriClient extends CI_Controller
         parent::__construct();
         $this->load->library('curl');
         
-        $this->API = "http://localhost:8080/dummyTA/kategori";
+
+        $this->API = base_url('kategori');
+
+        // $this->API = "http://localhost:8080/dummyTA/kategori";
     }
 
     public function index()

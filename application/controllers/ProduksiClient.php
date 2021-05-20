@@ -73,6 +73,7 @@ class ProduksiClient extends CI_Controller
 
     public function post()
     {
+    
       $data['title'] = "Tambah Data produksi";
       $this->load->view('header0');
       $this->load->view('bar');

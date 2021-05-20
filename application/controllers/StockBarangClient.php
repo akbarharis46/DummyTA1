@@ -10,8 +10,10 @@ class StockBarangClient extends CI_Controller
         parent::__construct();
         $this->load->library('curl');
         
-        $this->API = "http://localhost:8080/dummyTA/stockbarang";
-        $this->API2 = "http://localhost:8080/dummyTA/kategori";
+        $this->API = base_url('stockbarang');
+        $this->API2 = base_url('kategori');
+        // $this->API = "http://localhost:8080/dummyTA/stockbarang";
+        // $this->API2 = "http://localhost:8080/dummyTA/kategori";
     }
 
     public function index()

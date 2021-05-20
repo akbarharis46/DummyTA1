@@ -10,7 +10,7 @@ class DetailStockProduksiClient extends CI_Controller
         parent::__construct();
         $this->load->library('curl');
         
-        $this->API = "http://localhost:8080/dummyTA/detailstockproduksi";
+        $this->API2 = "http://localhost:8080/dummyTA/detailstockproduksi";
         // $this->API2 = "http://localhost:8080/dummyTA/bategori";
     }
 

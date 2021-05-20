@@ -9,9 +9,13 @@ class DetailProduksiClient extends CI_Controller
     {
         parent::__construct();
         $this->load->library('curl');
+       
+        $this->API = base_url('detailproduksi');
+        $this->API2 = base_url('produksi');
         
-        $this->API = "http://localhost:8080/dummyTA/detailproduksi";
-        $this->API2 = "http://localhost:8080/dummyTA/produksi";
+
+        // $this->API = "http://localhost:8080/dummyTA/detailproduksi";
+        // $this->API2 = "http://localhost:8080/dummyTA/produksi";
     }
 
     public function index()

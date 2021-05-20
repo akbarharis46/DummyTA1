@@ -10,7 +10,8 @@ class DetailClient extends CI_Controller
         parent::__construct();
         $this->load->library('curl');
         
-        $this->API = "http://localhost:8080/dummyTA/detail";
+        $this->API = base_url('detail');
+        // $this->API = "http://localhost:8080/dummyTA/detail";
     }
 
     public function index()

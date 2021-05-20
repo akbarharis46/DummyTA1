@@ -10,13 +10,18 @@ class BarangClient extends CI_Controller
         parent::__construct();
         $this->load->library('curl');
         
-        $this->API = "http://localhost:8080/dummyTA/barang";
-        $this->API2 = "http://localhost:8080/dummyTA/bategori";
+
+        $this->API = base_url('barang');
+        $this->API2 = base_url('kategori');
+
+        // $this->API = "http://localhost:8080/dummyTA/barang";
+        // $this->API2 = "http://localhost:8080/dummyTA/kategori";
     }
 
     public function index()
     {
-        $data['barang'] = json_decode($this->curl->simple_get($this->API));
+        
+        $data['barang'] = json_decode($this->curl->simple_sget($this->API));
         $data['title'] = "barang";
         $this->load->view('header0');
         $this->load->view('bar');
@@ -62,7 +67,7 @@ class BarangClient extends CI_Controller
     public function post()
     {
 
-        $this->API2 = "http://localhost:8080/dummyTA/kategori";
+        
      $data['kategori'] = json_decode($this->curl->simple_get($this->API2));
      $data['count'] = $this->input->post('count');
 
@@ -76,7 +81,7 @@ class BarangClient extends CI_Controller
 
     public function postbarang()
     {
-     $this->API2 = "http://localhost:8080/dummyTA/kategori";
+     
      $data['kategori'] = json_decode($this->curl->simple_get($this->API2));
      $data['count'] = $this->input->post('count');
 

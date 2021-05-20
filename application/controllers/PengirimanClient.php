@@ -10,10 +10,15 @@ class PengirimanClient extends CI_Controller
         parent::__construct();
         $this->load->library('curl');
         $this->load->model('admin_model');
+
+
+        $this->API = base_url('pengiriman');
+        $this->API1 = base_url('detail');
+        $this->API2 = base_url('detailstockproduksi');
         
-        $this->API = "http://localhost:8080/dummyTA/pengiriman";
-        $this->API1 = "http://localhost:8080/dummyTA/detail";
-        $this->API2 = "http://localhost:8080/dummyTA/detailstockproduksi";
+        // $this->API = "http://localhost:8080/dummyTA/pengiriman";
+        // $this->API1 = "http://localhost:8080/dummyTA/detail";
+        // $this->API2 = "http://localhost:8080/dummyTA/detailstockproduksi";
     }
 
     public function index()
