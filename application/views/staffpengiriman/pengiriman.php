@@ -38,12 +38,26 @@
                     </div>   
                   <span>
                   <br>
+                      <?php
+                    if (!empty($this->session->flashdata('pesan')))
+                    {
+                      ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <?= $this->session->flashdata('pesan');?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <?php   
+                  }
+                  ?>
+
                     <?php
-                   if (!empty($this->session->flashdata('pesan')))
-                   {
-                     ?>
-                  <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <?= $this->session->flashdata('pesan');?>
+                    if (!empty($this->session->flashdata('pesan2')))
+                    {
+                      ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?= $this->session->flashdata('pesan2');?>
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -52,31 +66,17 @@
                   }
                   ?>
 
-                  <?php
-                   if (!empty($this->session->flashdata('pesan2')))
-                   {
-                     ?>
-                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <?= $this->session->flashdata('pesan2');?>
-                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                 <?php   
-                 }
-                 ?>
-
-                  <?php
-                   if (!empty($this->session->flashdata('pesan3')))
-                   {
-                     ?>
-                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  <?= $this->session->flashdata('pesan3');?>
-                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                 <?php   
+                    <?php
+                    if (!empty($this->session->flashdata('pesan3')))
+                    {
+                      ?>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <?= $this->session->flashdata('pesan3');?>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>
+                  <?php   
                  }
                  ?>
                  </span> 
@@ -118,6 +118,7 @@
                         <td>
                             <a href="<?php echo site_url(); ?>pengirimanclient/putpengiriman/<?php echo $rows->id_pengiriman; ?>" class="btn btn-warning">
                             <i class="fa fa-pen" aria-hidden="true"></i></a>
+                            
                             <a href="<?= base_url(); ?>pengirimanclient/deletepengiriman/<?= $rows->id_pengiriman; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
                             <i class="fa fa-trash" aria-hidden="true"></i></a>
 
