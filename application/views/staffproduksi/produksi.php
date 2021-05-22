@@ -34,6 +34,13 @@
                         Tambah
                     </span>
                     </a>
+                    
+                    <a class='btn btn-danger' href="<?php echo site_url(); ?>produksiclient/exportToPDF/">
+            			<i class="fa fa-file-pdf"></i>
+            			<span>
+            				Cetak PDF
+            			</span>
+            		</a>
 
                     </div>   
                   <span>

@@ -53,7 +53,7 @@ class PengirimanClient extends CI_Controller
     }
 
 
-    public function indexstaffpengiriman()
+    public function indexpengiriman()
     {
         $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "pengiriman";

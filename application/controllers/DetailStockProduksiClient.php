@@ -10,7 +10,8 @@ class DetailStockProduksiClient extends CI_Controller
         parent::__construct();
         $this->load->library('curl');
         
-        $this->API2 = "http://localhost:8080/dummyTA/detailstockproduksi";
+        $this->API = base_url('detailstockproduksi');
+        //$this->API2 = "http://localhost:8080/dummyTA/detailstockproduksi";
         // $this->API2 = "http://localhost:8080/dummyTA/bategori";
     }
 
@@ -48,7 +49,7 @@ class DetailStockProduksiClient extends CI_Controller
 
     public function indexpengiriman()
     {
-        $data['baradetailstockproduksing'] = json_decode($this->curl->simple_get($this->API));
+        $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "barang";
         $this->load->view('header1');
         $this->load->view('bar3');

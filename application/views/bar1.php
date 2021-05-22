@@ -133,9 +133,6 @@
                 <i class="fa fa-cog"></i>Detail Pengiriman</a></li>
                 </a>
               </li>
-
-
-
             </ul>
 
 

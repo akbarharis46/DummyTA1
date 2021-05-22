@@ -81,11 +81,6 @@
               </li>
               
 
-              <li class="nav-item">
-                <a href="<?php echo site_url(); ?>xxxx" class="nav-link">
-                <i class="fa fa-file"></i> Cetak Data Produksi</a></li>
-                </a>
-              </li>
             </ul>
 
           
@@ -113,12 +108,6 @@
                 </a>
               </li>
 
-              <li class="nav-item">
-                <a href="<?php echo site_url(); ?>xxxx" class="nav-link">
-                <i class="fa fa-file"></i> Cetak Data Gudang</a></li>
-                </a>
-              </li>
-
             </ul>
 
 
@@ -142,11 +131,7 @@
 
 
 
-              <li class="nav-item">
-                <a href="<?php echo site_url(); ?>xxxx" class="nav-link">
-                <i class="fa fa-file"></i> Cetak Data Pengiriman</a></li>
-                </a>
-              </li>
+             
             </ul>
 
 

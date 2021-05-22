@@ -34,7 +34,8 @@ class StaffProduksiClient extends CI_Controller
     
     public function post()
     {
-     $this->API2 = "http://localhost:8080/dummyTA/kategori";
+     $this->API2 = base_url('kategori');
+     //$this->API2 = "http://localhost:8080/dummyTA/kategori";
      $data['kategori'] = json_decode($this->curl->simple_get($this->API2));
 
       $data['title'] = "Tambah Data barang";

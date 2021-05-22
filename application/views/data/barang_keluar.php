@@ -136,7 +136,7 @@
                             <i class="fa fa-trash" aria-hidden="true"></i></a>
 
                             
-                            <a href="<?php echo site_url(); ?>#/put/<?php echo $rows->id_detailpengiriman; ?>" class="btn btn-danger">
+                            <a href="<?php echo site_url(); ?>detailclient//<?php echo $rows->id_detailpengiriman; ?>" class="btn btn-danger">
                             <i class="fa fa-book" aria-hidden="true"></i></a>
                            
                         </td>

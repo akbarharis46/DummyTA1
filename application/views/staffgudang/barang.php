@@ -35,6 +35,13 @@
                 </span>
                 </button>
 
+                <a class='btn btn-danger' href="<?php echo site_url(); ?>barangclient/exportToPDF/">
+            			<i class="fa fa-file-pdf"></i>
+            			<span>
+            				Cetak PDF
+            			</span>
+            		</a>
+
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
