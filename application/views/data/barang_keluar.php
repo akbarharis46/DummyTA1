@@ -28,12 +28,12 @@
             <!-- /.card-header -->
             <div class="card-body" >
                     <div class='card-header' style="margin-left:-20px;">
-                <a class='btn btn-primary'href="<?php echo site_url(); ?>pengirimanclient/post/">
+                <!-- <a class='btn btn-primary'href="<?php echo site_url(); ?>pengirimanclient/post/">
                     <i class="fa fa-plus"></i>
                     <span >
                         Tambah
                     </span>
-                    </a>
+                    </a> -->
 
                     <a class='btn btn-danger' href="<?php echo site_url(); ?>detailclient/exportToPDF/">
             			<i class="fa fa-file-pdf"></i>
@@ -135,9 +135,7 @@
                         <a href="<?= base_url(); ?>detailclient/delete/<?= $rows->id_detailpengiriman; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
                             <i class="fa fa-trash" aria-hidden="true"></i></a>
 
-                            
-                            <a href="<?php echo site_url(); ?>detailclient//<?php echo $rows->id_detailpengiriman; ?>" class="btn btn-danger">
-                            <i class="fa fa-book" aria-hidden="true"></i></a>
+                  
                            
                         </td>
 

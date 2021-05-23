@@ -53,7 +53,7 @@ class PengirimanClient extends CI_Controller
     }
 
 
-    public function indexpengiriman()
+    public function indexstaffpengiriman()
     {
         $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "pengiriman";
@@ -69,7 +69,6 @@ class PengirimanClient extends CI_Controller
     {
       $data['title'] = "Tambah Data pengiriman";
       $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API2));
-
       $this->load->view('header0');
       $this->load->view('bar');
       $this->load->view('data/post/pengiriman', $data);
@@ -98,7 +97,6 @@ class PengirimanClient extends CI_Controller
             'jenis_kendaraan'                => $this->input->post('jenis_kendaraan'),
             'nomor_kendaraan'                => $this->input->post('nomor_kendaraan'),
             'tanggal'                        => $this->input->post('tanggal'),
-            
             'status_pengiriman'              => $this->input->post('status_pengiriman'),     
         );
         $insert =  $this->curl->simple_post($this->API,$data);
@@ -568,6 +566,114 @@ class PengirimanClient extends CI_Controller
 
 
 
+// cetak pdf
+function exportsuratjalan() {
+
+
+
+    // header attribute
+    $name_file = 'PENGIRIMAN BARANG-'.rand(1, 999999).'-'.date('Y-m-d');
+    $pdf = $this->header_attr( $name_file );
+
+    // add a page
+    $pdf->AddPage('L', 'A4');
+
+
+    // Sub header
+    // $pdf->Ln(5, false);
+    $html = '<table border="0">
+        <tr>
+            <td align="center"><h2>SURAT JALAN PENGIRIMAN</h2> <br> Lorepisum dolar sit amlet</td>
+        
+        </tr>
+
+    
+    </table>';
+
+    $pdf->writeHTML($html, true, false, true, false, '');
+    $pdf->Ln(5, false);
+
+    
+    
+
+    // header table
+    $table_body = "";
+    $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
+    
+    if ( count( $data['pengiriman'] ) > 0 ) {
+
+      $i = 1;
+      foreach ( $data['pengiriman'] AS $item ) {
+
+          $table_body .= '<tr>
+          
+              <td>'.$i.'</td>
+              <td>'.$item->nama_pengirim.'</td>
+              <td>'.$item->nomorhp.'</td>
+              <td>'.$item->tujuan.'</td>
+              <td>'.$item->jumlah.'</td>
+              <td>'.$item->jenis_kendaraan.'</td>
+              <td>'.$item->nomor_kendaraan.'</td>
+              <td>'.$item->tanggal.'</td>
+              <td>'.$item->status_pengiriman.'</td>
+
+          </tr>';
+
+          $i++;
+      }
+    }
+
+
+
+    $table = '
+        <table border="1" width="100%" cellpadding="6">
+            <tr>
+                <th width="5%" height="20" padding="5" align="center"><b>No</b></th>
+                <th width="20%" align="center"><b>Nama Pengirim</b></th>
+                <th width="10%" align="center"><b>Nomor Hp Petugas</b></th>
+                <th width="10%" align="center"><b>Tujuan Pengiriman</b></th>
+                <th width="10%" align="center"><b>Jumlah</b></th>
+                <th width="15%" align="center"><b>Jenis Kendaraan</b></th>
+                <th width="10%" align="center"><b>Nomor Kendaraan</b></th>
+                <th width="10%" align="center"><b>Tanggal Pengiriman</b></th>
+                <th width="10%" align="center"><b>Status Pengiriman</b></th>
+                
+        
+            </tr>
+            '.$table_body.'
+        </table>';
+
+    $pdf->writeHTML($table, true, false, true, false, '');
+
+
+
+    $pdf->Ln(10, false);
+    $ttd = '
+        <table border="0">
+            <tr>
+                <td colspan="2" align="right">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '.date('Y').'</td>
+            </tr>
+            <tr>
+                <td colspan="2" height="80"></td>
+            </tr>
+            <tr>
+                <td width="75%"></td>
+                <td width="20%" align="center">(. . . . . . . . . . . . . . . . .)</td>
+            </tr>
+        </table>
+    ';
+
+    $pdf->writeHTML($ttd, true, false, true, false, '');
+
+
+    // output
+    $pdf->Output($name_file.'.pdf', 'I');
+}
+
+
+
+
 // header attr
 function header_attr( $title ) {
 
@@ -603,8 +709,8 @@ function header_attr( $title ) {
     $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
     // set some language-dependent strings (optional)
-    if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-        require_once(dirname(__FILE__).'/lang/eng.php');
+    if (@file_exists(dirname(_FILE_).'/lang/eng.php')) {
+        require_once(dirname(_FILE_).'/lang/eng.php');
         $pdf->setLanguageArray($l);
     }
 

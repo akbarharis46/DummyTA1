@@ -127,8 +127,15 @@
                         <td>
                             <a href="<?php echo site_url(); ?>pengirimanclient/put/<?php echo $rows->id_pengiriman; ?>" class="btn btn-warning">
                             <i class="fa fa-pen" aria-hidden="true"></i></a>
+
+
                             <a href="<?= base_url(); ?>pengirimanclient/delete/<?= $rows->id_pengiriman; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
                             <i class="fa fa-trash" aria-hidden="true"></i></a>
+
+
+                            <a class='btn btn-danger' href="<?php echo site_url(); ?>pengirimanclient/exportsuratjalan/">
+            			          <i class="fa fa-file-pdf"></i>
+                            
 
                             <a class="btn btn-success "  href="<?=base_url();?>pengirimanclient/barang_keluar/<?= $rows->id_pengiriman;?>">
                             <i class="ion-android-exit" aria-hidden="true"></i></a>

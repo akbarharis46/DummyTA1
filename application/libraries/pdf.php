@@ -16,16 +16,12 @@ class Pdf extends TCPDF {
         $this->Ln(3, true);
         $this->setCellMargins(13, 0, 0, 0);
         $this->SetFont('times', 'B', 11);
-        $this->Cell(60, 8, 'Sistem Informasi Manajemen Pabrik', 0, 2, 'L', 0, '', 0, false, 'M', 'M');
+        $this->Cell(60, 8, 'PT MILAGROS PUTRA MANDIRI BANYUWANGI', 0, 2, 'L', 0, '', 0, false, 'M', 'M');
 
         $this->SetFont('times', '', 8);
-        $this->Cell(0, 6, 'Wiroborang, Mayangan, Kota Probolinggo, Jawa Timur 67216', 0, 2, 'L', 0, '', 0, false, 'M', 'M');
+        $this->Cell(0, 6, 'Jl. Raya Kalibaru, Dusun Sumber Beringin, Kalibaru Kulon', 0, 2, 'L', 0, '', 0, false, 'M', 'M');
+        $this->Cell(0, 6, 'Kec. Kalibaru, Kabupaten Banyuwangi, Jawa Timur 68467', 0, 2, 'L', 0, '', 0, false, 'M', 'M');
         $this->Cell(0, 6, 'Telp. ', 0, 2, 'L', 0, '', 0, false, 'M', 'M');
-        $this->Cell(0, 5, 'PT Perusahaan Gas Negara (Persero) Tbk.', 0, 2, 'L', 0, '', 0, false, 'M', 'M');
-
-
-    
-        
     }
 
     // Page footer
