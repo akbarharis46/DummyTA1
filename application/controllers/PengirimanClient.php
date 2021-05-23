@@ -140,16 +140,33 @@ class PengirimanClient extends CI_Controller
               'tanggal'                        => $this->input->post('tanggal'),
               'status_pengiriman'              => $this->input->post('status_pengiriman'),     
           );
-          $insert =  $this->curl->simple_post($this->API,$data);
-          if ($insert) {
-              echo"berhasil";
-              //$this->session->set_flashdata('result', 'Data pengiriman Berhasil Ditambahkan');
-          } else {
-              echo"gagal ";
-              //$this->session->set_flashdata('result', 'Data pengiriman Gagal Ditambahkan');
-          }
-          // print_r($insert);
-          //  exit;
+
+
+
+           $insert =  $this->curl->simple_post($this->API,$data);
+
+        // Kurangi stok
+      $detail_produksi = json_decode($this->curl->simple_get($this->API2), true);
+
+
+      $data2 = array(
+        'id_detailstockproduksi' => $detail_produksi[0]['id_detailstockproduksi'],
+        'tanggal_stockproduksi' => date('Y-m-d'),
+        'stock_produksi' => $detail_produksi[0]['stock_produksi'] - $this->input->post('jumlah')
+        
+      );
+      
+      $update = $this->curl->simple_put($this->API2, $data2, array(CURLOPT_BUFFERSIZE => 10));
+
+        if ($insert) {
+            echo"berhasil";
+            //$this->session->set_flashdata('result', 'Data pengiriman Berhasil Ditambahkan');
+        } else {
+            echo"gagal ";
+            //$this->session->set_flashdata('result', 'Data pengiriman Gagal Ditambahkan');
+        }
+        // print_r($insert);
+        //  exit;
           redirect('pengirimanclient/indexstaffpengiriman');
         }
     

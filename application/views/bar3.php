@@ -120,7 +120,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo site_url(); ?>pengirimanclient/indexpengiriman" class="nav-link">
+                <a href="<?php echo site_url(); ?>pengirimanclient/indexstaffpengiriman" class="nav-link">
                 <i class="fa fa-cog"></i>Data Pengiriman</a></li>
                 </a>
               </li>
