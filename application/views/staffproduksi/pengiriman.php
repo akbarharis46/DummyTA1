@@ -1,4 +1,4 @@
-<?php if($this->session->userdata('level')!='Staff Gudang'){redirect('login');};?>
+<?php if($this->session->userdata('level')!='Staff Produksi'){redirect('login');};?>
 
 <div class="cc">
 
@@ -28,7 +28,7 @@
             <!-- /.card-header -->
             <div class="card-body" >
                     <div class='card-header' style="margin-left:-20px;">
-               
+            
 
                     </div>   
                   <span>
@@ -88,6 +88,7 @@
                   <th>NOMOR KENDARAAn</th>
                   <th>TANGGAL</th>
                   <th>STATUS PENGIRIMAN</th>
+    
  
                 </tr>
                 </thead>
@@ -108,7 +109,8 @@
                         <td><?php echo $rows->status_pengiriman; ?>
 
 
-                       
+                            </td>
+                   
                     </tr>
                     <?php endforeach ; ?>
                 </tbody>

@@ -17,7 +17,7 @@ class ProduksiClient extends CI_Controller
         $this->API2 = base_url('detailstockproduksi');
         
 
-        // old method
+        // // old method
         // $this->API = "http://localhost:8080/dummyTA/produksi";
         // $this->API1 = "http://localhost:8080/dummyTA/detailproduksi";
         // $this->API2 = "http://localhost:8080/dummyTA/detailstockproduksi";
@@ -361,43 +361,45 @@ public function prosesdata_produksikeluar()
 
 public function prosesdata_staffproduksikeluar()
 {
-  $this->load->model('admin_model');
-  $this->db->where('id_produksi', 'id_produksi');
-  $this->form_validation->set_rules('tanggal','Tanggal Diterima','trim|required');
-
-
-
-  // $this->form_validation->set_rules('jumlah_pengiriman-jumlah_pengiriman','Jumlah Pengiriman','trim|required');
-  if($this->form_validation->run() === true)
-  {
-    $id_produksi   = $this->input->post('id_produksii');
-    $nama_staff   = $this->input->post('nama_staff');
-    $shift    = $this->input->post('shift');
-    $tanggal         = $this->input->post('tanggal');
-    $jumlah_produksi         = $this->input->post('jumlah_produksi');
-
-    $data1 = array(
-            'id_produksi' => $id_produksi,
-            'nama_staff' =>$nama_staff,
-            'shift' =>$shift,
-            'tanggal' =>$tanggal,         
-            'jumlah_produksi' =>$jumlah_produksi,         
-            
-    );
-    $insert =   $this->curl->simple_post($this->API2,$data1);
-
-    $data = array(
-          'id_produksi'                  => $this->input->post('id_produksi'),
-          'nama_staff'                  => $this->input->post('nama_staff'),
-          'shift'                        => $this->input->post('shift'),
-          'tanggal'                         => $this->input->post('tanggal'),
-          'jumlah_produksi'                         => $this->input->post('jumlah_produksi'),
-          
-          
+    $this->load->model('admin_model');
+    $this->db->where('id_produksi', 'id_produksi');
+    $this->form_validation->set_rules('tanggal','Tanggal Diterima','trim|required');
+  
+  
+  
+    // $this->form_validation->set_rules('jumlah_pengiriman-jumlah_pengiriman','Jumlah Pengiriman','trim|required');
+    if($this->form_validation->run() === true)
+    {
+      $id_produksi   = $this->input->post('id_produksi');
+      $nama_staff   = $this->input->post('nama_staff');
+      $shift    = $this->input->post('shift');
+      $tanggal         = $this->input->post('tanggal');
+      $jumlah_produksi         = $this->input->post('jumlah_produksi');
+  
+      $data1 = array(
+              'id_produksi' => $id_produksi,
+              'nama_staff' =>$nama_staff,
+              'shift' =>$shift,
+              'tanggal' =>$tanggal,         
+              'jumlah_produksi' =>$jumlah_produksi,         
+              
       );
-      
-      $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
-
+  
+      $insert =   $this->curl->simple_post($this->API1,$data1);
+  
+      $data2 = array(
+            'id_produksi'                  => $id_produksi,
+            'nama_staff'                  => $this->input->post('nama_staff'),
+            'shift'                        => $this->input->post('shift'),
+            'tanggal'                         => $this->input->post('tanggal'),
+            'jumlah_produksi'                         => $this->input->post('jumlah_produksi'),
+            
+            
+        );
+  
+        
+        $update =  $this->curl->simple_put($this->API, $data2, array(CURLOPT_BUFFERSIZE => 10));
+  
       if($insert){
         //   print_r($update);
         //   exit;
