@@ -133,7 +133,7 @@
                             <i class="fa fa-trash" aria-hidden="true"></i></a>
 
 
-                            <a class='btn btn-danger' href="<?php echo site_url(); ?>pengirimanclient/exportsuratjalan/">
+                            <a class='btn btn-danger' href="<?php echo site_url(); ?>pengirimanclient/exportsuratjalan/<?= $rows->id_pengiriman ?>">
             			          <i class="fa fa-file-pdf"></i>
                             
 

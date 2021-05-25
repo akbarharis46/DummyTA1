@@ -584,7 +584,7 @@ class PengirimanClient extends CI_Controller
 
 
 // cetak pdf
-function exportsuratjalan() {
+function exportsuratjalan( $id_pengiriman ) {
 
 
 
@@ -615,7 +615,9 @@ function exportsuratjalan() {
 
     // header table
     $table_body = "";
-    $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
+
+    $params = array('id_pengiriman' =>  $id_pengiriman);
+    $data['pengiriman'] = json_decode($this->curl->simple_get($this->API, $params));
     
     if ( count( $data['pengiriman'] ) > 0 ) {
 

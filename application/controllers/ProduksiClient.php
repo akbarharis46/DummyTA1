@@ -424,6 +424,20 @@ public function prosesdata_staffproduksikeluar()
 
       // header attribute
       $name_file = 'PRODUKSI-'.rand(1, 999999).'-'.date('Y-m-d');
+      
+      $tanggal_interval = $this->input->get('interval-tanggal');
+      
+      // apakah user melakuan filter ?
+      if ( $tanggal_interval ) {
+
+        $pisah_waktu = explode('-', $tanggal_interval);
+
+        $tanggal_awal = strtotime($pisah_waktu[0]);
+        $tanggal_akhir= strtotime($pisah_waktu[1]);
+      }
+      
+    
+      
       $pdf = $this->header_attr( $name_file );
 
       // add a page
@@ -431,7 +445,7 @@ public function prosesdata_staffproduksikeluar()
 
 
       // Sub header
-      // $pdf->Ln(5, false);
+      $pdf->Ln(5, false);
       $html = '<table border="0">
           <tr>
               <td align="center"><h2>LAPORAN DATA PRODUKSI</h2> <br> Lorepisum dolar sit amlet</td>
@@ -450,11 +464,44 @@ public function prosesdata_staffproduksikeluar()
       // header table
       $table_body = "";
       $data['produksi'] = json_decode($this->curl->simple_get($this->API));
+
+
+    $data_produksi = array();
+
+    // pre-processing
+    if ( count($data['produksi']) > 0 ) {
+
+        foreach ( $data['produksi'] AS $item ) {
+
+            $tanggal_produksi = strtotime( $item->tanggal );
+
+
+            // user melakukan filter
+            if ( !empty( $tanggal_interval ) ) {
+
+                if ( $tanggal_awal == $tanggal_akhir ) { // apabila sorting hanya 1 hari
+
+                    array_push( $data_produksi, $item );
+                } else if ( $tanggal_produksi >= $tanggal_awal && $tanggal_produksi <= $tanggal_akhir ) { // apabila memiliki interval waktu
+    
+                    array_push( $data_produksi, $item );
+                }
+
+            } else { // user tidak menampilkan filter atau menampilkan keseluruhan
+
+                array_push( $data_produksi, $item );
+            }
+        }
+    }
+
+
+
+
       
-      if ( count( $data['produksi'] ) > 0 ) {
+      if ( count( $data_produksi ) > 0 ) {
 
         $i = 1;
-        foreach ( $data['produksi'] AS $item ) {
+        foreach ( $data_produksi AS $item ) {
 
             $table_body .= '<tr>
             
