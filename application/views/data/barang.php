@@ -9,7 +9,7 @@
       <div class="container-fluid" >
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-microphone" ></i> Data barang</h2>
+            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-microphone" ></i> Data Barang Masuk</h2>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -28,20 +28,56 @@
             <!-- /.card-header -->
             <div class="card-body" >
                 <div class='card-header' style="margin-left:-20px;">
-                <button class='btn btn-primary' type='button' data-toggle="modal" data-target="#exampleModal">
-                <i class="fa fa-plus"></i>
-                <span >
-                    Tambah
-                </span>
-                </button>
+                
+                <form action="<?php echo site_url(); ?>barangclient/exportToPDF/" method="GET">
+                <div class="row">
+                <div class="col-md-3">
+                  <button class='btn btn-primary' type='button' data-toggle="modal" data-target="#exampleModal">
+                  <i class="fa fa-plus"></i>
+                  <span >
+                      Tambah
+                  </span>
+                  </button>
+
+                </div>
+
+                <div class="col-md-4">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="far fa-calendar-alt"></i>
+                        </span>
+                      </div>
+                      <input type="text" name="interval-tanggal" class="form-control float-right" id="aktif-date-range">
+                    </div>  
+
+                  </div>
+
+                  <div class="col-md-5">
+                    <button class='btn btn-outline-danger'>
+                      <i class="fa fa-file-pdf"></i>
+                      <span>
+                        Filter PDF
+                      </span>
+                    </button>
+                    <a class='btn btn-danger' href="<?php echo site_url(); ?>barangclient/exportToPDF/">
+                      <i class="fa fa-file-pdf"></i>
+                      <span>
+                        Cetak Keseluruhan
+                      </span>
+                  </a> 
+                  </div>    
+                </div>    
+                </form>
+                
 
 
-                <a class='btn btn-danger' href="<?php echo site_url(); ?>barangclient/exportToPDF/">
-            			<i class="fa fa-file-pdf"></i>
-            			<span>
-            				Cetak PDF
-            			</span>
-            		</a>
+
+
+
+
+
+
 
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
