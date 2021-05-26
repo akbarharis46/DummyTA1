@@ -481,7 +481,19 @@ class PengirimanClient extends CI_Controller
 
 
     // header attribute
-    $name_file = 'PRODUKSI-'.rand(1, 999999).'-'.date('Y-m-d');
+    $name_file = 'Data Pengiriman-'.rand(1, 999999).'-'.date('Y-m-d');
+    
+    $tanggal_interval = $this->input->get('interval-tanggal');
+      
+    // apakah user melakuan filter ?
+    if ( $tanggal_interval ) {
+
+      $pisah_waktu = explode('-', $tanggal_interval);
+
+      $tanggal_awal = strtotime($pisah_waktu[0]);
+      $tanggal_akhir= strtotime($pisah_waktu[1]);
+    }
+    
     $pdf = $this->header_attr( $name_file );
 
     // add a page
@@ -509,10 +521,39 @@ class PengirimanClient extends CI_Controller
     $table_body = "";
     $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
     
-    if ( count( $data['pengiriman'] ) > 0 ) {
+    $data_pengiriman = array();
+
+    // pre-processing
+    if ( count($data['pengiriman']) > 0 ) {
+
+        foreach ( $data['pengiriman'] AS $item ) {
+
+            $tanggal_pengiriman = strtotime( $item->tanggal );
+
+
+            // user melakukan filter
+            if ( !empty( $tanggal_interval ) ) {
+
+                if ( $tanggal_awal == $tanggal_akhir ) { 
+
+                    array_push( $data_pengiriman, $item );
+                } else if ( $tanggal_pengiriman >= $tanggal_awal && $tanggal_pengiriman <= $tanggal_akhir ) {
+    
+                    array_push( $data_pengiriman, $item );
+                }
+
+            } else { 
+
+                array_push( $data_pengiriman, $item );
+            }
+        }
+    }
+
+
+    if ( count( $data_pengiriman ) > 0 ) {
 
       $i = 1;
-      foreach ( $data['pengiriman'] AS $item ) {
+      foreach ( $data_pengiriman AS $item ) {
 
           $table_body .= '<tr>
           
@@ -586,8 +627,6 @@ class PengirimanClient extends CI_Controller
 // cetak pdf
 function exportsuratjalan( $id_pengiriman ) {
 
-
-
     // header attribute
     $name_file = 'PENGIRIMAN BARANG-'.rand(1, 999999).'-'.date('Y-m-d');
     $pdf = $this->header_attr( $name_file );
@@ -615,14 +654,15 @@ function exportsuratjalan( $id_pengiriman ) {
 
     // header table
     $table_body = "";
+    $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
 
     $params = array('id_pengiriman' =>  $id_pengiriman);
     $data['pengiriman'] = json_decode($this->curl->simple_get($this->API, $params));
-    
+   
     if ( count( $data['pengiriman'] ) > 0 ) {
 
-      $i = 1;
-      foreach ( $data['pengiriman'] AS $item ) {
+        $i = 1;
+        foreach ( $data['pengiriman'] AS $item ) {
 
           $table_body .= '<tr>
           

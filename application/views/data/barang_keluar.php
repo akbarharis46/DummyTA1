@@ -28,19 +28,52 @@
             <!-- /.card-header -->
             <div class="card-body" >
                     <div class='card-header' style="margin-left:-20px;">
-                <!-- <a class='btn btn-primary'href="<?php echo site_url(); ?>pengirimanclient/post/">
-                    <i class="fa fa-plus"></i>
-                    <span >
-                        Tambah
-                    </span>
-                    </a> -->
+                    <form action="<?php echo site_url(); ?>detailclient/exportToPDF/" method="GET">
+                <div class="row">
+                
+                  <!-- <div class="col-md-3">
 
+                    <a class='btn btn-primary' href="<?php echo site_url(); ?>detailclient/post/">
+                      <i class="fa fa-plus"></i>
+                      <span>
+                        Tambah
+                      </span>
+                    </a>
+
+                  </div> -->
+
+                  
+                  <div class="col-md-4">
+
+
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="far fa-calendar-alt"></i>
+                        </span>
+                      </div>
+                      <input type="text" name="interval-tanggal" class="form-control float-right" id="aktif-date-range">
+                    </div>                  
+                  </div>
+                  <div class="col-md-5">
+                  
+                    <button class='btn btn-outline-danger'>
+                      <i class="fa fa-file-pdf"></i>
+                      <span>
+                        Filter PDF
+                      </span>
+                    </button>
                     <a class='btn btn-danger' href="<?php echo site_url(); ?>detailclient/exportToPDF/">
-            			<i class="fa fa-file-pdf"></i>
-            			<span>
-            				Cetak PDF
-            			</span>
-            		</a>
+                      <i class="fa fa-file-pdf"></i>
+                      <span>
+                        Cetak Keseluruhan
+                      </span>
+                    </a>
+                  
+                  </div>
+
+                </div>
+                </form>
 
 
 

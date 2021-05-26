@@ -100,7 +100,19 @@ function exportToPDF() {
 
 
     // header attribute
-    $name_file = 'PRODUKSI-'.rand(1, 999999).'-'.date('Y-m-d');
+    $name_file = 'Status Pengiriman-'.rand(1, 999999).'-'.date('Y-m-d');
+    
+    $tanggal_interval = $this->input->get('interval-tanggal');
+      
+    // apakah user melakuan filter ?
+    if ( $tanggal_interval ) {
+
+      $pisah_waktu = explode('-', $tanggal_interval);
+
+      $tanggal_awal = strtotime($pisah_waktu[0]);
+      $tanggal_akhir= strtotime($pisah_waktu[1]);
+    }
+
     $pdf = $this->header_attr( $name_file );
 
     // add a page
@@ -128,10 +140,39 @@ function exportToPDF() {
     $table_body = "";
     $data['detail'] = json_decode($this->curl->simple_get($this->API));
     
-    if ( count( $data['detail'] ) > 0 ) {
+    $data_detail = array();
+
+    // pre-processing
+    if ( count($data['detail']) > 0 ) {
+
+        foreach ( $data['detail'] AS $item ) {
+
+            $tanggal_detail = strtotime( $item->tanggal_diterima);
+            
+
+            // user melakukan filter
+            if ( !empty( $tanggal_interval ) ) {
+
+                if ( $tanggal_awal == $tanggal_akhir ) { // apabila sorting hanya 1 hari
+
+                    array_push( $data_detail, $item );
+                } else if ( $tanggal_detail >= $tanggal_awal && $tanggal_detail <= $tanggal_akhir ) { // apabila memiliki interval waktu
+    
+                    array_push( $data_detail, $item );
+                }
+
+            } else { // user tidak menampilkan filter atau menampilkan keseluruhan
+
+                array_push( $data_detail, $item );
+            }
+        }
+    }
+
+
+    if ( count( $data_detail ) > 0 ) {
 
       $i = 1;
-      foreach ( $data['detail'] AS $item ) {
+      foreach ( $data_detail AS $item ) {
 
           $table_body .= '<tr>
           
