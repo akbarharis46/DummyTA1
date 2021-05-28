@@ -169,7 +169,7 @@
                             
 
                             <a class="btn btn-success "  href="<?=base_url();?>pengirimanclient/barang_keluar/<?= $rows->id_pengiriman;?>">
-                            <i class="ion-android-exit" aria-hidden="true"></i></a>
+                            <i class="ion-android-exit" aria-hidden="true"></i></a> 
                         </td>
                     </tr>
                     <?php endforeach ; ?>

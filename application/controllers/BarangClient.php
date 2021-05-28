@@ -370,7 +370,7 @@ class BarangClient extends CI_Controller
            
             if ( !empty( $tanggal_interval ) ) {
 
-                if ( $tanggal_awal == $tanggal_akhir ) { 
+                if ( $tanggal_barang == $tanggal_awal && $tanggal_barang == $tanggal_akhir ) { 
 
                     array_push( $data_barang, $item );
                 } else if ( $tanggal_barang >= $tanggal_awal && $tanggal_barang <= $tanggal_akhir ) { 

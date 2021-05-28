@@ -479,7 +479,7 @@ public function prosesdata_staffproduksikeluar()
             // user melakukan filter
             if ( !empty( $tanggal_interval ) ) {
 
-                if ( $tanggal_awal == $tanggal_akhir ) { // apabila sorting hanya 1 hari
+                if ( $tanggal_produksi == $tanggal_awal && $tanggal_produksi == $tanggal_akhir ) { // apabila sorting hanya 1 hari
 
                     array_push( $data_produksi, $item );
                 } else if ( $tanggal_produksi >= $tanggal_awal && $tanggal_produksi <= $tanggal_akhir ) { // apabila memiliki interval waktu

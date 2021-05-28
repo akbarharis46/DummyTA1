@@ -168,7 +168,7 @@
 
                             <a class='btn btn-danger' href="<?php echo site_url(); ?>pengirimanclient/exportsuratjalan/<?= $rows->id_pengiriman ?>">
             			          <i class="fa fa-file-pdf"></i>
-                            
+                      
 
                             <a class="btn btn-success "  href="<?=base_url();?>pengirimanclient/barang_keluar/<?= $rows->id_pengiriman;?>">
                             <i class="ion-android-exit" aria-hidden="true"></i></a>

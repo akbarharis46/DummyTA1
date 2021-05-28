@@ -534,7 +534,7 @@ class PengirimanClient extends CI_Controller
             // user melakukan filter
             if ( !empty( $tanggal_interval ) ) {
 
-                if ( $tanggal_awal == $tanggal_akhir ) { 
+                if ( $tanggal_pengiriman == $tanggal_awal && $tanggal_pengiriman == $tanggal_akhir ) { 
 
                     array_push( $data_pengiriman, $item );
                 } else if ( $tanggal_pengiriman >= $tanggal_awal && $tanggal_pengiriman <= $tanggal_akhir ) {

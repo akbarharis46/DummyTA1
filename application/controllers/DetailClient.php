@@ -153,7 +153,7 @@ function exportToPDF() {
             // user melakukan filter
             if ( !empty( $tanggal_interval ) ) {
 
-                if ( $tanggal_awal == $tanggal_akhir ) { // apabila sorting hanya 1 hari
+                if ( $tanggal_detail == $tanggal_awal && $tanggal_detail == $tanggal_akhir ) { // apabila sorting hanya 1 hari
 
                     array_push( $data_detail, $item );
                 } else if ( $tanggal_detail >= $tanggal_awal && $tanggal_detail <= $tanggal_akhir ) { // apabila memiliki interval waktu
