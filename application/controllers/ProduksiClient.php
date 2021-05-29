@@ -1,5 +1,12 @@
 <?php
 
+    require('./vendor/autoload.php');
+
+    use PhpOffice\PhpSpreadsheet\Helper\Sample;
+    use PhpOffice\PhpSpreadsheet\IOFactory;
+    use PhpOffice\PhpSpreadsheet\Spreadsheet;
+
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class ProduksiClient extends CI_Controller
@@ -608,6 +615,206 @@ public function prosesdata_staffproduksikeluar()
     $pdf->SetFont('times', '', 10);
 
     return $pdf;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// cetak excel
+function exportToExcel() {
+
+
+    // Create new Spreadsheet object
+    $spreadsheet = new Spreadsheet();
+
+    // Set document properties
+    $spreadsheet->getProperties()->setCreator('PT.Milagos')
+                ->setLastModifiedBy('Haris')
+                ->setTitle('Office 2007 XLSX Test Document')
+                ->setSubject('Office 2007 XLSX Test Document')
+                ->setDescription('Test document for Office 2007 XLSX, generated using PHP classes.')
+                ->setKeywords('office 2007 openxml php')
+                ->setCategory('Test result file');
+
+
+    
+    // Header
+    $spreadsheet->setActiveSheetIndex(0)->setCellValue('A1', 'LAPORAN DATA PRODUKSI');
+    $spreadsheet->getActiveSheet()->mergeCells('A1:M1');
+    $spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setBold(true); // set bold
+    $spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(14); // set font
+
+
+
+    // Subheader
+    $spreadsheet->setActiveSheetIndex(0)->setCellValue('A2', 'Melaporkan hasil pencatatan hasil produksi');
+    $spreadsheet->getActiveSheet()->mergeCells('A2:M2');
+    $spreadsheet->getActiveSheet()->getStyle('A2')->getFont()->setBold(false); // set bold
+    $spreadsheet->getActiveSheet()->getStyle('A2')->getFont()->setSize(12); // set font
+
+
+
+
+    // start content
+    $style_header_table = array(
+
+        'font' => array('bold' => true, 'size' => 12), // Set font nya jadi bold
+        'alignment'      => array(
+            'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER, // Set text jadi ditengah secara horizontal (center)
+            'vertical'   => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+        ),
+        'borders' => array(
+            'top'   => array('borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN), // Set border top dengan garis tipis
+            'right' => array('borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN),  // Set border right dengan garis tipis
+            'bottom'=> array('borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN), // Set border bottom dengan garis tipis
+            'left'  => array('borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN) // Set border left dengan garis tipis
+        )
+    );
+
+
+    $style_body_table = array(
+
+        'font' => array('false' => true, 'size' => 12), // Set font nya jadi bold
+        'alignment'      => array(
+            'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER, // Set text jadi ditengah secara horizontal (center)
+            'vertical'   => \PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+        ),
+        'borders' => array(
+            'top'   => array('borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN), // Set border top dengan garis tipis
+            'right' => array('borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN),  // Set border right dengan garis tipis
+            'bottom'=> array('borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN), // Set border bottom dengan garis tipis
+            'left'  => array('borderStyle'  => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN) // Set border left dengan garis tipis
+        )
+    );
+    
+
+
+
+    // header table
+    $spreadsheet->setActiveSheetIndex(0)->setCellValue('A5', 'No');
+    $spreadsheet->getActiveSheet()->getStyle('A5')->applyFromArray($style_header_table);
+
+
+    $spreadsheet->setActiveSheetIndex(0)->setCellValue('B5', 'Tanggal');
+    $spreadsheet->getActiveSheet()->mergeCells('B5:C5');
+    $spreadsheet->getActiveSheet()->getStyle('B5:C5')->applyFromArray($style_header_table);
+
+
+    $spreadsheet->setActiveSheetIndex(0)->setCellValue('D5', 'Nama Pengawas');
+    $spreadsheet->getActiveSheet()->mergeCells('D5:F5');
+    $spreadsheet->getActiveSheet()->getStyle('D5:F5')->applyFromArray($style_header_table);
+
+
+    $spreadsheet->setActiveSheetIndex(0)->setCellValue('G5', 'Shift');
+    $spreadsheet->getActiveSheet()->mergeCells('G5:H5');
+    $spreadsheet->getActiveSheet()->getStyle('G5:H5')->applyFromArray($style_header_table);
+
+
+    $spreadsheet->setActiveSheetIndex(0)->setCellValue('I5', 'Jumlah Produksi');
+    $spreadsheet->getActiveSheet()->mergeCells('I5:J5');
+    $spreadsheet->getActiveSheet()->getStyle('I5:J5')->applyFromArray($style_header_table);
+
+
+
+
+
+
+    // body 
+    $baris = 6;
+    $urutan = 1;
+
+    $produksi = json_decode($this->curl->simple_get($this->API));
+    foreach ( $produksi AS $isi ) {
+
+        // nomor
+        $spreadsheet->setActiveSheetIndex(0)->setCellValue('A'.$baris, $urutan);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$baris)->applyFromArray($style_body_table);
+
+
+        // tanggal
+        $kolom_mergetanggal = 'B'.$baris.':C'.$baris;
+        $spreadsheet->setActiveSheetIndex(0)->setCellValue('B'.$baris, $isi->tanggal);
+        $spreadsheet->getActiveSheet()->mergeCells( $kolom_mergetanggal );
+        $spreadsheet->getActiveSheet()->getStyle($kolom_mergetanggal)->applyFromArray($style_body_table);
+        
+        
+        // nama pengawas
+        $kolom_pengawas = 'D'.$baris.':F'.$baris;
+        $spreadsheet->setActiveSheetIndex(0)->setCellValue('D'.$baris, $isi->nama_staff);
+        $spreadsheet->getActiveSheet()->mergeCells( $kolom_pengawas );
+        $spreadsheet->getActiveSheet()->getStyle($kolom_pengawas)->applyFromArray($style_body_table);
+        
+        
+        // // Shift
+        $kolom_shift = 'G'.$baris.':H'.$baris;
+        $spreadsheet->setActiveSheetIndex(0)->setCellValue('G'.$baris, $isi->shift);
+        $spreadsheet->getActiveSheet()->mergeCells( $kolom_shift );
+        $spreadsheet->getActiveSheet()->getStyle($kolom_shift)->applyFromArray($style_body_table);
+        
+        
+        // // Jumlah Produksi
+        $kolom_jml = 'I'.$baris.':J'.$baris;
+        $spreadsheet->setActiveSheetIndex(0)->setCellValue('I'.$baris, $isi->jumlah_produksi . ' item');
+        $spreadsheet->getActiveSheet()->mergeCells( $kolom_jml );
+        $spreadsheet->getActiveSheet()->getStyle($kolom_jml)->applyFromArray($style_body_table);
+
+
+        $urutan++;
+        $baris++;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Rename worksheet
+    $spreadsheet->getActiveSheet()->setTitle('Report Excel '.date('d-m-Y H'));
+
+    // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+    $spreadsheet->setActiveSheetIndex(0);
+
+    // Redirect output to a client’s web browser (Xlsx)
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="hasil-laporan.xlsx"');
+    header('Cache-Control: max-age=0');
+    // If you're serving to IE 9, then the following may be needed
+    header('Cache-Control: max-age=1');
+
+    // If you're serving to IE over SSL, then the following may be needed
+    header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
+    header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
+    header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+    header('Pragma: public'); // HTTP/1.0
+
+    $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+    $writer->save('php://output');
+    exit;
 }
 
 }
