@@ -23,8 +23,8 @@ class BarangClient extends CI_Controller
         $data['barang'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "barang";
         $this->load->view('header0');
-        $this->load->view('bar');
         $this->load->view('data/barang', $data);
+        $this->load->view('baradmin');
         $this->load->view('footer');
     }
     
@@ -34,8 +34,8 @@ class BarangClient extends CI_Controller
         $data['barang'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "barang";
         $this->load->view('header1');
-        $this->load->view('bar1');
         $this->load->view('staffproduksi/barang', $data);
+        $this->load->view('barproduksi');
         $this->load->view('footer');
     }
 
@@ -44,8 +44,8 @@ class BarangClient extends CI_Controller
         $data['barang'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "barang";
         $this->load->view('header1');
-        $this->load->view('bar2');
         $this->load->view('staffgudang/barang', $data);
+        $this->load->view('bargudang');
         $this->load->view('footer');
     }
 
@@ -55,8 +55,8 @@ class BarangClient extends CI_Controller
         $data['barang'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "barang";
         $this->load->view('header1');
-        $this->load->view('bar3');
         $this->load->view('staffpengiriman/barang', $data);
+        $this->load->view('barpengiriman');
         $this->load->view('footer');
     }
 
@@ -72,8 +72,8 @@ class BarangClient extends CI_Controller
 
       $data['title'] = "Tambah Data barang";
       $this->load->view('header0');
-      $this->load->view('bar');
       $this->load->view('data/post/barang', $data);
+      $this->load->view('baradmin');
       $this->load->view('footer');
     }
 
@@ -86,7 +86,7 @@ class BarangClient extends CI_Controller
 
       $data['title'] = "Tambah Data barang";
       $this->load->view('header1');
-      $this->load->view('bar2');
+      $this->load->view('bargudang');
       $this->load->view('staffgudang/post/barang', $data);
       $this->load->view('footer');
     }
@@ -184,7 +184,7 @@ class BarangClient extends CI_Controller
         $data['barang'] = json_decode($this->curl->simple_get($this->API, $params));
         $data['title'] = "Edit Data Barang";
         $this->load->view('header0');
-        $this->load->view('bar');
+        $this->load->view('baradmin');
         $this->load->view('data/put/barang', $data);
         $this->load->view('footer');
 
@@ -197,7 +197,7 @@ class BarangClient extends CI_Controller
         $data['barang'] = json_decode($this->curl->simple_get($this->API, $params));
         $data['title'] = "Edit Data Barang";
         $this->load->view('header1');
-        $this->load->view('bar2');
+        $this->load->view('bargudang');
         $this->load->view('staffgudang/put/barang', $data);
         $this->load->view('footer');
 
@@ -264,7 +264,7 @@ class BarangClient extends CI_Controller
         }
         // print_r($update);
         // die;
-        redirect('barangclient/indexgudang');
+        redirect('Barangclient/indexgudang');
     }
 
 
@@ -283,7 +283,7 @@ class BarangClient extends CI_Controller
         }
         // print_r($delete);
         // die;
-        redirect('barangclient');
+        redirect('Barangclient');
     }
 
 
@@ -299,7 +299,7 @@ class BarangClient extends CI_Controller
         }
         // print_r($delete);
         // die;
-        redirect('barangclient/indexgudang');
+        redirect('Barangclient/indexgudang');
     }
 
 

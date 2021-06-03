@@ -23,8 +23,8 @@ class DetailProduksiClient extends CI_Controller
         $data['detailproduksi'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "DetailProudksiClient";
         $this->load->view('header0');
-        $this->load->view('bar');
         $this->load->view('data/detail_produksi1', $data);
+        $this->load->view('baradmin');
         $this->load->view('footer');
     }
     
@@ -34,8 +34,8 @@ class DetailProduksiClient extends CI_Controller
         $data['detailproduksi'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "DetailProudksiClient";
         $this->load->view('header1');
-        $this->load->view('bar1');
         $this->load->view('staffproduksi/detail_produksi1', $data);
+        $this->load->view('barproduksi');
         $this->load->view('footer');
     }
 
@@ -44,8 +44,8 @@ class DetailProduksiClient extends CI_Controller
         $data['detailproduksi'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "DetailProudksiClient";
         $this->load->view('header1');
-        $this->load->view('bar2');
         $this->load->view('staffgudang/detail_produksi1', $data);
+        $this->load->view('bargudang');
         $this->load->view('footer');
     }
 
@@ -55,8 +55,8 @@ class DetailProduksiClient extends CI_Controller
         $data['detailproduksi'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "DetailProudksiClient";
         $this->load->view('header1');
-        $this->load->view('bar3');
         $this->load->view('staffpengiriman/detail_produksi1', $data);
+        $this->load->view('barpengiriman');
         $this->load->view('footer');
     }
 
@@ -70,8 +70,8 @@ class DetailProduksiClient extends CI_Controller
 
       $data['title'] = "Tambah Data Detai Produksi";
       $this->load->view('header0');
-      $this->load->view('bar');
       $this->load->view('data/post/detail_produksi', $data);
+      $this->load->view('baradmin');
       $this->load->view('footer');
     }
 
@@ -106,7 +106,7 @@ class DetailProduksiClient extends CI_Controller
         }
         // var_dump($insert);
         // die;
-        redirect('detailproduksiclient');
+        redirect('Detailproduksiclient');
       }
 
 
@@ -142,7 +142,7 @@ class DetailProduksiClient extends CI_Controller
         $data['detailproduksi'] = json_decode($this->curl->simple_get($this->API, $params));
         $data['title'] = "Edit Data Detail Produksi";
         $this->load->view('header0');
-        $this->load->view('bar');
+        $this->load->view('baradmin');
         $this->load->view('data/put/detail_produksi', $data);
         $this->load->view('footer');
 
@@ -153,7 +153,7 @@ class DetailProduksiClient extends CI_Controller
         $data['detailproduksi'] = json_decode($this->curl->simple_get($this->API, $params));
         $data['title'] = "Edit Data Detail Produksi";
         $this->load->view('header1');
-        $this->load->view('bar1');
+        $this->load->view('barproduksi');
         $this->load->view('staffproduksi/put/detail_produksi', $data);
         $this->load->view('footer');
 
@@ -219,7 +219,7 @@ class DetailProduksiClient extends CI_Controller
         }
         // print_r($update);
         // die;
-        redirect('detailproduksiclient/indexproduksi');
+        redirect('Detailproduksiclient/indexproduksi');
     }
 
 
@@ -264,7 +264,7 @@ class DetailProduksiClient extends CI_Controller
         }
         // print_r($delete);
         // die;
-        redirect('detailproduksiclient');
+        redirect('Detailproduksiclient');
     }
     public function deleteproduksi()
     {
@@ -277,7 +277,7 @@ class DetailProduksiClient extends CI_Controller
         }
         // print_r($delete);
         // die;
-        redirect('detailproduksiclient/indexproduksi');
+        redirect('Detailproduksiclient/indexproduksi');
     }
 
 

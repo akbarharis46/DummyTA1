@@ -20,8 +20,8 @@ class DetailStockProduksiClient extends CI_Controller
         $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "DetailStockProudksiClient";
         $this->load->view('header0');
-        $this->load->view('bar');
         $this->load->view('data/detail_produksi', $data);
+        $this->load->view('baradmin');
         $this->load->view('footer');
     }
     
@@ -31,8 +31,8 @@ class DetailStockProduksiClient extends CI_Controller
         $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "barang";
         $this->load->view('header1');
-        $this->load->view('bar1');
         $this->load->view('staffproduksi/detail_produksi', $data);
+        $this->load->view('barproduksi');
         $this->load->view('footer');
     }
 
@@ -41,8 +41,8 @@ class DetailStockProduksiClient extends CI_Controller
         $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "barang";
         $this->load->view('header1');
-        $this->load->view('bar2');
         $this->load->view('staffgudang/detail_produksi', $data);
+        $this->load->view('bargudang');
         $this->load->view('footer');
     }
 
@@ -52,8 +52,8 @@ class DetailStockProduksiClient extends CI_Controller
         $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "barang";
         $this->load->view('header1');
-        $this->load->view('bar3');
         $this->load->view('staffpengiriman/detail_produksi', $data);
+        $this->load->view('bargudang');
         $this->load->view('footer');
     }
 
@@ -66,8 +66,8 @@ class DetailStockProduksiClient extends CI_Controller
 
       $data['title'] = "Tambah Data Detai Produksi";
       $this->load->view('header0');
-      $this->load->view('bar');
       $this->load->view('data/post/detail_stockproduksi', $data);
+      $this->load->view('baradmin');
       $this->load->view('footer');
     }
 
@@ -102,7 +102,7 @@ class DetailStockProduksiClient extends CI_Controller
         }
         // var_dump($insert);
         // die;
-        redirect('detailstockproduksiclient');
+        redirect('Detailstockproduksiclient');
       }
 
 
@@ -138,8 +138,8 @@ class DetailStockProduksiClient extends CI_Controller
         $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API, $params));
         $data['title'] = "Edit Data Barang";
         $this->load->view('header0');
-        $this->load->view('bar');
         $this->load->view('data/put/detail_stockproduksi', $data);
+        $this->load->view('baradmin');
         $this->load->view('footer');
 
     }
@@ -151,8 +151,8 @@ class DetailStockProduksiClient extends CI_Controller
         $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API, $params));
         $data['title'] = "Edit Data Barang";
         $this->load->view('header1');
-        $this->load->view('bar1');
         $this->load->view('staffproduksi/put/detail_stockproduksi', $data);
+        $this->load->view('barproduksi');
         $this->load->view('footer');
 
     }
@@ -177,7 +177,7 @@ class DetailStockProduksiClient extends CI_Controller
         }
         // print_r($update);
         // die;
-        redirect('detailstockproduksiclient');
+        redirect('Detailstockproduksiclient');
     }
 
 
@@ -202,7 +202,7 @@ class DetailStockProduksiClient extends CI_Controller
         }
         // print_r($update);
         // die;
-        redirect('detailstockproduksiclient/indexproduksi');
+        redirect('Detailstockproduksiclient/indexproduksi');
     }
 
 
@@ -221,7 +221,7 @@ class DetailStockProduksiClient extends CI_Controller
         }
         // print_r($delete);
         // die;
-        redirect('detailstockproduksiclient');
+        redirect('Detailstockproduksiclient');
     }
 
 
@@ -236,7 +236,7 @@ class DetailStockProduksiClient extends CI_Controller
         }
         // print_r($delete);
         // die;
-        redirect('detailstockproduksiclient/indexproduksi');
+        redirect('Detailstockproduksiclient/indexproduksi');
     }
 }
 ?>

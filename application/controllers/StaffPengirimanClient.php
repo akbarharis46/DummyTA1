@@ -17,7 +17,7 @@ class StaffPengirimanClient extends CI_Controller
     {
         $data['title'] = "Dashboard";
         $this->load->view('header1');
-        $this->load->view('bar3');
+        $this->load->view('barpengiriman');
         $this->load->view('staffpengiriman/index', $data, FALSE);
         $this->load->view('footer');
     }

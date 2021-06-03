@@ -17,7 +17,7 @@ class StaffProduksiClient extends CI_Controller
     {
         $data['title'] = "Dashboard";
         $this->load->view('header1');
-        $this->load->view('bar1');
+        $this->load->view('barproduksi');
         $this->load->view('staffproduksi/index', $data, FALSE);
         $this->load->view('footer');
     }

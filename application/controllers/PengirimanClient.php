@@ -26,8 +26,8 @@ class PengirimanClient extends CI_Controller
         $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "pengiriman";
         $this->load->view('header0');
-        $this->load->view('bar');
         $this->load->view('data/pengiriman', $data);
+        $this->load->view('baradmin');
         $this->load->view('footer');
     }
 
@@ -37,8 +37,8 @@ class PengirimanClient extends CI_Controller
         $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "pengiriman";
         $this->load->view('header1');
-        $this->load->view('bar1');
         $this->load->view('staffproduksi/pengiriman', $data);
+        $this->load->view('barproduksi');
         $this->load->view('footer');
     }
 
@@ -47,8 +47,8 @@ class PengirimanClient extends CI_Controller
         $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "pengiriman";
         $this->load->view('header1');
-        $this->load->view('bar2');
         $this->load->view('staffgudang/pengiriman', $data);
+        $this->load->view('bargudang');
         $this->load->view('footer');
     }
 
@@ -58,8 +58,8 @@ class PengirimanClient extends CI_Controller
         $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "pengiriman";
         $this->load->view('header1');
-        $this->load->view('bar3');
         $this->load->view('staffpengiriman/pengiriman', $data);
+        $this->load->view('barpengiriman');
         $this->load->view('footer');
     }
 
@@ -70,8 +70,8 @@ class PengirimanClient extends CI_Controller
       $data['title'] = "Tambah Data pengiriman";
       $data['detailstockproduksi'] = json_decode($this->curl->simple_get($this->API2));
       $this->load->view('header0');
-      $this->load->view('bar');
       $this->load->view('data/post/pengiriman', $data);
+      $this->load->view('baradmin');
       $this->load->view('footer');
     }
 
@@ -80,7 +80,7 @@ class PengirimanClient extends CI_Controller
     {
       $data['title'] = "Tambah Data pengiriman";
       $this->load->view('header1');
-      $this->load->view('bar3');
+      $this->load->view('barpengiriman');
       $this->load->view('staffpengiriman/post/pengiriman', $data);
       $this->load->view('footer');
     }
@@ -178,7 +178,7 @@ class PengirimanClient extends CI_Controller
         $data['pengiriman'] = json_decode($this->curl->simple_get($this->API, $params));
         $data['title'] = "Edit Data pengiriman";
         $this->load->view('header0');
-        $this->load->view('bar');
+        $this->load->view('baradmin');
         $this->load->view('data/put/pengiriman', $data);
         $this->load->view('footer');
 
@@ -190,7 +190,7 @@ class PengirimanClient extends CI_Controller
             $data['pengiriman'] = json_decode($this->curl->simple_get($this->API, $params));
             $data['title'] = "Edit Data pengiriman";
             $this->load->view('header1');
-            $this->load->view('bar3');
+            $this->load->view('barpengiriman');
             $this->load->view('staffpengiriman/put/pengiriman', $data);
             $this->load->view('footer');
        
@@ -313,7 +313,7 @@ class PengirimanClient extends CI_Controller
     $data['detail'] = json_decode($this->curl->simple_get($this->API1));
     $data['title'] = "Edit Data pengiriman";
     $this->load->view('header0');
-    $this->load->view('bar');
+    $this->load->view('baradmin');
     $this->load->view('data/perpindahan_barang',$data);
     $this->load->view('footer');
   }
@@ -325,7 +325,7 @@ class PengirimanClient extends CI_Controller
     $data['detail'] = json_decode($this->curl->simple_get($this->API1));
     $data['title'] = "Edit Data pengiriman";
     $this->load->view('header1');
-    $this->load->view('bar3');
+    $this->load->view('barpengiriman');
     $this->load->view('staffpengiriman/perpindahan_barang',$data);
     $this->load->view('footer');
   }

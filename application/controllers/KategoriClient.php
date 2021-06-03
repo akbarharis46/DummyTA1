@@ -21,8 +21,8 @@ class KategoriClient extends CI_Controller
         $data['kategori'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "Kategori";
         $this->load->view('header0');
-        $this->load->view('bar');
         $this->load->view('data/kategori', $data);
+        $this->load->view('baradmin');
         $this->load->view('footer');
     }
 
@@ -31,8 +31,8 @@ class KategoriClient extends CI_Controller
         $data['kategori'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "kategori";
         $this->load->view('header1');
-        $this->load->view('bar1');
         $this->load->view('staffproduksi/kategori', $data);
+        $this->load->view('barproduksi');
         $this->load->view('footer');
     }
 
@@ -41,8 +41,8 @@ class KategoriClient extends CI_Controller
         $data['kategori'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "kategori";
         $this->load->view('header1');
-        $this->load->view('bar2');
         $this->load->view('staffgudang/kategori', $data);
+        $this->load->view('bargudang');
         $this->load->view('footer');
     }
 
@@ -52,8 +52,8 @@ class KategoriClient extends CI_Controller
         $data['kategori'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "kategori";
         $this->load->view('header1');
-        $this->load->view('bar3');
         $this->load->view('staffpengiriman/kategori', $data);
+        $this->load->view('barpengiriman');
         $this->load->view('footer');
     }
     
@@ -61,8 +61,8 @@ class KategoriClient extends CI_Controller
     {
       $data['title'] = "Tambah Data Kategori";
       $this->load->view('header0');
-      $this->load->view('bar');
       $this->load->view('data/post/kategori', $data);
+      $this->load->view('baradmin');
       $this->load->view('footer');
     }
 
@@ -70,8 +70,8 @@ class KategoriClient extends CI_Controller
     {
       $data['title'] = "Tambah Data Kategori";
       $this->load->view('header1');
-      $this->load->view('bar2');
       $this->load->view('staffgudang/post/kategori', $data);
+      $this->load->view('bargudang');
       $this->load->view('footer');
     }
 
@@ -94,7 +94,7 @@ class KategoriClient extends CI_Controller
         }
         // print_r($insert);
         // die;
-        redirect('kategoriclient');
+        redirect('Kategoriclient');
       }
 
 
@@ -115,7 +115,7 @@ class KategoriClient extends CI_Controller
         }
         // print_r($insert);
         // die;
-        redirect('kategoriclient/indexgudang');
+        redirect('Kategoriclient/indexgudang');
       }
 
 
@@ -128,8 +128,8 @@ class KategoriClient extends CI_Controller
         $data['kategori'] = json_decode($this->curl->simple_get($this->API, $params));
         $data['title'] = "Edit Data Kategori";
         $this->load->view('header0');
-        $this->load->view('bar');
         $this->load->view('data/put/kategori', $data);
+        $this->load->view('baradmin');
         $this->load->view('footer');
 
     }
@@ -142,7 +142,7 @@ class KategoriClient extends CI_Controller
         $data['kategori'] = json_decode($this->curl->simple_get($this->API, $params));
         $data['title'] = "Edit Data Kategori";
         $this->load->view('header1');
-        $this->load->view('bar2');
+        $this->load->view('bargudang');
         $this->load->view('staffgudang/put/kategori', $data);
         $this->load->view('footer');
         
@@ -167,7 +167,7 @@ class KategoriClient extends CI_Controller
         }
         // print_r($update);
         // die;
-        redirect('kategoriclient');
+        redirect('Kategoriclient');
     }
 
     public function put_processkategori()
@@ -187,7 +187,7 @@ class KategoriClient extends CI_Controller
         }
         // print_r($update);
         // die;
-        redirect('kategoriclient/indexgudang');
+        redirect('Kategoriclient/indexgudang');
     }
 
 
@@ -202,7 +202,7 @@ class KategoriClient extends CI_Controller
         }
         // print_r($delete);
         // die;
-        redirect('kategoriclient');
+        redirect('Kategoriclient');
     }
 
 
@@ -217,7 +217,7 @@ class KategoriClient extends CI_Controller
         }
         // print_r($delete);
         // die;
-        redirect('kategoriclient/indexgudang');
+        redirect('Kategoriclient/indexgudang');
     }
 }
 ?>

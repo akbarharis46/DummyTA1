@@ -1,127 +1,79 @@
 <!DOCTYPE html>
+<!--
+Template Name: Metronic - Bootstrap 4 HTML, React, Angular 11 & VueJS Admin Dashboard Theme
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: https://1.envato.market/EA4JP
+Renew Support: https://1.envato.market/EA4JP
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>PT MILAGROS PUTRA MANDIRI BANYUWANGI </title>
-  <!-- Custom fonts for this theme -->
-  <link href="<?php echo base_url('assets/user')?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-  <!-- Theme CSS -->
-  <link href="<?php echo base_url('assets/user')?>/css/freelancer.css" rel="stylesheet">
-  <link href="<?php echo base_url('assets/user')?>/lib/noty.css" rel="stylesheet">
-  <link href="<?php echo base_url('assets/user')?>/lib/themes/metroui.css" rel="stylesheet">
-</head>
-<style type="text/css">
-  .btncostume{
-    background: #006eff;
-    color: white;
-  }
-  sup{
-    color: red;
-  }
-  .border1{
-    border: thin solid;
-  }
-  .costum{
-    background: white;
-    border: thin solid #fff;
-  }
-  .masthead .masthead-avatar {
-    width: 8rem !important;
-}
-</style>
-<body id="page-top">
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav" >
-    <div class="container" >
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">PTMLGM</a>
-      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" >
-      Menu
-      <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive" >
-        <ul class="navbar-nav ml-auto" >
-          <?php if(empty($this->session->userdata('id_user'))) {?>
-            <li class="nav-item mx-0 mx-lg-1" >
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#login">Login</a>
-            </li>
-          <?php }else{?>
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#"><?php echo $this->session->userdata('nama'); ?></a>
-            </li>
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="<?= base_url().'login/out' ?>">Logout</a>
-            </li>
-          <?php }?>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#bantuan">Bantuan</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- Masthead -->
-  <header class="masthead bg-primary text-white text-center">
-    <div class="container d-flex align-items-center flex-column">
-      <!-- Masthead Heading -->
-      <h1 class="masthead-heading text-uppercase mb-0"><img class="masthead-avatar mb-3" src="<?=base_url();?>css/assets/img/logo_milagros.png" alt="">
-      <div class="row">
-        
-      </div>
-        
-        <h4 class="masthead mb-0" style="margin-top: 10px !important;padding: 20px;">Selamat Datang di Sistem Informasi Manajemen Pabrik
-   <br>PT MILAGROS PUTRA MANDIRI </h4>
-      
-      <!-- Icon Divider -->
-        
-        <div class="divider-custom-icon">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-        </div>
-      
-      </div>
-      <!-- Masthead Subheading -->
-      <?php if(!empty($this->session->userdata('id_user'))){ ?>
-        <div class="row" style="width: 60%;">
-          <div class="col-md-5 text-right">
-            <label><h5>Nomor Antrian Anda :</label></h5>
-          </div>
-          <!-- <div class="col-md-2 text-justify"><h5><?php echo $nomor ?></h5></div> -->
-          <?php if(!empty($id_antrian)){?>
-            <div class="col-md-5"><a href="<?php echo base_url('Index/cetak')."/".$id_antrian ?>" style="color: #000; background: #fff; padding: 10px;" target="_blank">Cetak</a></div>
-          <?php } ?>
-        </div>
-        <div class="row" style="width: 60%;">
-          <div class="col-md-5 text-right"><label><h5>Poli :</label></h5></div>
-          <!-- <div class="col-md-5 text-justify"><h5><?php echo $nama?></h5></div> -->
-        </div>
-      <?php } ?>
-    </div>
-  </header>
-  <!-- Portfolio Section -->
-  <section class="page-section portfolio" id="login">
-     <?php if(empty($this->session->userdata('id_user'))){ ?>
-      <div class="container">
-        <!-- Portfolio Section Heading -->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Login </h2>
-        <!-- Icon Divider -->
-        
-          <div class="divider-custom-line"></div>
-        </div>
-        <!-- Portfolio Grid Items -->
-        <div class="row">
-          <div class="container">
-            <div class="row justify-content-md-center">
-              <div class="col-md-4" style="margin-top: 20px">
-                <!-- <h1 align="center">Login </h1> -->
+	<!--begin::Head-->
+	<head><base href="../../../../">
+		<meta charset="utf-8" />
+		<title>Sign In | Keenthemes</title>
+		<meta name="description" content="Singin page example" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<link rel="canonical" href="https://keenthemes.com/metronic" />
+		<!--begin::Fonts-->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+		<!--end::Fonts-->
+		<!--begin::Page Custom Styles(used by this page)-->
+		<link href="<?php echo base_url('assets')?>/assets/css/pages/login/login-4.css" rel="stylesheet" type="text/css" />
+		<!--end::Page Custom Styles-->
+		<!--begin::Global Theme Styles(used by all pages)-->
+		<link href="<?php echo base_url('assets')?>/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets')?>/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets')?>/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Global Theme Styles-->
+		<!--begin::Layout Themes(used by all pages)-->
+		<link href="<?php echo base_url('assets')?>/assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets')?>/assets/css/themes/layout/header/menu/light.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets')?>/assets/css/themes/layout/brand/dark.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo base_url('assets')?>/assets/css/themes/layout/aside/dark.css" rel="stylesheet" type="text/css" />
+		<!--end::Layout Themes-->
+		<!-- <link rel="shortcut icon" href="<?php echo base_url('assets')?>/assets/media/logos/favicon.ico" /> -->
+	</head>
+	<!--end::Head-->
+	<!--begin::Body-->
+	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+		<!--begin::Main-->
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Login-->
+			<div class="login login-4 wizard d-flex flex-column flex-lg-row flex-column-fluid">
+				<!--begin::Content-->
+				<div class="login-container order-2 order-lg-1 d-flex flex-center flex-row-fluid px-7 pt-lg-0 pb-lg-0 pt-4 pb-6 bg-white">
+					<!--begin::Wrapper-->
+					<div class="login-content d-flex flex-column pt-lg-0 pt-12">
+						<!--begin::Logo-->
+
+						
+						<!-- <a href="dummyTA/login" class="login-logo pb-xl-20 pb-15">
+							<img src="<?=base_url();?>css/assets/img/logo_milagros.png" class="max-h-100px" alt="" />
+
+
+
+						</a> -->
+						<!--end::Logo-->
+						<!--begin::Signin-->
+						<div class="login-form">
+							<!--begin::Form-->
+								<!--begin::Title-->
+								<div class="pb-5 pb-lg-15">
+									<h1 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Log In</h1>
+									<!-- <div class="text-muted font-weight-bold font-size-h4">New Here?
+									<a href="custom/pages/login/login-4/signup.html" class="text-primary font-weight-bolder">Create Account</a>
+									</div> -->
+								</div>
+
+
+								
+								<!--begin::Title-->
+								<!--begin::Form group-->
                 <form action="<?php echo site_url() ?>login/log_process" method='post'>
                 <?php if ($this->session->flashdata('result') != '') { ?>
                         <div class="alert alert-dark alert-dismissible fade show">
@@ -131,219 +83,76 @@
                     <?php
                     }
                 ?>
-                  <label >Username</label>
-                    <input type="text" class="form-control" id="user" placeholder="Masukkan username" name="user" required>
-                  <label>Password</label>
-                  <input type="password" class="form-control" id="password" placeholder="Masukkan password" name="password" required>
-                  <br><br>
-                  <div align="right">
-                  <button type="submit" class="btn btn-dark">Login</button>
-                  </div>  
+                <div class="form-group">
+									<label class="font-size-h6 font-weight-bolder text-dark">Username</label>
+									<input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" type="text" id="user" placeholder="Masukkan username" name="user"autocomplete="off" />
+								</div>
+                <div class="form-group">
+									<label class="font-size-h6 font-weight-bolder text-dark">Password</label>
+									<input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" type="password" id="password" placeholder="Masukkan username" name="password"autocomplete="off" />
+								</div>
+                
+                
+								<!--end::Form group-->
+								<!--begin::Form group-->
+								<!-- <div class="form-group">
+									<div class="d-flex justify-content-between mt-n5">
+										<label class="font-size-h6 font-weight-bolder text-dark pt-5">Your Name</label>
+										<a href="custom/pages/login/login-4/forgot.html" class="text-primary font-size-h6 font-weight-bolder text-hover-primary pt-5">Forgot Password ?</a>
+									</div>
+									<input class="form-control form-control-solid h-auto py-7 px-6 rounded-lg border-0" type="password" name="password" autocomplete="off" />
+								</div> -->
+								<!--end::Form group-->
+								<!--begin::Action-->
+								<div class="pb-lg-0 pb-5">
+									<button type="submit" id="kt_login_singin_form_submit_button" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Masuk</button>
+
+
+									<button type="submit" id="kt_login_singin_form_submit_button" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3 "style="background:red">Lupa Password</button>
+									
                 </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /.row -->
-      </div>
-    <?php }else{ ?>
-      <div class="container">
-        <!-- Portfolio Section Heading -->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Ambil Antrian</h2>
-        <!-- Icon Divider -->
-        <div class="divider-custom">
-          <div class="divider-custom-line"></div>
-          <div class="divider-custom-icon">
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="divider-custom-line"></div>
-        </div>
-        <!-- Portfolio Grid Items -->
-        <div class="row">
-          <div class="container">
-            <div class="row justify-content-md-center">
-              <div class="col-md-12" style="margin-top: 20px">
-                <!-- <h1 align="center">Login </h1> -->
-                <form action="<?php echo base_url('Index/saveAntrian') ?>" method="post">
-                  <div class ="row">
-                    <div class ="col-md-2">
-                      <h6><label>Pilih Layanan</label></h6>   
-                    </div>
-                    <div class="col-md-5">
-                      <select name="id_antrian" id="id_antrian" class="form-control" onchange="noAntrian(this.value)">
-                        <option value=""> pilih </option>
-                        <?php foreach ($getPoli as $row ) {
-                        ?>
-                          <option value="<?php echo $row->id_antrian; ?>"> <?php echo $row->kode; ?> </option>
-                        <?php } ?>
-                      </select>
-                    </div>
-                  </div>
-                  <div class ="row">
-                    <div class ="col-md-2">
-                      <h6><label>No Antrian</label></h6>    
-                    </div>
-                    <div class="col-md-5">
-                      <input type="text" name="nomor" id="nomor" value="" disabled="" class="form-control">
-                      <input type="hidden" name="nomor" id="nomor" value="" class="form-control">
-                      <!-- <input type="hidden" name="nomor" value="<?php echo $nomor ?>"> -->
-                    </div>
-                  </div>
-                  <div class="row text-right">
-                    <div class="col-md-7">
-                      <input type="submit" name="simpan" id="simpan" value="Ambil Antrian" class="btn btn-primary">
-                    </div>
-                  </div>
-                </form>
-                 <div class="row text-justify" >
-                 <h6>Keterangan :</h6>
-                  <ol>
-                    <li>UMUM DAN KESEKRETARIATAN (A)</li>
-                    <li>PENDIDIKAN (B)</li>
-                    <li>AGAMA DAN PHU (C)</li>
-                  </ol>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /.row -->
-      </div>
-    <?php } ?>
-  </section>
-  <!-- About Section -->
-  <section class="page-section bg-primary text-white mb-0" id="bantuan">
-    <div class="container">
-      <!-- About Section Heading -->
-      <h2 class="page-section-heading text-center text-uppercase text-white">Bantuan</h2>
-      <!-- Icon Divider -->
-      <div class="divider-custom divider-light">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon">
-          <i class="fas fa-star"></i>
-        </div>
-        <div class="divider-custom-line"></div>
-      </div>
-      <!-- About Section Content -->
-    <div class="container">  
-      <div class="row">
-        <div class="col-lg-4.ml-auto" align="center" >
-         <p class="lead">Kunjungi halaman website kami</p></center>
-          <p class="lead"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
-      </div>
-    </div>
-    </div>
-  </section>
-  <!-- Copyright Section -->
-  <section class="copyright py-4 text-center text-white">
-    <div class="container">
-      <small>&copy; PT MILAGROS PUTRA MANDIRI </small>
-    </div>
-  </section>
-  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-  <div class="scroll-to-top d-lg-none position-fixed ">
-    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
-      <i class="fa fa-chevron-up"></i>
-    </a>
-  </div>
-   <!-- Modal -->
-<div class="modal fad e bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ambil No antrian</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="<?php echo base_url('Index/registrasi') ?>" method="post">
-            <div>
-                <label >Nomor Antrian <sup>*</sup></label>
-                <input type="text" id="nomor" name="nomor" class="form-control" value="" placeholder="Nomor Antrian" required="">
-            </div>
-            <div>
-              <label >Layanan</label>
-              <select id="id_layanan" name="id_layanan" class="form-control">
-              <option value="">Pilih</option>
-              <option value="1">1. UMUM DAN KESEKRETARIATAN</option>
-              <option value="2">2. PENDIDIKAN</option>
-              <option value="3">3. AGAMA DAN PHU</option>
-              </select>
-            </div>
-            <div>
-                <label >Tanggal <sup>*</sup></label>
-                <input type="date" id="tanggal" name="tanggal" class="form-control" value="" placeholder="Tanggal" required="">
-            </div>
-            <div>
-              <label >Id Layanan</label>
-              <textarea id="id_layanan" name="id_layanan" class="form-control" placeholder="Id Layanan"></textarea>
-            </div>
-            <div>
-                <label >Id Instansi</label>
-                <input type="id_instansi" id="id_instansi" name="id_instansi" class="form-control" value="" placeholder="Id Instansi">
-            </div>
-            <br><br>
-            <div align="right">
-            <!-- <a href="<?php //echo base_url() ?>"  >Registrasi</a> -->
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-              <button type="submit" class="btn btn-primary">Simpan</button>
-            </div>
-          </form>
-      </div>
-    </div>
-  </div>
-</div>
-  <!-- Bootstrap core JavaScript -->
-  <script src="<?php echo base_url('assets/user')?>/vendor/jquery/jquery.min.js"></script>
-  <script src="<?php echo base_url('assets/user')?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Plugin JavaScript -->
-  <script src="<?php echo base_url('assets/user')?>/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <!-- Contact Form JavaScript -->
-  <script src="<?php echo base_url('assets/user')?>/js/jqBootstrapValidation.js"></script>
-  <script src="<?php echo base_url('assets/user')?>/js/contact_me.js"></script>
-  <!-- Custom scripts for this template -->
-  <script src="<?php echo base_url('assets/user')?>/js/freelancer.min.js"></script>
-  <script src="<?php echo base_url('assets/user')?>/lib/noty.min.js"></script>
-  <script type="text/javascript">
-    function noAntrian(id_antrian){
-    // alert(id_antrian);?
-    if(id_antrian!=""){
-      $.ajax({
-        url: "<?php echo base_url('Index/getNoAntrian'); ?>",
-        type : "POST",
-        data : "id_antrian="+id_antrian,
-        datatype: "json",
-        success:function(response){
-          console.log(response);
-          // alert(data);
-          var output = JSON.parse(response);
-          if(output.no > output.maks){
-            $("#nomor").val('Data Sudah Penuh');
-            // $("#simpan").toggle('slow');
-            $("#simpan").prop("disabled",true);
-          }else{
-            $("#nomor").val(output.no_hasil);
-            $("#nomor").val(output.no_hasil);
-            $("#simpan").prop("disabled",false);
-          }
-        } // Munculkan alert error
-      });
-    }else{
-      $("#nomor").val("");
-      $("#nomor").val("");
-    }
-  }
-  </script>
-   <?php if($this->session->flashdata('notif')){?>
-        <script type="text/javascript">
-            new Noty({     
-                text: '<?php echo $this->session->flashdata('pesan'); ?>',
-                timeout: 3000,
-                theme: "metroui",
-                type: "<?php echo $this->session->flashdata('type'); ?>",                
-            }).show();
-        </script>
-        <?php } ?>
-</body>
+									
+								</div>
+								<!--end::Action-->
+							<!--end::Form-->
+						</div>
+						<!--end::Signin-->
+					</div>
+					<!--end::Wrapper-->
+				</div>
+				<!--begin::Content-->
+				<!--begin::Aside-->
+				<div class="login-aside order-1 order-lg-2 bgi-no-repeat bgi-position-x-right" style="background:purple">
+					<div class="login-conteiner bgi-no-repeat bgi-position-x-right bgi-position-y-bottom" style="background-image: url(<?php echo base_url('assets')?>/assets/media/svg/illustrations/login-visual-4.svg);">
+						
+
+				 <!-- <a href="dummyTA/login" class="login-logo pb-xl-20 pb-15">
+							<!-- <img src="<?=base_url();?>css/assets/img/logo_milagros.png" class="max-h-100px" alt="" /> --> --> -->
+
+						<!--begin::Aside title -->
+						<h3 class="pt-lg-40 pl-lg-20 pb-lg-0 pl-10 py-20 m-0 d-flex justify-content-lg-start font-weight-boldest display5 display1-lg text-white">Milagros
+						<br />Miracle 
+						<br />Inside</h3>
+						<!--end::Aside title-->
+					</div>
+				</div>
+				<!--end::Aside-->
+			</div>
+			<!--end::Login-->
+		</div>
+		<!--end::Main-->
+		<script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
+		<!--begin::Global Config(global config for global JS scripts)-->
+		<script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };</script>
+		<!--end::Global Config-->
+		<!--begin::Global Theme Bundle(used by all pages)-->
+		<script src="<?php echo base_url('assets')?>/assets/plugins/global/plugins.bundle.js"></script>
+		<script src="<?php echo base_url('assets')?>/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+		<script src="<?php echo base_url('assets')?>/assets/js/scripts.bundle.js"></script>
+		<!--end::Global Theme Bundle-->
+		<!--begin::Page Scripts(used by this page)-->
+		<script src="<?php echo base_url('assets')?>/assets/js/pages/custom/login/login-4.js"></script>
+		<!--end::Page Scripts-->
+	</body>
+	<!--end::Body-->
 </html>

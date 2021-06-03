@@ -19,16 +19,16 @@ class UserClient extends CI_Controller
         $data['user'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "user";
         $this->load->view('header0');
-        $this->load->view('bar');
         $this->load->view('data/user', $data, FALSE);
+        $this->load->view('baradmin');
         $this->load->view('footer');
     }
     public function post()
     {
       $data['title'] = "Tambah Data User";
       $this->load->view('header0');
-      $this->load->view('bar');
       $this->load->view('data/post/user', $data);
+      $this->load->view('baradmin');
       $this->load->view('footer');
     }
   
@@ -60,8 +60,8 @@ class UserClient extends CI_Controller
         $data['user'] = json_decode($this->curl->simple_get($this->API,$params));
         $data['title'] = "Edit Data User";
         $this->load->view('header0');
-        $this->load->view('bar');
         $this->load->view('data/put/user', $data);
+        $this->load->view('baradmin');
         $this->load->view('footer');
 
     }

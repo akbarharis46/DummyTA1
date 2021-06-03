@@ -21,8 +21,8 @@ class DetailClient extends CI_Controller
         $data['title'] = "Kategori";
 
         $this->load->view('header0');
-        $this->load->view('bar');
         $this->load->view('data/barang_keluar', $data);
+        $this->load->view('baradmin');
         $this->load->view('footer');
 
     }
@@ -33,8 +33,8 @@ class DetailClient extends CI_Controller
         $data['detail'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "Kategori";
         $this->load->view('header1');
-        $this->load->view('bar1');
         $this->load->view('staffproduksi/barang_keluar', $data);
+        $this->load->view('barproduksi');
         $this->load->view('footer');
 
     }
@@ -43,8 +43,8 @@ class DetailClient extends CI_Controller
         $data['detail'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "Kategori";
         $this->load->view('header1');
-        $this->load->view('bar2');
         $this->load->view('staffgudang/barang_keluar', $data);
+        $this->load->view('bargudang');
         $this->load->view('footer');
 
     }
@@ -53,8 +53,8 @@ class DetailClient extends CI_Controller
         $data['detail'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "Kategori";
         $this->load->view('header1');
-        $this->load->view('bar3');
         $this->load->view('staffpengiriman/barang_keluar', $data);
+        $this->load->view('barpengiriman');
         $this->load->view('footer');
 
     }
@@ -72,7 +72,7 @@ public function delete()
     }
     // print_r($delete);
     // die;
-    redirect('detailclient/index');
+    redirect('Detailclient/index');
 }
 
 
@@ -88,7 +88,7 @@ public function deletestaffpengiriman()
     }
     // print_r($delete);
     // die;
-    redirect('detailclient/indexpengiriman');
+    redirect('Detailclient/indexpengiriman');
 }
 
     

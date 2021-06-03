@@ -1,7 +1,6 @@
 <?php if($this->session->userdata('level')!='admin'){redirect('login');};?>
-
+<link href="<?php echo base_url('assets')?>/assets/css/datatables.css" rel="stylesheet" type="text/css" />
 <div class="cc">
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -123,19 +122,19 @@
                  ?>
                  </span> 
                  
-              <table id="tabel" class="table table-bordered">
+              <table id="tabel" class="table table-striped dataTable-table">
                 <thead>
                 <tr>
-                  <th>NOMOR</th>
-                  <th>NAMA PENGIRIM</th>
-                  <th>NOMOR HP PETUGAS PENGIRIMAN</th>
-                  <th>TUJUAN PENGIRIMAN</th>
-                  <th>JUMLAH PENGIRIMAN</th>
-                  <th>JENIS KENDARAAN</th>
-                  <th>NOMOR KENDARAAn</th>
-                  <th>TANGGAL</th>
-                  <th>STATUS PENGIRIMAN</th>
-                  <th>AKSI</th>
+                  <th data-sourtable="">NOMOR</th>
+                  <th data-sourtable="">NAMA PENGIRIM</th>
+                  <th data-sourtable="">NOMOR HP PETUGAS PENGIRIMAN</th>
+                  <th data-sourtable="">TUJUAN PENGIRIMAN</th>
+                  <th data-sourtable="">JUMLAH PENGIRIMAN</th>
+                  <th data-sourtable="">JENIS KENDARAAN</th>
+                  <th data-sourtable="">NOMOR KENDARAAN</th>
+                  <th data-sourtable="">TANGGAL</th>
+                  <th data-sourtable="">STATUS PENGIRIMAN</th>
+                  <th data-sourtable="">AKSI</th>
  
                 </tr>
                 </thead>
@@ -167,11 +166,11 @@
 
 
                             <a class='btn btn-danger' href="<?php echo site_url(); ?>pengirimanclient/exportsuratjalan/<?= $rows->id_pengiriman ?>">
-            			          <i class="fa fa-file-pdf"></i>
+            			          <i class="fa fa-file-pdf"></i></a>
                       
 
                             <a class="btn btn-success "  href="<?=base_url();?>pengirimanclient/barang_keluar/<?= $rows->id_pengiriman;?>">
-                            <i class="ion-android-exit" aria-hidden="true"></i></a>
+                            <i class="fa fa-file-exit"></i></a>
                         </td>
                     </tr>
                     <?php endforeach ; ?>

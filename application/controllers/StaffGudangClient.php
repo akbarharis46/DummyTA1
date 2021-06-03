@@ -17,7 +17,7 @@ class StaffGudangClient extends CI_Controller
     {
         $data['title'] = "Dashboard";
         $this->load->view('header1');
-        $this->load->view('bar2');
+        $this->load->view('bargudang');
         $this->load->view('staffgudang/index', $data, FALSE);
         $this->load->view('footer');
     }

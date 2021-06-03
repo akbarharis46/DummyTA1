@@ -21,8 +21,8 @@ class StockBarangClient extends CI_Controller
         $data['stockbarang'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "Stock Barang";
         $this->load->view('header0');
-        $this->load->view('bar');
         $this->load->view('data/stock_barang', $data);
+        $this->load->view('baradmin');
         $this->load->view('footer');
     }
     
@@ -32,8 +32,8 @@ class StockBarangClient extends CI_Controller
         $data['stockbarang'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "Stock Barang";
         $this->load->view('header1');
-        $this->load->view('bar1');
         $this->load->view('staffproduksi/stock_barang', $data);
+        $this->load->view('barproduksi');
         $this->load->view('footer');
     }
 
@@ -42,8 +42,8 @@ class StockBarangClient extends CI_Controller
         $data['stockbarang'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "Stock Barang";
         $this->load->view('header1');
-        $this->load->view('bar2');
         $this->load->view('staffgudang/stock_barang', $data);
+        $this->load->view('bargudang');
         $this->load->view('footer');
     }
 
@@ -53,8 +53,8 @@ class StockBarangClient extends CI_Controller
         $data['stockbarang'] = json_decode($this->curl->simple_get($this->API));
         $data['title'] = "Stock Barang";
         $this->load->view('header1');
-        $this->load->view('bar3');
         $this->load->view('staffpengiriman/stock_barang', $data);
+        $this->load->view('barpengiriman');
         $this->load->view('footer');
     }
 
@@ -68,8 +68,8 @@ class StockBarangClient extends CI_Controller
 
       $data['title'] = "Tambah Data Detai Produksi";
       $this->load->view('header0');
-      $this->load->view('bar');
       $this->load->view('data/post/stock_barang', $data);
+      $this->load->view('baradmin');
       $this->load->view('footer');
     }
 
@@ -81,8 +81,8 @@ class StockBarangClient extends CI_Controller
    
          $data['title'] = "Tambah Data Detai Produksi";
          $this->load->view('header1');
-         $this->load->view('bar2');
          $this->load->view('staffgudang/post/stock_barang', $data);
+         $this->load->view('bargudang');
          $this->load->view('footer');
 
     }
@@ -109,7 +109,7 @@ class StockBarangClient extends CI_Controller
         }
         // print_r($data);
         // die;
-        redirect('stockbarangclient');
+        redirect('Stockbarangclient');
       }
     public function post_processstock()
     {
@@ -134,7 +134,7 @@ class StockBarangClient extends CI_Controller
         }
         // print_r($data);
         // die;
-        redirect('stockbarangclient/indexgudang');
+        redirect('Stockbarangclient/indexgudang');
       }
 
 
@@ -148,8 +148,8 @@ class StockBarangClient extends CI_Controller
         $data['stockbarang'] = json_decode($this->curl->simple_get($this->API, $params));
         $data['title'] = "Edit Data Barang";
         $this->load->view('header0');
-        $this->load->view('bar');
         $this->load->view('data/put/stock_barang', $data);
+        $this->load->view('baradmin');
         $this->load->view('footer');
 
     }
@@ -160,8 +160,8 @@ class StockBarangClient extends CI_Controller
         $data['stockbarang'] = json_decode($this->curl->simple_get($this->API, $params));
         $data['title'] = "Edit Data Barang";
         $this->load->view('header1');
-        $this->load->view('bar2');
         $this->load->view('staffgudang/put/stock_barang', $data);
+        $this->load->view('bargudang');
         $this->load->view('footer');
 
     }
@@ -191,7 +191,7 @@ class StockBarangClient extends CI_Controller
         }
         // print_r($update);
         // die;
-        redirect('stockbarangclient');
+        redirect('Stockbarangclient');
     }
     public function put_processstock()
     {
@@ -215,7 +215,7 @@ class StockBarangClient extends CI_Controller
         }
         // print_r($update);
         // die;
-        redirect('stockbarangclient/indexgudang');
+        redirect('Stockbarangclient/indexgudang');
     }
 
 
@@ -233,7 +233,7 @@ class StockBarangClient extends CI_Controller
         }
         // print_r($delete);
         // die;
-        redirect('stockbarangclient');
+        redirect('Stockbarangclient');
     }
     public function deletestock()
     {

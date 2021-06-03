@@ -20,7 +20,7 @@ class PenguranganStockProduksiClient extends CI_Controller
         $data['title'] = "Pengurangan Stock Produksi";
         $data['id_detailproduksi'] = $id_detailproduksi;
         $this->load->view('header0');
-        $this->load->view('bar');
+        $this->load->view('baradmin');
         $this->load->view('data/penguranganstock_produksi', $data);
         $this->load->view('footer');
     }
@@ -30,7 +30,7 @@ class PenguranganStockProduksiClient extends CI_Controller
         $data['title'] = "Pengurangan Stock Produksi";
         $data['id_detailproduksi'] = $id_detailproduksi;
         $this->load->view('header1');
-        $this->load->view('bar1');
+        $this->load->view('barproduksi');
         $this->load->view('staffproduksi/penguranganstock_produksi', $data);
         $this->load->view('footer');
     }
@@ -45,26 +45,26 @@ class PenguranganStockProduksiClient extends CI_Controller
     //     $this->load->view('footer');
     // }
 
-    // public function indexgudang()
-    // {
-    //     $data['kategori'] = json_decode($this->curl->simple_get($this->API));
-    //     $data['title'] = "kategori";
-    //     $this->load->view('header1');
-    //     $this->load->view('bar2');
-    //     $this->load->view('staffgudang/kategori', $data);
-    //     $this->load->view('footer');
-    // }
+    public function indexgudang()
+    {
+        $data['kategori'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "kategori";
+        $this->load->view('header1');
+        $this->load->view('bargudang');
+        $this->load->view('staffgudang/kategori', $data);
+        $this->load->view('footer');
+    }
 
 
-    // public function indexpengiriman()
-    // {
-    //     $data['kategori'] = json_decode($this->curl->simple_get($this->API));
-    //     $data['title'] = "kategori";
-    //     $this->load->view('header1');
-    //     $this->load->view('bar3');
-    //     $this->load->view('staffpengiriman/kategori', $data);
-    //     $this->load->view('footer');
-    // }
+    public function indexpengiriman()
+    {
+        $data['kategori'] = json_decode($this->curl->simple_get($this->API));
+        $data['title'] = "kategori";
+        $this->load->view('header1');
+        $this->load->view('bargudang');
+        $this->load->view('staffpengiriman/kategori', $data);
+        $this->load->view('footer');
+    }
     
     public function post($id_detailproduksi)
     {

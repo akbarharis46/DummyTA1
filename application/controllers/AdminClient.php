@@ -17,8 +17,8 @@ class AdminClient extends CI_Controller
     {
         $data['title'] = "Dashboard";
         $this->load->view('header0');
-        $this->load->view('bar');
-        $this->load->view('admin/index', $data, FALSE);
+        // $this->load->view('admin/index', $data, FALSE);
+        $this->load->view('baradmin');
         $this->load->view('footer');
     }
 
@@ -26,7 +26,7 @@ class AdminClient extends CI_Controller
     {
         $data['title'] = "Dashboard";
         $this->load->view('header1');
-        $this->load->view('bar1');
+        $this->load->view('barproduksi');
         $this->load->view('staffproduksi/index', $data, FALSE);
         $this->load->view('footer');
     }
@@ -36,7 +36,7 @@ class AdminClient extends CI_Controller
     {
         $data['title'] = "Dashboard";
         $this->load->view('header1');
-        $this->load->view('bar2');
+        $this->load->view('bargudang');
         $this->load->view('staffgudang/index', $data, FALSE);
         $this->load->view('footer');
     }
@@ -46,7 +46,7 @@ class AdminClient extends CI_Controller
     {
         $data['title'] = "Dashboard";
         $this->load->view('header1');
-        $this->load->view('bar3');
+        $this->load->view('barpengiriman');
         $this->load->view('staffpengiriman/index', $data, FALSE);
         $this->load->view('footer');
     }

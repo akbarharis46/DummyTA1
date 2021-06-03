@@ -1,201 +1,91 @@
 <?php if($this->session->userdata('level')!='admin'){redirect('staffproduksiclient');};?>
 
-<div class="cc">
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid" >
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h2 class="m-0 text-primary" ><i class="nav-icon fas fa-microphone" ></i> Data Produksi</h2>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-    <!-- Main content -->
-    <div class="content">
-      <div class="container-fluid">
-      <div class="alert alert-secondary" role="alert">
-      <i class="nav-icon fas fa-home"></i> Dashboard &nbsp; &nbsp; > &nbsp;  &nbsp;<i class="nav-icon fas fa-microphone"></i> Produksi
-        </div>
-        <div class="row">
-          <div class="col"> 
-              <!-- Tabel -->
-              <div class="card">
-            <!-- /.card-header -->
-            <div class="card-body">
-            	<div class='card-header' style="margin-left:-20px;">
-            		
-              <form action="<?php echo site_url(); ?>produksiclient/exportToPDF/" method="GET">
-                <div class="row">
-                
-                  <div class="col-md-3">
-
-                    <a class='btn btn-primary' href="<?php echo site_url(); ?>produksiclient/post/">
-                      <i class="fa fa-plus"></i>
-                      <span>
-                        Tambah
-                      </span>
-                    </a>
-
-                  </div>
-
-                  
-                  <div class="col-md-3">
-
-
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="far fa-calendar-alt"></i>
-                        </span>
-                      </div>
-                      <input type="text" name="interval-tanggal" class="form-control float-right" id="aktif-date-range">
-                    </div>                  
-                  </div>
-                  <div class="col-md-6">
-                  
-                    <button class='btn btn-outline-danger'>
-                      <i class="fa fa-file-pdf"></i>
-                      <span>
-                        Filter PDF
-                      </span>
-                    </button>
-                    <a class='btn btn-danger' href="<?php echo site_url(); ?>produksiclient/exportToPDF/">
-                      <i class="fa fa-file-pdf"></i>
-                      <span>
-                        Cetak Keseluruhan
-                      </span>
-                    </a>
-                    <a class='btn btn-success' href="<?php echo site_url(); ?>produksiclient/exportToExcel/">
-                      <i class="fa fa-file-pdf"></i>
-                      <span>
-                        Cetak Keseluruhan
-                      </span>
-                    </a>
-                  
-                  </div>
-
-                </div>
-                </form>
-                
-                
-                
-                
-
-
-
-                
-
-
-                  
-
-
-
-
-
-
-              </div>   
-                  <span>
-                  <br>
-                    <?php
-                   if (!empty($this->session->flashdata('pesan')))
-                   {
-                     ?>
-                  <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <?= $this->session->flashdata('pesan');?>
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  </div>
-                  <?php   
-                  }
-                  ?>
-
-                  <?php
-                   if (!empty($this->session->flashdata('pesan2')))
-                   {
-                     ?>
-                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <?= $this->session->flashdata('pesan2');?>
-                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                 <?php   
-                 }
-                 ?>
-
-                  <?php
-                   if (!empty($this->session->flashdata('pesan3')))
-                   {
-                     ?>
-                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  <?= $this->session->flashdata('pesan3');?>
-                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                 <?php   
-                 }
-                 ?>
-                 </span> 
-                 
-              <table id="tabel" class="table table-bordered">
-                <thead>
-                <tr>
-                  <th>NOMOR</th>
+<div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+					<!--begin::Header-->
+					<div id="kt_header" class="header header-fixed">
+						<!--begin::Container-->
+						<div class="container-fluid d-flex align-items-stretch justify-content-between">
+							<!--begin::Header Menu Wrapper-->
+							<div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+								<!--begin::Header Menu-->
+								<div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
+									<!--begin::Header Nav-->
+									<ul class="menu-nav">
+											<a href="#" class="btn btn-primary font-weight-bolder">
+											<span class="svg-icon svg-icon-md">
+												<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<rect x="0" y="0" width="24" height="24" />
+														<circle fill="#000000" cx="9" cy="15" r="6" />
+														<path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />
+													</g>
+												</svg>
+												<!--end::Svg Icon-->
+											</span>New Record</a>
+											<!--end::Button-->
+										</div>
+									</div>
+									<div class="card-body">
+										<!--begin: Datatable-->
+										<table class="table table-separate table-head-custom table-checkable" id="kt_datatable1">
+											<thead>
+												<tr>
+                 <th>NOMOR</th>
                   <th>Tanggal</th>
                   <th>Nama Staff Pengawas</th>
                   <th>Shift Produksi</th>
                   <th>Hasil Produksi Hari Ini</th>
                   <th>AKSI</th>
- 
-                </tr>
-                </thead>
-                <tbody>
-                <?php 
+
+												</tr>
+											</thead>
+											<tbody>
+                      <?php 
                   $i=1;
 
                 foreach ($produksi as $rows) : ?>
-                    <tr>
+												<tr>
                         <td><?php echo  $i++; ?></td>
                         <td><?php echo $rows->tanggal; ?>
                         <td><?php echo $rows->nama_staff; ?>
                         <td><?php echo $rows->shift; ?>
                         <td><?php echo $rows->jumlah_produksi; ?>
-                       
+													<!-- <td nowrap="nowrap"></td> -->
+												</tr>
+											</tbody>
+										</table>
+										<!--end: Datatable-->
+									</div>
+								</div>
+                <?php endforeach ; ?>
 
-                            </td>
-                        <td>
-                            <a href="<?php echo site_url(); ?>produksiclient/put/<?php echo $rows->id_produksi; ?>" class="btn btn-warning">
-                            <i class="fa fa-pen" aria-hidden="true"></i></a>
-
-
-                            <a class="btn btn-success "  href="<?=base_url();?>produksiclient/data_produksikeluar/<?= $rows->id_produksi;?>">
-                            <i class="ion-android-exit" aria-hidden="true"></i></a>
-
-
-                            <a href="<?= base_url(); ?>produksiclient/delete/<?= $rows->id_produksi; ?>" class="btn btn-danger" onClick="return confirm('yakin mau hapus');">
-                            <i class="fa fa-trash" aria-hidden="true"></i></a>
-
-                        </td>
-                    </tr>
-                    <?php endforeach ; ?>
-                </tbody>
-              </table>             
-            <!-- /.card-body -->
-          </div>
-            </div>
-          </div>
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+										</tbody>
+										</table>
+										<!--end: Datatable-->
+									</div>
+								</div>
+								<!--end::Card-->
+							</div>
+							<!--end::Container-->
+						</div>
+						<!--end::Entry-->
+					</div>
+          
+<!-- jQuery -->
+<script>var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";</script>
+		<!--begin::Global Config(global config for global JS scripts)-->
+		<script>var KTAppSettings = { "breakpoints": { "sm": 576, "md": 768, "lg": 992, "xl": 1200, "xxl": 1400 }, "colors": { "theme": { "base": { "white": "#ffffff", "primary": "#3699FF", "secondary": "#E5EAEE", "success": "#1BC5BD", "info": "#8950FC", "warning": "#FFA800", "danger": "#F64E60", "light": "#E4E6EF", "dark": "#181C32" }, "light": { "white": "#ffffff", "primary": "#E1F0FF", "secondary": "#EBEDF3", "success": "#C9F7F5", "info": "#EEE5FF", "warning": "#FFF4DE", "danger": "#FFE2E5", "light": "#F3F6F9", "dark": "#D6D6E0" }, "inverse": { "white": "#ffffff", "primary": "#ffffff", "secondary": "#3F4254", "success": "#ffffff", "info": "#ffffff", "warning": "#ffffff", "danger": "#ffffff", "light": "#464E5F", "dark": "#ffffff" } }, "gray": { "gray-100": "#F3F6F9", "gray-200": "#EBEDF3", "gray-300": "#E4E6EF", "gray-400": "#D1D3E0", "gray-500": "#B5B5C3", "gray-600": "#7E8299", "gray-700": "#5E6278", "gray-800": "#3F4254", "gray-900": "#181C32" } }, "font-family": "Poppins" };</script>
+		<!--end::Global Config-->
+		<!--begin::Global Theme Bundle(used by all pages)-->
+		<script src="<?php echo base_url('assets')?>assets/plugins/global/plugins.bundle.js"></script>
+		<script src="<?php echo base_url('assets')?>assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+		<script src="<?php echo base_url('assets')?>assets/js/scripts.bundle.js"></script>
+		<!--end::Global Theme Bundle-->
+		<!--begin::Page Vendors(used by this page)-->
+		<script src="<?php echo base_url('assets')?>assets/plugins/custom/datatables/datatables.bundle.js"></script>
+		<!--end::Page Vendors-->
+		<!--begin::Page Scripts(used by this page)-->
+		<script src="<?php echo base_url('assets')?>assets/js/pages/crud/datatables/basic/scrollable.js"></script>
+</body>
+</html> 
